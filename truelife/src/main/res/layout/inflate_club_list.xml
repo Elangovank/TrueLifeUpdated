@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<androidx.appcompat.widget.AppCompatCheckBox xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/search_filter_area_chk"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/dimen10"
+    android:background="@color/white"
+    android:gravity="left|center"
+    android:paddingLeft="20dp"
+    android:text="Your Area"
+    android:textColor="@color/black"
+    android:textSize="@dimen/text_20"
+    android:textStyle="normal"
+    android:theme="@style/searchFeedAllCheckBoxTheme" />
+

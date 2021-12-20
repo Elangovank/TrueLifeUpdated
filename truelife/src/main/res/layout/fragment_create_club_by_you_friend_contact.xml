@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_welcome2_parent_layout_RLAY"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:clickable="true"
+    android:fitsSystemWindows="true"
+    android:scrollbars="vertical"
+    tools:context=".app.fragment.club.more.invite.TLClubFriendsContacts">
+
+    <LinearLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/dimen10">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:fitsSystemWindows="true"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true">
+
+                <ImageView
+                    android:id="@+id/common_back_arrow"
+                    android:layout_width="@dimen/dimen_25"
+                    android:layout_height="@dimen/dimen_25"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/dimen10"
+                    android:gravity="left"
+                    android:src="@drawable/ic_drop_down_bold"
+                    android:tint="@color/black" />
+
+                <TextView
+                    android:id="@+id/common_text_header"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/opendans_bold"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="@string/label_friends_contacts"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/font16" />
+
+
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+    </LinearLayout>
+
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/header"
+        android:background="@color/semi_dark_grey" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/view">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+
+                    <RelativeLayout
+                        android:id="@+id/fragment_notify_friend_list_Search_LAY"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="10dp"
+                        android:paddingRight="20dp"
+                        android:paddingBottom="10dp"
+                        android:visibility="gone">
+
+                        <FrameLayout
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content">
+
+                            <EditText
+                                android:id="@+id/fragment_search_member"
+                                android:layout_width="match_parent"
+                                android:layout_height="30dp"
+                                android:background="@drawable/bg_square_corner_search"
+                                android:drawablePadding="5dp"
+                                android:hint="@string/label_search"
+                                android:importantForAutofill="no"
+                                android:paddingStart="15dp"
+                                android:paddingLeft="15dp"
+                                android:paddingEnd="5dp"
+                                android:paddingRight="5dp"
+                                android:textColor="@color/black"
+                                android:textColorHint="@color/grey"
+                                android:textCursorDrawable="@drawable/black_cursor"
+                                android:textStyle="normal" />
+
+                            <ImageView
+                                android:id="@+id/clear_image_view"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_alignParentRight="true"
+                                android:layout_alignParentBottom="true"
+                                android:layout_gravity="center|right"
+                                android:layout_toRightOf="@+id/fragment_search_member"
+                                android:src="@drawable/ic_close"
+                                android:visibility="gone" />
+
+                        </FrameLayout>
+
+                    </RelativeLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:orientation="vertical">
+
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/layout_club_contact_linear_contact"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/layout_club_friend_linear_layout"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:orientation="vertical"
+                            app:cardCornerRadius="5dp">
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:id="@+id/layout_contact_name"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:background="@color/grey"
+                                        android:fontFamily="@font/opendans_bold"
+
+                                        android:gravity="center"
+                                        android:padding="10dp"
+                                        android:text="@string/label_contact"
+                                        android:textAppearance="?android:attr/textAppearanceMedium"
+                                        android:textColor="@color/black" />
+
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="@color/transparent_black_fifty"
+                                    android:orientation="vertical">
+
+                                    <androidx.recyclerview.widget.RecyclerView
+                                        android:id="@+id/fragment_horizontal_contact_recycler"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="@dimen/dimen_150"
+                                        android:background="@color/grey"
+                                        android:orientation="horizontal" />
+
+                                    <LinearLayout
+                                        android:id="@+id/contact_more_LAY"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:background="@color/white"
+                                        android:orientation="vertical"
+                                        android:visibility="gone">
+
+                                        <TextView
+                                            android:id="@+id/layout_contact_more_TET"
+                                            android:layout_width="90dp"
+                                            android:layout_height="35dp"
+                                            android:layout_gravity="center"
+                                            android:layout_marginBottom="5dp"
+                                            android:background="@drawable/bg_round_corner_for_feed"
+                                            android:backgroundTint="@color/color_button_blue"
+                                            android:fontFamily="@string/opensans_bold"
+                                            android:gravity="center"
+                                            android:text="More"
+                                            android:textAppearance="?android:attr/textAppearanceMedium"
+                                            android:textColor="@color/white"
+                                            android:textStyle="bold" />
+
+                                    </LinearLayout>
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+
+                        </androidx.cardview.widget.CardView>
+
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_margin="@dimen/dimen5"
+                            android:background="@color/grey" />
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/layout_club_friend_linear_layout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_margin="@dimen/dimen10"
+                            android:orientation="vertical"
+                            app:cardCornerRadius="5dp">
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:id="@+id/layout_club_name"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:background="@color/grey"
+                                        android:fontFamily="@font/opendans_bold"
+                                        android:gravity="center"
+
+                                        android:padding="10dp"
+                                        android:text="@string/label_friend"
+                                        android:textAppearance="?android:attr/textAppearanceMedium"
+                                        android:textColor="@color/black" />
+
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="@color/medium_grey"
+                                    android:orientation="vertical">
+
+                                    <androidx.recyclerview.widget.RecyclerView
+                                        android:id="@+id/fragment_horizontal_friend_recycler"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:background="@color/profile_friends_follow_label_bg"
+                                        android:orientation="horizontal" />
+
+                                    <View
+                                        android:id="@+id/friend_view"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="@dimen/dimen_150"
+                                        android:background="@color/grey"
+                                        android:visibility="gone" />
+
+                                    <LinearLayout
+                                        android:id="@+id/friends_more_LAY"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:background="@color/white"
+                                        android:orientation="vertical"
+                                        android:paddingTop="@dimen/dimen_25"
+                                        android:paddingBottom="@dimen/dimen_15"
+                                        android:visibility="gone">
+
+                                        <TextView
+                                            android:id="@+id/layout_friend_more_TET"
+                                            android:layout_width="90dp"
+                                            android:layout_height="35dp"
+                                            android:layout_gravity="center"
+                                            android:layout_marginBottom="5dp"
+                                            android:background="@drawable/bg_round_corner_for_feed"
+                                            android:backgroundTint="@color/color_button_blue"
+                                            android:fontFamily="@string/opensans_bold"
+                                            android:gravity="center"
+                                            android:text="More"
+                                            android:textAppearance="?android:attr/textAppearanceMedium"
+                                            android:textColor="@color/white"
+                                            android:textStyle="bold" />
+
+
+                                    </LinearLayout>
+
+                                </LinearLayout>
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+
+
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.core.widget.NestedScrollView>
+
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</RelativeLayout>

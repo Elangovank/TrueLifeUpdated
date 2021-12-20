@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+android:background="@color/light_gray"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_upload">
+
+        <LinearLayout
+            android:id="@+id/fragment_feed_post_Liner_LAY_your_club"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/fragment_feed_post_Liner_LAY_notify_friend"
+            android:layout_marginTop="@dimen/dimen_250"
+            android:orientation="vertical"
+
+            android:paddingLeft="10dp"
+
+            android:paddingTop="10dp"
+            android:paddingRight="10dp"
+            android:visibility="invisible">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <TextView
+                    android:id="@+id/fragment_feed_post_your_club_TXT"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_weight="0.1"
+                    android:drawableLeft="@drawable/ic_club"
+                    android:drawablePadding="5sp"
+                    android:drawableTint="@color/dark_grey"
+                    android:fontFamily="@string/opensans_regular"
+                    android:gravity="center|left"
+                    android:padding="5sp"
+                    android:text="@string/labe_your_club"
+                    android:textAllCaps="false"
+                    android:textColor="@color/dark_grey"
+                    android:textSize="@dimen/text_18"
+                    android:textStyle="normal" />
+
+                <TextView
+                    android:id="@+id/fragment_feed_post_your_club_puls_TXT"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_weight="1.85"
+                    android:drawableTint="@color/dark_grey"
+                    android:fontFamily="@string/opensans_regular"
+                    android:gravity="center|right"
+                    android:hint="@string/labe_select_club"
+                    android:textColorHint="@color/dark_grey"
+                    android:textSize="13sp"
+                    android:textStyle="normal" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/fragment_feed_post_club_name_TXT"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_margin="3sp"
+                android:layout_weight="0.1"
+                android:drawablePadding="5sp"
+                android:drawableTint="@color/white"
+                android:gravity="center|left"
+                android:padding="5sp"
+                android:text="@string/labe_your_club"
+                android:textColor="@color/dark_grey"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:visibility="gone" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/fragment_feed_post_screen_your_club_RCY"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent"
+                android:orientation="horizontal"
+                android:padding="8dp"
+                android:paddingLeft="3dp"
+                android:paddingRight="3dp"
+                android:visibility="gone" />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@color/app_gray" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/fragment_feed_post_Liner_LAY_where_post"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/fragment_feed_post_Liner_LAY_your_club"
+            android:orientation="vertical"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:paddingRight="10dp"
+            android:visibility="invisible"
+            android:paddingBottom="10dp">
+
+            <TextView
+                android:id="@+id/fragment_feed_post_TXT_where_post"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:drawableLeft="@drawable/ic_location"
+                android:drawablePadding="5sp"
+                android:drawableTint="@color/dark_grey"
+                android:fontFamily="@string/opensans_regular"
+                android:gravity="center|left"
+                android:padding="5sp"
+                android:text="@string/labe_where_do_you_want_to_post"
+                android:textAllCaps="false"
+                android:textColor="@color/dark_grey"
+                android:textSize="@dimen/text_18"
+                android:textStyle="normal" />
+
+
+            <TextView
+                android:id="@+id/fragment_feed_post_SPN_where_post"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/md_transparent"
+                android:drawableTint="@color/white"
+                android:fontFamily="@string/opensans_regular"
+                android:gravity="center"
+                android:hint="@string/lable_spinner_select"
+                android:inputType="text"
+                android:padding="5dp"
+                android:paddingLeft="50dp"
+                android:textColor="@color/dark_grey"
+                android:textColorHint="@color/dark_grey"
+                android:textSize="@dimen/text_18"
+                android:textStyle="normal" />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@color/app_gray" />
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>

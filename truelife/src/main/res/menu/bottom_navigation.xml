@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/bottom_news"
+
+        android:icon="@drawable/newscast_icon_unsel"
+        android:title="" />
+
+    <item
+        android:id="@+id/bottom_notification"
+        android:icon="@drawable/notifi_unselect"
+        android:title="" />
+
+
+    <item
+        android:id="@+id/bottom_post"
+        android:icon="@drawable/post_unselect"
+        android:title="" />
+
+    <item
+        android:id="@+id/bottom_chat"
+        android:icon="@drawable/icon_tabbar_message"
+        android:title="" />
+
+
+    <item
+        android:id="@+id/bottom_menu"
+        android:icon="@drawable/menu_unselect"
+        android:title="" />
+</menu>

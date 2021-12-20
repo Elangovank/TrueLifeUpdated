@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/fragment_report_screen_root_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    android:layout_gravity="center"
+    android:background="@drawable/setting_report_bg"
+    android:clickable="true"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="5dp"
+        android:background="@color/white"
+        android:orientation="vertical"
+        app:cardElevation="5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:id="@+id/header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+
+                    <ImageButton
+                        android:id="@+id/close_club_button"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerInParent="true"
+                        android:background="@null"
+                        android:contentDescription="@null"
+                        android:padding="@dimen/dimen_4"
+                        android:src="@drawable/ic_close_without_circle" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+
+                    android:id="@+id/Report_progress_area"
+                    android:layout_width="wrap_content"
+
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+
+                    android:layout_gravity="center"
+                    android:background="@null"
+                    android:clickable="true"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+
+                    <!--  <com.dinuscxj.progressbar.CircleProgressBar
+
+                          android:id="@+id/report_donut_progress"
+                          android:layout_width="100dp"
+                          android:layout_height="100dp"
+                          app:progress_background_color="@color/grey"
+                          app:progress_end_color="#b8ed12"
+
+
+                          app:progress_start_color="#b8ed12"
+
+                          app:progress_stroke_width="5dp"
+                          app:progress_text_color="@color/white"
+
+                          app:progress_text_size="15dp"
+                          app:style="solid_line" />-->
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/fragment_feed_post_btn_LAY"
+                    android:layout_below="@+id/header"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+
+                        <ScrollView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:fillViewport="true"
+                            android:scrollbars="none">
+
+                            <LinearLayout
+                                android:id="@+id/report_page"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical">
+
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/club_report_icon" />
+
+                                <TextView
+                                    android:id="@+id/header_txt"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:fontFamily="@font/opensans_regular"
+                                    android:gravity="center"
+                                    android:text="@string/label_club_report"
+                                    android:textColor="@color/black"
+                                    android:textStyle="bold" />
+
+
+                                <LinearLayout
+                                    android:id="@+id/fragment_feed_post_Liner_LAY_Posttext"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    android:paddingLeft="10dp"
+                                    android:paddingTop="10dp"
+                                    android:paddingRight="10dp">
+
+                                    <EditText
+                                        android:id="@+id/fragment_feed_post_thoughts_Edt"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="180sp"
+                                        android:background="@drawable/set_report_screen"
+                                        android:fontFamily="@string/opensans_regular"
+                                        android:gravity="top|left"
+                                        android:hint="@string/labe_type_message"
+                                        android:importantForAutofill="no"
+                                        android:inputType="textMultiLine"
+                                        android:maxLines="10"
+                                        android:padding="15dp"
+                                        android:paddingLeft="@dimen/dimen_10"
+                                        android:textColor="@color/black"
+                                        android:textColorHint="@color/dark_grey"
+                                        android:textSize="18dp"
+                                        android:textStyle="normal" />
+
+                                </LinearLayout>
+
+
+                                <LinearLayout
+                                    android:id="@+id/fragment_feed_post_Liner_LAY_photo"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/fragment_feed_post_Liner_LAY_Posttext"
+                                    android:orientation="vertical"
+                                    android:paddingLeft="10dp"
+                                    android:paddingRight="10dp">
+
+                                    <LinearLayout
+                                        android:id="@+id/pick_image_lay"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content">
+
+                                        <ImageView
+                                            android:layout_width="30dp"
+                                            android:layout_height="30dp"
+                                            android:layout_gravity="center"
+                                            android:src="@drawable/ic_action_camera_report" />
+
+                                        <TextView
+                                            android:id="@+id/fragment_club_in_post_photo_TXT"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:layout_marginLeft="@dimen/dimen_4"
+                                            android:layout_marginTop="10dp"
+                                            android:layout_marginBottom="10dp"
+                                            android:drawablePadding="15dp"
+                                            android:drawableTint="@color/black"
+                                            android:fontFamily="@string/opensans_regular"
+                                            android:gravity="center|left"
+                                            android:padding="5sp"
+                                            android:text="@string/labe_add_photo_video"
+                                            android:textAllCaps="false"
+                                            android:textColor="@color/black"
+                                            android:textSize="18sp"
+                                            android:textStyle="normal" />
+
+                                    </LinearLayout>
+
+                                    <androidx.recyclerview.widget.RecyclerView
+                                        android:id="@+id/fragment_club_in_report_post_RCY"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="100dp"
+                                        android:clickable="true"
+                                        android:orientation="horizontal"
+                                        android:paddingLeft="3dp"
+                                        android:paddingRight="3dp"
+                                        android:visibility="invisible" />
+
+                                </LinearLayout>
+
+
+                                <LinearLayout
+                                    android:id="@+id/fragment_feed_post_btn_LAY"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentBottom="true"
+                                    android:layout_gravity="bottom"
+                                    android:layout_marginBottom="20dp"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+
+                                    <Button
+                                        android:id="@+id/privacy_post_btn"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="50dp"
+                                        android:layout_gravity="center"
+                                        android:layout_marginLeft="@dimen/dimen30"
+                                        android:layout_marginRight="@dimen/dimen30"
+                                        android:background="@drawable/set_report_button"
+                                        android:fontFamily="@string/opensans_regular"
+                                        android:gravity="center"
+                                        android:layout_marginTop="@dimen/dimen20"
+                                        android:paddingStart="@dimen/dimen30"
+                                        android:paddingEnd="@dimen/dimen30"
+                                        android:text="@string/label_send_truelife_admin"
+                                        android:textAllCaps="false"
+                                        android:textAppearance="?android:attr/textAppearanceSmall"
+                                        android:textColor="@color/white"
+                                        android:textSize="@dimen/text_16"
+                                        android:textStyle="bold" />
+
+
+                                </LinearLayout>
+
+
+                            </LinearLayout>
+
+
+                        </ScrollView>
+
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+            </FrameLayout>
+
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

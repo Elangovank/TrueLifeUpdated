@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/ic_news_feed_bg"
+    android:clickable="true"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/fragment_amro_appbar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="visible">
+
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/collapsing_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="false"
+            app:expandedTitleGravity="top"
+            app:layout_collapseMode="parallax"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
+            app:titleEnabled="false">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:fitsSystemWindows="false"
+
+                android:orientation="vertical">
+
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <androidx.appcompat.widget.Toolbar
+                        android:id="@+id/toolbar"
+                        android:layout_width="match_parent"
+                        android:layout_height="?attr/actionBarSize"
+                        android:background="@color/white"
+                        android:fitsSystemWindows="false"
+                        app:layout_collapseMode="pin"
+                        app:popupTheme="@style/AppTheme.PopupOverlay">
+
+                        <ImageView
+                            android:id="@+id/back_icon"
+                            android:layout_width="@dimen/dimen_25"
+                            android:layout_height="@dimen/dimen_25"
+                            android:background="@drawable/ic_back_button"
+                            android:backgroundTint="@color/black"
+                            android:padding="@dimen/dimen5" />
+
+                        <TextView
+
+                            android:id="@+id/toolbar_title"
+                            style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/opendans_bold"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_18"
+                            android:textStyle="bold" />
+                    </androidx.appcompat.widget.Toolbar>
+
+                    <ImageView
+                        android:id="@+id/fragment_club_by_you_profile_IMG"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:layout_marginTop="?attr/actionBarSize"
+                        android:background="@android:color/white"
+                        android:contentDescription="@null"
+
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/club_placeholder"
+                        app:layout_collapseMode="parallax" />
+
+                    <ImageView
+                        android:id="@+id/profile_edit_icon"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_gravity="center"
+
+                        android:layout_marginLeft="160dp"
+                        android:layout_marginTop="100dp"
+                        android:layout_marginRight="4dp"
+                        android:fitsSystemWindows="true"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/profile_edit_icon"
+
+                        android:visibility="gone" />
+
+
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/dimen_5"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:padding="5dp"
+                    android:weightSum="2">
+
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:background="@color/white"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/fragment_club_by_you_Name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingStart="10dp"
+                            android:paddingLeft="12dp"
+                            android:paddingEnd="10dp"
+                            android:text="Gopi"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:textColor="@color/black"
+                            android:textStyle="bold"
+                            android:visibility="gone" />
+
+                        <TextView
+                            android:id="@+id/fragment_club_by_you_total_member_count"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_margin="10dp"
+                            android:fontFamily="@font/opensans_regular"
+                            android:gravity="left"
+                            android:paddingStart="10dp"
+                            android:paddingLeft="12dp"
+
+
+                            android:paddingEnd="10dp"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_16"
+                            android:textStyle="normal"
+                            tools:text="members" />
+
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginRight="@dimen/dimen_15"
+                        android:layout_weight="1"
+                        android:background="@color/white"
+                        android:gravity="center|right"
+                        android:orientation="horizontal">
+
+                        <TextView
+
+                            android:id="@+id/fragment_club_by_you_member_or_admin"
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dp"
+                            android:layout_gravity="right"
+                            android:background="@drawable/bg_border_blue"
+                            android:enabled="false"
+                            android:fontFamily="@font/opendans_bold"
+                            android:gravity="center"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="15dp"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:textColor="@color/black"
+                            android:textSize="10sp"
+                            android:textStyle="bold"
+                            android:visibility="visible"
+                            tools:text="ownerType" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/fragment_club_by_you_bottom_Lay"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/style_tab_select_background"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/aboutMenu"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/opendans_bold"
+                        android:gravity="center"
+                        android:text="ABOUT"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_14"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/mediaMenu"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/opendans_bold"
+                        android:gravity="center"
+                        android:text="MEDIA"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_14"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/memberMenu"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/opendans_bold"
+                        android:gravity="center"
+                        android:text="MEMBERS"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_14"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/moreMenu"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/opendans_bold"
+                        android:gravity="center"
+                        android:text="MORE"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_14"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/about_lay"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="visible">
+
+                    <LinearLayout
+                        android:id="@+id/fragment_club_by_you_admin_description_LAY"
+                        android:layout_width="match_parent"
+
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:orientation="vertical"
+                        android:paddingTop="10dp"
+                        android:visibility="visible">
+
+                        <TextView
+                            android:id="@+id/fragment_club_by_you_admin_name"
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:fontFamily="@font/opendans_bold"
+                            android:padding="5dp"
+                            android:text="@string/label_admin"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+
+
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_16"
+                            android:textStyle="bold"
+                            android:visibility="visible" />
+
+                        <TextView
+                            android:id="@+id/fragment_club_by_you_description"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:fontFamily="@font/opensans_regular"
+                            android:maxLines="6"
+                            android:padding="5dp"
+                            android:text=""
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_16"
+
+                            android:textStyle="normal" />
+                    </LinearLayout>
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="7dp"
+                        android:layout_gravity="top"
+                        android:layout_marginTop="@dimen/dimen_10"
+                        android:background="@drawable/shadow_bottom_line_dark"
+                        android:visibility="visible" />
+
+
+                    <TextView
+                        android:id="@+id/fragment_club_by_you_post"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="@dimen/dimen_8"
+                        android:background="@android:color/white"
+                        android:fontFamily="@font/opensans_regular"
+                        android:gravity="top|left"
+                        android:maxLines="6"
+                        android:padding="15dp"
+                        android:text="@string/labe_share_thoughts"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_16"
+                        android:textStyle="normal"
+                        android:visibility="visible" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="8dp"
+                        android:layout_gravity="bottom"
+                        android:background="@drawable/shadow_top_line_dark" />
+
+
+                    <LinearLayout
+                        android:id="@+id/history_LAY"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:layout_marginLeft="25dp"
+                        android:layout_marginTop="@dimen/dimen10"
+                        android:layout_marginBottom="@dimen/dimen10"
+                        android:background="@drawable/bg_square_corner"
+                        android:layout_marginRight="25dp"
+                        android:orientation="vertical"
+                        android:visibility="visible">
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:drawableStart="@drawable/ic_dot"
+                            android:drawableLeft="@drawable/ic_dot"
+                            android:drawableEnd="@drawable/ic_dot"
+                            android:drawableRight="@drawable/ic_dot"
+                            android:fontFamily="@font/opendans_bold"
+                            android:gravity="center"
+                            android:paddingTop="@dimen/dimen_2"
+                            android:paddingBottom="@dimen/dimen_2"
+                           android:paddingRight="@dimen/dimen_10"
+                            android:paddingLeft="@dimen/dimen_10"
+                            android:text="@string/label_history"
+                            android:background="@color/blue"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/text_16"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/fragment_club_view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:visibility="gone"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+    <FrameLayout
+        android:id="@+id/club_frame_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:fitsSystemWindows="true"
+        android:paddingBottom="@dimen/dimen20"
+        android:visibility="gone"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+
+    <com.truelife.app.VideoPlayerRecyclerView
+        android:id="@+id/publicRv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:nestedScrollingEnabled="true"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

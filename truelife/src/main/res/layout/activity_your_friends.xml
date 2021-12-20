@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fragment_crate_club_root_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:clickable="true"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_50"
+        android:layout_centerVertical="true"
+        android:layout_gravity="center"
+        android:background="@color/light_gray"
+        android:gravity="left|center"
+        android:weightSum="2">
+
+        <ImageView
+            android:id="@+id/back_icon"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="left"
+            android:layout_weight="0.3"
+            android:contentDescription="@null"
+            android:gravity="center_vertical"
+            android:padding="2dp"
+            android:src="@drawable/ic_back"
+            android:tint="@color/black" />
+
+
+        <TextView
+            android:id="@+id/chat_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1.5"
+            android:fontFamily="@string/opensans_semi_bold"
+            android:gravity="center"
+            android:padding="10dp"
+            android:textAllCaps="true"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_18"
+            android:text="sdsdsd"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/fragment_horizontal_friend_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="5dp" />
+
+    <TextView
+        android:id="@+id/no_block_friends_found"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:fontFamily="@string/opensans_bold"
+        android:gravity="center"
+        android:text="@string/label_no_followers_friends"
+        android:textColor="@color/black"
+        android:visibility="gone" />
+</LinearLayout>

@@ -1,0 +1,66 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/app_transparent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:background="@drawable/bg_border_view_white"
+        android:orientation="vertical"
+        tools:ignore="UselessParent">
+
+        <TextView
+            android:id="@+id/dialog_title"
+            style="@style/DialogTitle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="@dimen/text_16" />
+
+        <TextView
+            android:id="@+id/dialog_message"
+            style="@style/DialogMessage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/dimen10"
+            android:textSize="@dimen/text_16" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/app_gray" />
+
+        <TextView
+            android:id="@+id/dialog_ok"
+            style="@style/DialogMessage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/dimen10"
+            android:text="@string/yes"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/text_18"
+            android:textStyle="bold" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/app_gray" />
+
+        <TextView
+            android:id="@+id/dialog_cancel"
+            style="@style/UserInfoTitle"
+            android:layout_height="45dp"
+            android:background="@drawable/bg_border_view_white"
+            android:gravity="center"
+            android:padding="@dimen/dimen10"
+            android:text="@string/cancel"
+            android:textColor="@color/app_red"
+            android:textSize="@dimen/text_18"
+            android:visibility="visible" />
+
+    </LinearLayout>
+
+</LinearLayout>

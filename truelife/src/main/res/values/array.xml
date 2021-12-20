@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="menu_title">
+        <item>@string/label_autograph</item>
+        <item>@string/label_raise_an_issue</item>
+        <item>@string/label_cinema</item>
+        <item>@string/label_moments</item>
+        <item>@string/label_profile</item>
+        <item>@string/label_settings</item>
+    </string-array>
+
+    <integer-array name="menu_image">
+        <item>@drawable/ic_autograph</item>
+        <item>@drawable/ic_raise_in_hand</item>
+        <item>@drawable/ic_cinema</item>
+        <item>@drawable/ic_moments</item>
+        <item>@drawable/ic_settings_old</item>
+        <item>@drawable/ic_settings_old</item>
+    </integer-array>
+
+    <string-array name="settings_title">
+        <item>@string/label_acc_settings</item>
+        <item>@string/label_profile_settings</item>
+        <item>@string/label_personal_settings</item>
+        <item>@string/label_privacy_settings</item>
+        <item>@string/label_your_followers</item>
+        <item>@string/label_abut_life</item>
+        <item>@string/label_blck_List</item>
+        <!--<item>@string/label_help</item>-->
+        <item>@string/label_report_problem</item>
+        <item>@string/label_logout</item>
+        <item>@string/label_delete_acc</item>
+    </string-array>
+
+    <string-array name="settings_title_description">
+        <item>@string/acc_settings_description</item>
+        <item>@string/profile_settings_description</item>
+        <item>@string/personal_settings_description</item>
+        <item>@string/privacy_settings_description</item>
+        <item>@string/your_followers_description</item>
+        <item>@string/abut_life_description</item>
+        <item>@string/blck_List_description</item>
+        <!--<item>@string/label_help</item>-->
+
+        <item>@string/report_problem_description</item>
+        <item>@string/label_logout_description</item>
+        <item>@string/delete_acc_description</item>
+
+    </string-array>
+
+    <string-array name="settings_icon">
+        <item>@drawable/ic_account_setting</item>
+        <item>@drawable/ic_profile_setting</item>
+        <item>@drawable/ic_contact_setting</item>
+        <item>@drawable/ic_privacy</item>
+        <item>@drawable/follower_set_icon</item>
+        <item>@drawable/about_set_icon</item>
+        <item>@drawable/block_setting_icon</item>
+        <!--<item>@drawable/help_set_icon</item>-->
+        <item>@drawable/report_set_icon</item>
+        <item>@drawable/ic_logout</item>
+        <item>@drawable/ic_delete_account</item>
+    </string-array>
+
+    <string-array name="blocked_list">
+        <item>FRIENDS</item>
+        <item>CONTACTS</item>
+
+    </string-array>
+
+    <string-array name="new_chat">
+        <item>FRIENDS</item>
+        <item>CLUBS</item>
+        <item>CONTACTS</item>
+
+    </string-array>
+
+    <string-array name="club_in_more">
+        <item>@string/label_club_in_invite</item>
+        <item>@string/label_more_club_report</item>
+        <item>@string/label_club_in_msg_administrator</item>
+        <item>@string/label_club_exit</item>
+
+    </string-array>
+
+    <string-array name="club_by_you_more">
+        <item>@string/label_add_invite_member</item>
+        <item>@string/label_remove_member</item>
+        <item>@string/label_change_admin</item>
+        <item>@string/label_members_rights</item>
+        <item>@string/label_privacy</item>
+        <item>@string/label_club_exit</item>
+    </string-array>
+
+    <string-array name="downloads">
+        <item>Wi-fi</item>
+        <item>Wi-fi/Cellular</item>
+
+    </string-array>
+
+    <string-array name="club_by_you_general_public">
+        <item>@string/label_general_public_area</item>
+        <item>@string/label_general_public_city</item>
+        <item>@string/label_general_public_state</item>
+        <item>@string/label_general_public_india</item>
+    </string-array>
+
+    <string-array name="chat_tone">
+        <item>Chat Tone 1</item>
+        <item>Chat Tone 2</item>
+        <item>Chat Tone 3</item>
+        <item>Chat Tone 4</item>
+    </string-array>
+
+</resources>

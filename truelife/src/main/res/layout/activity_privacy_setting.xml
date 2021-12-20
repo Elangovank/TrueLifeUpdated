@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/fragment_welcome2_parent_layout_RLAY"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/setting_report_bg"
+    android:clickable="true"
+    android:fitsSystemWindows="true">
+
+
+    <androidx.cardview.widget.CardView
+
+        android:id="@+id/inflate_settings_card"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_columnWeight="1"
+        android:layout_margin="10dp"
+        android:layout_weight="1"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="0dp"
+        app:cardElevation="2dp">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:fitsSystemWindows="true">
+
+
+            <RelativeLayout
+
+
+                android:id="@+id/header"
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:background="@color/white"
+                android:fitsSystemWindows="true"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerVertical="true">
+
+
+                    <ImageView
+                        android:id="@+id/common_back_arrow"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="left"
+
+                        android:gravity="left"
+                        android:src="@drawable/ic_back"
+                        android:tint="@color/black" />
+
+
+                    <TextView
+                        android:id="@+id/set_privacy_header"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+
+                        android:layout_alignParentTop="true"
+                        android:layout_gravity="left"
+
+                        android:layout_toEndOf="@+id/common_back_arrow"
+                        android:layout_toRightOf="@+id/common_back_arrow"
+                        android:fontFamily="@string/opensans_semi_bold"
+                        android:gravity="left|center"
+                        android:textSize="@dimen/text_20" />
+
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/fragment_notify_friend_list_Search_LAY"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/header"
+                android:orientation="horizontal"
+                android:paddingLeft="20dp"
+                android:paddingTop="10dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="10dp">
+
+
+                <TextView
+                    android:id="@+id/account_setting_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:fontFamily="@string/opensans_regular"
+                    android:text="@string/label_privacy_setting_info"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_15"
+                    android:textStyle="normal" />
+
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/fragment_notify_friend_list_Search_LAY"
+                android:background="@android:color/white"
+                android:clickable="true"
+                android:fitsSystemWindows="true"
+                android:orientation="vertical"
+                android:paddingTop="10dp">
+
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fillViewport="true">
+
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5sp">
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="100dp"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:background="@drawable/setting_outline"
+                                android:orientation="vertical"
+                                android:padding="20dp"
+                                android:weightSum="2">
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:fontFamily="@string/opensans_regular"
+                                    android:gravity="left|center"
+                                    android:text="@string/label_privacy_setting_question_1"
+                                    android:textColor="@color/dark_grey"
+                                    android:textStyle="normal" />
+                                <TextView
+                                    android:id="@+id/fragment_setting_privacy_profile_view"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginTop="20dp"
+                                    android:drawableRight="@drawable/ic_drop_down"
+                                    android:drawableTint="@color/dark_grey"
+                                    android:fontFamily="@string/opensans_regular"
+                                    android:gravity="left|center"
+                                    android:text=""
+                                    android:textColor="@color/blue"
+                                    android:textStyle="normal" />
+
+
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginRight="10dp"
+
+                                android:background="@drawable/settings_big_dropdown"
+                                android:orientation="vertical"
+                                android:padding="20dp"
+                                android:visibility="gone"
+                                android:weightSum="2">
+
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:gravity="left|center"
+                                    android:text="@string/label_privacy_setting_question_2"
+                                    android:textColor="@color/black"
+                                    android:textStyle="normal" />
+
+                                <TextView
+                                    android:id="@+id/fragment_setting_privacy_friends_section"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginTop="20dp"
+                                    android:drawableRight="@drawable/ic_down_arrow"
+                                    android:drawableTint="@color/dark_grey"
+                                    android:gravity="left|center"
+                                    android:text=""
+                                    android:textColor="@color/blue"
+                                    android:textStyle="bold" />
+
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="100dp"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginRight="10dp"
+                                android:background="@drawable/setting_outline"
+                                android:orientation="vertical"
+                                android:padding="20dp"
+                                android:weightSum="2">
+
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:fontFamily="@string/opensans_regular"
+                                    android:gravity="left|center"
+                                    android:text="@string/label_privacy_setting_question_3"
+                                    android:textColor="@color/dark_grey"
+                                    android:textStyle="normal" />
+
+                                <TextView
+                                    android:id="@+id/fragment_setting_privacy_public_post_comment"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginTop="20dp"
+                                    android:drawableRight="@drawable/ic_drop_down"
+                                    android:drawableTint="@color/dark_grey"
+                                    android:fontFamily="@string/opensans_regular"
+                                    android:gravity="left|center"
+                                    android:text=""
+                                    android:textColor="@color/blue"
+                                    android:textStyle="normal" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="120dp"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginRight="10dp"
+                                android:background="@drawable/setting_outline"
+                                android:orientation="vertical"
+                                android:padding="20dp"
+                                android:weightSum="2">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:fontFamily="@string/opensans_regular"
+                                    android:gravity="left|center"
+                                    android:text="@string/label_privacy_setting_question_4"
+                                    android:textColor="@color/dark_grey"
+                                    android:textStyle="normal" />
+
+
+                                <TextView
+                                    android:id="@+id/fragment_setting_privacy_friends_post_comment"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginTop="20dp"
+                                    android:drawableRight="@drawable/ic_drop_down"
+                                    android:drawableTint="@color/dark_grey"
+                                    android:fontFamily="@string/opensans_regular"
+                                    android:gravity="left|center"
+                                    android:text=""
+                                    android:textColor="@color/blue"
+                                    android:textStyle="normal" />
+
+
+                            </LinearLayout>
+
+
+                            <TextView
+                                android:id="@+id/privacy_setting_post_save_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="@dimen/dimen_50"
+                                android:layout_marginBottom="@dimen/dimen_20"
+                                android:background="@drawable/set_report_button"
+                                android:fontFamily="@string/opensans_regular"
+                                android:gravity="center"
+                                android:padding="5dp"
+                                android:text="@string/label_save"
+                                android:textAllCaps="true"
+                                android:textColor="@color/white" />
+
+
+                        </LinearLayout>
+
+
+                    </RelativeLayout>
+
+
+                </ScrollView>
+
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+
+</RelativeLayout>

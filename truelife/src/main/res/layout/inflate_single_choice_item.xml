@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="horizontal"
+        android:id="@+id/inflate_menu_view"
+        android:layout_width="match_parent"
+        android:background="@color/app_white"
+        android:layout_height="35dp">
+
+    <TextView
+            android:id="@+id/inflate_single_item_text"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            style="@style/CreateAccountSub"
+            android:textStyle="bold"
+            android:textColor="@color/app_blue_dark"/>
+
+</LinearLayout>

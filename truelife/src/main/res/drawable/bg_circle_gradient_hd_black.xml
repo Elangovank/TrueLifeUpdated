@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape>
+
+            <padding android:bottom="@dimen/dimen5" android:left="@dimen/dimen10" android:right="@dimen/dimen10" android:top="@dimen/dimen5" />
+            <corners android:radius="@dimen/dimen_10" />
+
+            <gradient android:endColor="@color/cardview_dark_background" android:startColor="@color/cardview_dark_background" />
+        </shape>
+
+    </item>
+</selector>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_custom_alert_linear"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:focusable="false"
+    android:orientation="horizontal"
+    android:padding="5dp">
+
+    <TextView
+        android:id="@+id/custom_alert_item_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="10dp"
+        android:layout_toLeftOf="@+id/custom_alert_item_IMG"
+        android:focusable="false"
+        android:gravity="center_vertical"
+        android:text="Large Text"
+        android:textColor="@color/app_gray_dark"
+        android:fontFamily="@string/opensans_regular"
+        android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium" />
+
+
+    <ImageView
+        android:id="@+id/custom_alert_item_IMG"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="5dp"
+        android:src="@drawable/tick"
+        android:tint="@color/confirm"
+        android:visibility="gone"/>
+</RelativeLayout>

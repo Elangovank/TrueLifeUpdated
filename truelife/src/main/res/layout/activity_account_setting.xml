@@ -1,0 +1,605 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/fragment_welcome2_parent_layout_RLAY"
+    style="@style/AppTheme"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/setting_report_bg"
+    android:clickable="true"
+    android:fitsSystemWindows="true">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/inflate_settings_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_columnWeight="1"
+        android:layout_margin="10dp"
+        android:layout_weight="1"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="0dp"
+        app:cardElevation="2dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:fitsSystemWindows="true">
+
+            <RelativeLayout
+                android:id="@+id/header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:fitsSystemWindows="true"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="65dp"
+                    android:layout_centerVertical="true">
+
+                    <ImageView
+                        android:id="@+id/common_back_arrow"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="left"
+                        android:gravity="left"
+                        android:padding="0dp"
+                        android:src="@drawable/ic_back"
+                        android:tint="@color/black" />
+
+                    <TextView
+                        android:id="@+id/header_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentTop="true"
+                        android:layout_gravity="left"
+                        android:layout_toEndOf="@+id/common_back_arrow"
+                        android:layout_toRightOf="@+id/common_back_arrow"
+                        android:fontFamily="@string/opensans_semi_bold"
+                        android:gravity="left|center"
+                        android:text="ACCOUNT SETTING"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textSize="@dimen/text_20" />
+                </RelativeLayout>
+
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/fragment_notify_friend_list_Search_LAY"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/header"
+                android:orientation="horizontal"
+                android:paddingLeft="20dp"
+                android:paddingTop="10dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="10dp">
+
+
+                <TextView
+                    android:id="@+id/account_setting_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@string/opensans_regular"
+
+                    android:text="@string/label_account_setting_info"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_15"
+                    android:textStyle="normal" />
+
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/fragment_notify_friend_list_Search_LAY"
+                android:clickable="true"
+                android:fitsSystemWindows="true"
+                android:orientation="vertical"
+                android:paddingTop="10dp">
+
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="@dimen/dimen_10"
+                    android:fillViewport="true"
+                    android:scrollbars="none">
+
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5sp"
+                        android:layout_marginBottom="@dimen/dimen_5">
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+
+
+                                android:layout_marginLeft="20dp"
+                                android:layout_marginRight="20dp"
+                                android:layout_marginBottom="@dimen/dimen_20"
+                                android:orientation="vertical"
+                                android:weightSum="2">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="@dimen/dimen_3"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@string/opensans_regular"
+                                    android:gravity="left|center"
+
+                                    android:text="@string/label_first_name"
+                                    android:textColor="@color/dark_grey"
+                                    android:textSize="@dimen/text_17" />
+
+                                <EditText
+                                    android:id="@+id/fragment_setting_account_fname"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/dimen_50_setting"
+                                    android:layout_gravity="center"
+                                    android:layout_weight="1"
+                                    android:background="@drawable/bg_edit_corner_for_setting"
+                                    android:fontFamily="@string/opensans_regular"
+                                    android:gravity="left|center"
+                                    android:importantForAutofill="no"
+                                    android:maxLength="50"
+                                   android:paddingStart="@dimen/dimen_15"
+                                    android:singleLine="true"
+                                    android:textColor="@color/black"
+                                    android:textCursorDrawable="@drawable/black_cursor"
+                                    android:textSize="@dimen/text_16"
+                                    android:textStyle="normal" />
+
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="20dp"
+                                android:layout_marginRight="20dp"
+                                android:layout_marginBottom="@dimen/dimen_20"
+                                android:orientation="vertical"
+                                android:weightSum="2">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="@dimen/dimen_3"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@string/opensans_regular"
+                                    android:gravity="left|center"
+                                    android:text="@string/label_last_name"
+                                    android:textColor="@color/dark_grey"
+                                    android:textSize="@dimen/text_17" />
+
+                                <EditText
+                                    android:id="@+id/fragment_setting_account_lname"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/dimen_50_setting"
+                                    android:layout_gravity="center"
+                                    android:layout_weight="1"
+                                    android:background="@drawable/bg_edit_corner_for_setting"
+                                    android:fontFamily="@string/opensans_regular"
+                                    android:gravity="left|center"
+                                    android:importantForAutofill="no"
+                                    android:maxLength="50"
+                                    android:paddingStart="@dimen/dimen_15"
+                                    android:paddingLeft="@dimen/dimen_10"
+                                    android:singleLine="true"
+                                    android:text=""
+                                    android:textColor="@color/black"
+                                    android:textCursorDrawable="@drawable/black_cursor"
+                                    android:textSize="@dimen/text_16"
+                                    android:textStyle="normal" />
+
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+
+                                android:layout_marginLeft="20dp"
+                                android:layout_marginRight="20dp"
+                                android:layout_marginBottom="@dimen/dimen_20"
+                                android:orientation="vertical"
+                                android:weightSum="2">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="@dimen/dimen_3"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@string/opensans_regular"
+                                    android:gravity="left|center"
+                                    android:text="@string/label_email"
+                                    android:textColor="@color/dark_grey"
+                                    android:textSize="@dimen/text_17" />
+
+                                <EditText
+                                    android:id="@+id/fragment_setting_account_email"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/dimen_50_setting"
+                                    android:layout_gravity="center"
+                                    android:layout_weight="1" android:background="@drawable/bg_edit_corner_for_setting"
+                                    android:fontFamily="@string/opensans_regular"
+                                    android:gravity="left|center"
+                                    android:importantForAutofill="no"
+                                    android:maxLength="100"
+                                    android:paddingStart="@dimen/dimen_15"
+                                    android:singleLine="true"
+                                    android:text=""
+                                    android:textColor="@color/black"
+                                    android:textCursorDrawable="@drawable/black_cursor"
+                                    android:textSize="@dimen/text_16"
+                                    android:textStyle="normal" />
+
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="20dp"
+                                android:layout_marginRight="20dp"
+                                android:layout_marginBottom="@dimen/dimen_20"
+                                android:orientation="vertical"
+                                android:weightSum="2">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="@dimen/dimen_3"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@string/opensans_regular"
+                                    android:gravity="left|center"
+                                    android:text="@string/lable_username_email"
+                                    android:textColor="@color/dark_grey"
+                                    android:textSize="@dimen/text_17" />
+
+
+                                <EditText
+                                    android:id="@+id/fragment_setting_account_username"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/dimen_50_setting"
+                                    android:layout_gravity="center"
+                                    android:layout_weight="1"
+                                    android:background="@drawable/bg_edit_corner_for_setting"
+                                    android:fontFamily="@string/opensans_regular"
+                                    android:gravity="left|center"
+                                    android:importantForAutofill="no"
+                                    android:maxLength="100"
+                                    android:paddingStart="@dimen/dimen_15"
+                                    android:paddingLeft="@dimen/dimen_10"
+
+                                    android:singleLine="true"
+                                    android:text=""
+                                    android:textColor="@color/black"
+                                    android:textCursorDrawable="@drawable/black_cursor"
+                                    android:textSize="@dimen/text_16"
+                                    android:textStyle="normal" />
+
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+
+                                android:layout_marginLeft="20dp"
+                                android:layout_marginRight="20dp"
+                                android:orientation="vertical"
+                                android:weightSum="2">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="@dimen/dimen_3"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@string/opensans_regular"
+                                    android:gravity="left|center"
+                                    android:text="@string/lable_mobile_no"
+                                    android:textColor="@color/dark_grey"
+                                    android:textSize="@dimen/text_17" />
+
+                                <EditText
+                                    android:id="@+id/fragment_setting_account_mobile_no"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/dimen_50_setting"
+                                    android:layout_gravity="center"
+                                    android:layout_weight="1" android:background="@drawable/bg_edit_corner_for_setting"
+                                    android:fontFamily="@string/opensans_regular"
+                                    android:gravity="left|center"
+                                    android:importantForAutofill="no"
+                                    android:paddingStart="@dimen/dimen_15"
+                                    android:singleLine="true"
+                                    android:text=""
+                                    android:inputType="number"
+                                    android:textColor="@color/black"
+                                    android:textCursorDrawable="@drawable/black_cursor"
+                                    android:textSize="@dimen/text_16"
+                                    android:textStyle="normal" />
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:orientation="horizontal"
+                                android:padding="20dp"
+                                android:weightSum="3">
+
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_weight="1"
+                                    android:gravity="left|center"
+                                    android:text="@string/lable_gender"
+                                    android:textAllCaps="true"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/text_17" />
+
+                                <RadioGroup
+                                    android:id="@+id/gender_rg"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="2"
+                                    android:orientation="horizontal"
+                                    android:weightSum="2">
+
+
+                                    <RadioButton
+                                        android:id="@+id/male_rd"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="0.9"
+                                        android:buttonTint="@color/blue"
+                                        android:text="@string/lable_male"
+                                        android:textAllCaps="true"
+                                        android:textColor="@color/black"
+                                        android:textSize="@dimen/text_17" />
+
+
+                                    <RadioButton
+                                        android:id="@+id/female_rd"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1.1"
+                                        android:buttonTint="@color/blue"
+                                        android:text="@string/lable_female"
+                                        android:textAllCaps="true"
+                                        android:textColor="@color/black"
+                                        android:textSize="@dimen/text_17" />
+
+                                </RadioGroup>
+
+
+                            </LinearLayout>
+
+                            <Button
+                                android:id="@+id/details_post_save_text"
+                                android:layout_width="100dp"
+                                android:layout_height="35dp"
+                                android:layout_gravity="center"
+                                android:layout_marginBottom="@dimen/dimen_10"
+                                android:background="@drawable/set_report_button"
+                                android:fontFamily="@string/opensans_semi_bold"
+                                android:gravity="center"
+                                android:padding="2dp"
+                                android:text="@string/label_save"
+                                android:textAllCaps="true"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/text_17" />
+
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginBottom="@dimen/dimen_20"
+                                android:fontFamily="@string/opensans_semi_bold"
+                                android:gravity="center|left"
+                                android:padding="10dp"
+                                android:text="@string/lable_change_password"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/text_15"
+                                android:textStyle="bold"
+
+                                />
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="20dp"
+                                android:layout_marginRight="20dp"
+                                android:layout_marginBottom="@dimen/dimen_20"
+                                android:orientation="vertical"
+                                android:weightSum="2">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="@dimen/dimen_3"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@string/opensans_regular"
+                                    android:gravity="left|center"
+                                    android:text="@string/lable_current_password"
+                                    android:textColor="@color/dark_grey"
+                                    android:textSize="@dimen/text_17" />
+
+
+                                <EditText
+                                    android:id="@+id/fragment_setting_account_current_pwd"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/dimen_50_setting"
+                                    android:layout_gravity="center"
+                                    android:layout_weight="1"
+                                    android:background="@drawable/bg_edit_corner_for_setting"
+
+                                    android:fontFamily="@string/opensans_regular"
+                                    android:gravity="left|center"
+                                    android:importantForAutofill="no"
+                                    android:inputType="textPassword"
+                                    android:maxLength="25"
+                                    android:paddingStart="@dimen/dimen_15"
+                                    android:singleLine="true"
+                                    android:text=""
+                                    android:textColor="@color/black"
+                                    android:textCursorDrawable="@drawable/black_cursor"
+                                    android:textSize="@dimen/text_16"
+                                    android:textStyle="normal" />
+
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="20dp"
+                                android:layout_marginRight="20dp"
+                                android:layout_marginBottom="@dimen/dimen_20"
+                                android:orientation="vertical"
+                                android:weightSum="2">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="@dimen/dimen_3"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@string/opensans_regular"
+                                    android:gravity="left|center"
+                                    android:text="@string/lable_new_password"
+                                    android:textColor="@color/dark_grey"
+                                    android:textSize="@dimen/text_17" />
+
+                                <EditText
+                                    android:id="@+id/fragment_setting_account_new_pwd"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/dimen_50_setting"
+                                    android:layout_gravity="center"
+                                    android:layout_weight="1"
+                                    android:background="@drawable/bg_edit_corner_for_setting"
+                                    android:fontFamily="@string/opensans_regular"
+                                    android:gravity="left|center"
+                                    android:importantForAutofill="no"
+                                    android:inputType="textPassword"
+                                    android:maxLength="25"
+                                    android:paddingStart="@dimen/dimen_15"
+                                    android:singleLine="true"
+                                    android:text=""
+                                    android:textColor="@color/black"
+                                    android:textCursorDrawable="@drawable/black_cursor"
+                                    android:textSize="@dimen/text_16"
+                                    android:textStyle="normal" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="20dp"
+                                android:layout_marginRight="20dp"
+                                android:layout_marginBottom="@dimen/dimen_20"
+                                android:orientation="vertical"
+                                android:weightSum="2">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="@dimen/dimen_3"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@string/opensans_regular"
+
+                                    android:gravity="left|center"
+                                    android:text="@string/label_confirm_password"
+                                    android:textColor="@color/dark_grey"
+                                    android:textSize="@dimen/text_17" />
+
+                                <EditText
+                                    android:id="@+id/fragment_setting_account_confirm_pwd"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/dimen_50_setting"
+
+                                    android:layout_gravity="center"
+                                    android:layout_weight="1"
+                                    android:background="@drawable/bg_edit_corner_for_setting"
+                                    android:fontFamily="@string/opensans_regular"
+                                    android:gravity="left|center"
+                                    android:importantForAutofill="no"
+                                    android:inputType="textPassword"
+                                    android:maxLength="25"
+                                    android:paddingStart="@dimen/dimen_15"
+                                    android:singleLine="true"
+                                    android:text=""
+                                    android:textColor="@color/black"
+                                    android:textCursorDrawable="@drawable/black_cursor"
+
+                                    android:textSize="@dimen/text_16"
+                                    android:textStyle="normal" />
+                            </LinearLayout>
+
+
+                            <Button
+                                android:id="@+id/change_password_save_btn"
+                                android:layout_width="100dp"
+                                android:layout_height="35dp"
+                                android:layout_gravity="center"
+
+                                android:layout_marginTop="@dimen/dimen_10"
+                                android:layout_marginBottom="@dimen/dimen_10"
+                                android:background="@drawable/set_report_button"
+                                android:fontFamily="@string/opensans_semi_bold"
+                                android:gravity="center"
+                                android:padding="2dp"
+                                android:text="@string/label_save"
+                                android:textAllCaps="true"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/text_17" />
+
+
+                        </LinearLayout>
+
+                    </RelativeLayout>
+
+                </ScrollView>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+
+</RelativeLayout>

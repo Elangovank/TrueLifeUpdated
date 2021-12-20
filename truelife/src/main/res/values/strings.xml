@@ -1,0 +1,1020 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <string name="app_name" translatable="false">TrueLife</string>
+       <string name="title_activity_settings">Settings</string>
+
+    <string name="missing_permissions">Missing Permissions</string>
+    <!-- Login-->
+    <string name="label_sign_forgot_password" tools:ignore="MissingTranslation">Forgot Password</string>
+    <string name="label_sign_reset_password">Reset Password</string>
+    <string name="label_sign_up">Sign Up</string>
+    <string name="label_sign_log_in">LOG IN</string>
+    <string name="label_sign_submit">SUBMIT</string>
+    <string name="label_celebrity_vip_registration">CELEBRITY / VIP REGISTRATION</string>
+    <string name="no_internet_connection">No Internet Connection</string>
+    <string name="feedback">Feedback</string>
+    <string name="choose_email_app">Choose Email App</string>
+    <!--Sign up-->
+    <string name="label_log_in">Log In</string>
+    <string name="lable_login_password">P a s s w o r d</string>
+    <string name="label_sign_up_new">S i g n U p</string>
+    <string name="label_first_name_sign_up">F i r s t &#160; N a m e</string>
+    <string name="label_last_name_sign_up">L a s t &#160; N a m e / I n i t i a l</string>
+    <string name="label_email_sign_up">E m a i l </string>
+    <string name="label_email_mobile_sign_in">E - m a i l / P h o n e</string>
+    <string name="label_mobile_sign_up">P h o n e</string>
+    <string name="label_otp">Enter O T P</string>
+
+    <string name="label_confirm_password_sign_up">C o n f i r m &#160;  P a s s w o r d</string>
+    <string name="label_country_sign_up">C o u n t r y</string>
+    <string name="label_state_sign_up">S t a t e</string>
+    <string name="label_city_down_sign_up">C i t y / T o w n</string>
+    <string name="label_pincode_sign_up">P i n &#160;c o d e</string>
+    <string name="label_gender_sign_up">G e n d e r</string>
+    <string name="label_forgot_password_sing_in">F o r g o t &#160;P a s s w o r d ?</string>
+
+    <string name="label_first_name">First &#160; Name</string>
+    <string name="label_last_name">Last &#160; Name</string>
+    <string name="label_email">Email</string>
+    <string name="label_confirm_password">Confirm Password</string>
+    <string name="label_country">Country</string>
+    <string name="label_state">State</string>
+    <string name="label_city">City</string>
+    <string name="label_pincode">Pincode</string>
+    <string name="label_join">JOIN</string>
+    <string name="label_male">Male</string>
+    <string name="label_female">Female</string>
+    <string name="label_register_terms">I agree to the <u>terms &amp; conditions</u> and</string>
+    <string name="label_register_policy"><u>privacy policies</u></string>
+    <string name="label_already_signed_up">A l r e a d y &#160; S i g n e d Up? </string>
+
+    <string name="action_settings">Settings</string>
+    <string name="settings">Settings</string>
+    <string name="choose_time_caps">CHOOSE TIME</string>
+    <string name="cancel">Cancel</string>
+
+    <!--Validation-->
+    <string name="ok">OK</string>
+    <string name="name_caps">NAME</string>
+    <string name="no_internet">Oops, No internet connection</string>
+    <string name="delete">Delete</string>
+
+    <string name="no_data_found">No Data Found!</string>
+    <string name="comments">Comments</string>
+    <string name="title_caps">TITLE</string>
+    <string name="dismiss">Dismiss</string>
+
+    <!--Fonts-->
+
+    <string name="steelfish_regular">fonts/steelfish_regular.ttf</string>
+    <string name="opensans_bold">fonts/OpenSans_Bold.ttf</string>
+    <string name="opensans_extra_bold">fonts/OpenSans_ExtraBold.ttf</string>
+    <string name="opensans_semi_bold">fonts/OpenSans_Semibold.ttf</string>
+    <string name="opensans_regular">font/opensans_regular</string>
+    <string name="calling_heart_normal">fonts/Calling_Heart.ttf</string>
+
+
+    <!--forgot Password-->
+    <string name="label_e_mail_id">E - M a i l I D</string>
+    <string name="label_enter_e_mail_id">E n t e r    y o u r    e m a i l - id</string>
+    <string name="login_space">L o g i n</string>
+    <string name="comming_soon">Coming Soon...</string>
+    <string name="label_password">Password</string>
+
+
+
+    <!--Signup AlertBox Text-->
+    <string name="alert_message_validation_empty_user_name">Please enter your username</string>
+    <string name="alert_message_validation_empty_password">Please enter your password</string>
+    <string name="alert_message_validation_empty_current_password">Please enter your current password</string>
+    <string name="alert_message_validation_empty_new_password">Please enter your New password</string>
+    <string name="alert_message_validation_empty_confirm_password">Please enter your confirm password</string>
+    <string name="alert_message_validation_valid_password">Your password should contain at least a minimum of eight characters</string>
+    <string name="alert_message_validation_valid_confirm_password">Please enter your confirm password minimum 7 letters</string>
+    <string name="alert_message_validation_valid_new_password">Please enter your new password minimum 7 letters</string>
+    <string name="alert_message_validation_empty_email">Please enter your email address</string>
+    <string name="alert_message_validation_empty_email_or_mobile">Please enter your email address or mobile number</string>
+    <string name="alert_message_validation_valid_email">Please enter your valid email address</string>
+    <string name="alert_message_validation_valid_mobile">Please enter your valid mobile number</string>
+    <string name="alert_message_validation_valid_country_code">Please enter your country code</string>
+    <string name="alert_message_validation_empty_first_name">Please enter your first name</string>
+    <string name="alert_message_validation_empty_last_name">Please enter your last name</string>
+    <string name="alert_message_validation_empty_gender">Please select your gender</string>
+    <string name="alert_message_validation_empty_country">Please select your country</string>
+    <string name="alert_message_validation_empty_state">Please select your state</string>
+    <string name="alert_message_validation_empty_city">Please select your city</string>
+    <string name="alert_message_validation_empty_Pincode">Please enter your Pincode</string>
+    <string name="alert_message_validation_empty_Pincode_size">Please enter valid Pincode</string>
+    <string name="alert_message_validation_empty_Mobile_no">Please enter valid Mobile Number</string>
+    <string name="alert_message_validation_empty_agree_terms">Please choose Terms and Policy</string>
+
+    <string name="alert_message_validation_match_confirm_password">Invalid Confirm Password</string>
+    <string name="alert_message_validation_confirm_password">Please check your confirm password</string>
+    <string name="url_terms">http://www.truelife.in/termsconditions</string>
+    <string name="url_privacy">http://www.truelife.in/privacy</string>
+
+    <string name="label_search">  Search</string>
+
+
+    <!--Post feed-->
+
+
+    <string name="labe_share_thoughts">Share your thoughts...</string>
+    <string name="labe_add_photo_video">Add Photo / Video</string>
+    <string name="labe_where_do_you_want_to_post">Where do you want to post?</string>
+    <string name="labe_post"> Post</string>
+
+    <string name="labe_posts"> Posts</string>
+    <string name="lable_spinner_select">- select one -</string>
+    <string name="labe_your_club">Your Clubs</string>
+    <string name="labe_select_club">select club(s)  </string>
+    <string name="label_loading">Loading…</string>
+
+    <string name="label_chat_search">Search people...</string>
+    <string name="label_search_result">Search Result(s)</string>
+
+
+    <!--Club Share -->
+    <string name="label_share_post">Share Now</string>
+    <string name="label_share_public">Public</string>
+    <string name="label_share_friends">Friends</string>
+    <string name="label_share_club">Club</string>
+    <string name="label_share">Share</string>
+    <string name="label_share_other_app">Share to Other apps</string>
+
+    <!--Menu List-->
+    <string name="menu_label_choose_an_option">Choose An Option</string>
+    <string name="menu_label_features">Several features are available in True Life to keep you \n informed and entertained</string>
+    <string name="label_autograph">Autograph</string>
+    <string name="label_raise_an_issue">Raise an issue</string>
+    <string name="label_cinema">Cinema</string>
+    <string name="label_moments">Moments</string>
+    <string name="label_profile">Profile</string>
+    <string name="label_settings">Settings</string>
+
+
+    <!--setting Screen-->
+    <string name="label_acc_settings">ACCOUNT SETTINGS</string>
+
+    <string name="label_profile_settings">PROFILE SETTINGS</string>
+    <string name="label_personal_settings">PERSONAL SETTINGS</string>
+    <string name="label_privacy_settings">PRIVACY SETTINGS</string>
+    <string name="label_your_followers">YOUR FOLLOWERS</string>
+    <string name="label_abut_life">ABOUT TRUE LIFE</string>
+    <string name="label_blck_List">BLOCK LIST</string>
+    <string name="label_report_problem">REPORT A PROBLEM</string>
+    <string name="label_logout">LOGOUT</string>
+    <string name="label_delete_acc">DELETE ACCOUNT</string>
+
+    <string name="upload_profile_picture">UPLOAD PROFILE PICTURE</string>
+    <string name="assign_club_rights_for_members">ASSIGN CLUB RIGHTS FOR MEMBERS</string>
+    <string name="open_to_eveyone_forever">Open to Eveyone Forever</string>
+    <string name="approval_by_the_administrator">Approval by the administrator after\nthe club reaches a certain number of members\nPlease set the maximum number</string>
+    <string name="only_through_the_approval">Only through the approval of the administrator right from the start</string>
+    <string name="invite_only_the_people_you_want_to">Invite only the people you want</string>
+
+
+    <string name="acc_settings_description">Password,E-Mail, \nMobile Number and \nother details</string>
+    <string name="profile_settings_description">Occupation, Date of \nbirth, Education, and \nother details</string>
+    <string name="personal_settings_description">Details of your address </string>
+    <string name="privacy_settings_description">Preferences on profile, \npost and comments \nprivacy </string>
+    <string name="your_followers_description">List of all \nyours followers </string>
+    <string name="abut_life_description">About the company \nand the app </string>
+    <string name="blck_List_description">List of the people \nyou have blocked</string>
+
+    <string name="report_problem_description">Register your \ncomplaints if any,\nthrough here</string>
+    <string name="label_logout_description">Only if necessary</string>
+    <string name="delete_acc_description">Not a great plan</string>
+
+    <string name="add_people_optional">ADD PEOPLE</string>
+    <string name="friends_contacts">Friends / Contacts</string>
+    <string name="create_a_club">CREATE A CLUB</string>
+
+    <string name="club_name">C L U B "&#x20;" N A M E </string>
+    <string name="club_type">C L U B "&#x20;" T Y P E</string>
+    <string name="club_for">C L U B "&#x20;" F O R</string>
+
+
+    <string name="posting">Posting</string>
+    <string name="label_share_feed_public_friends">Where do you want to share this?</string>
+    <string name="label_share_feed_club">Select the club(s) you want to share this post</string>
+    <string name="label_like">Like</string>
+    <string name="label_comments">Comment</string>
+    <string name="admittance_of_members">ADMITTANCE OF MEMBERS</string>
+    <string name="create_your_club">CREATE YOUR CLUB</string>
+    <string name="label_add">Add</string>
+
+    <string name="label_invite">Invite</string>
+    <string name="label_clubs_you_re_in">CLUBS \nYOU\'RE IN</string>
+    <string name="label_clubs_by_you">CLUBS \nBY YOU</string>
+    <string name="label_create_a_clubs">CREATE \nA CLUB</string>
+    <string name="label_your_club">YOUR CLUBS</string>
+
+    <string name="label_more_small">More</string>
+    <string name="label_history">HISTORY</string>
+    <string name="label_sent_msg__text">Write a response </string>
+    <string name="label_online">online</string>
+    <string name="lebel_offline">offline</string>
+    <string name="chat_contact_invite">Hi… Your contact %s is in True Life and has invited you to join. True Life is a new form of social networking focused on connecting the public. It\'s pretty cool. Use this link to join https://apps.apple.com/us/app/true-life-social-networking/id1447721466?ls=1</string>
+
+    <!--Club In More-->
+    <string name="label_club_in_invite">INVITE MEMBERS</string>
+    <string name="label_club_in_msg_administrator">MESSAGE \nADMINISTRATOR</string>
+    <string name="label_club_exit">EXIT \nFROM CLUB</string>
+    <string name="label_club_report">REPORT A PROBLEM</string>
+    <string name="label_more_club_report">REPORT \nA PROBLEM</string>
+
+    <!--Club In report-->
+
+    <string name="labe_type_message">  Type your message...</string>
+    <string name="label_send_truelife_admin"> Send to TRUELIFE administrator</string>
+
+    <!-- Block List Setting-->
+
+    <string name="label_block_list">Block List</string>
+
+
+    <!--Profile Settings -->
+
+    <string name="label_occupation">Occupation</string>
+    <string name="label_dateformat">DD/MM/YYYY</string>
+    <string name="label_date_of_birth">Date of Birth</string>
+
+    <string name="label_education_small">Education </string>
+    <string name="label_school">School: </string>
+    <string name="label_period">Period</string>
+    <string name="label_to">to</string>
+
+    <string name="label_add_school">Add a School</string>
+    <string name="label_add_college">Add a College </string>
+    <string name="label_college">College: </string>
+
+
+    <string name="label_workplace">Work Place</string>
+    <string name="label_workplace_small">Work Place: </string>
+    <string name="label_add_workplace">Add a Work Place </string>
+
+    <string name="label_religious">Religious Belief</string>
+    <string name="label_nationality">Nationality</string>
+    <string name="label_no_block_friends">No blocked friends found </string>
+    <string name="label_no_followers_friends">No Followers friends found </string>
+
+    <!--About TureLife scree-->
+    <string name="label_about_true_life_text">True Life is a home-grown product.
+        It is a last bencher’s work supported by his family and a friend.
+        Hence it might lack that corporate touch, but that could be an amazing thing.
+        We really worked hard to make it and it took a lot longer than we expected, but it is here.
+        We built True Life to witness the resulting magic when people and societies come together. \n
+        \n Primarily, it is and always will be a tool to reinforce democracy through public networking. \n \n With all that said, True Life will strive to be fresh, cheerful, informative, judicious, gutsy, funny and entertaining...
+</string>
+
+    <!--Privacy Settings-->
+    <string name="label_privacy_setting_info">Please Choose your preferences in maintaining your privacy</string>
+    <string name="privacy_screen_content">Anyone can choose to \n follow you, but they can only \n view your public  posts</string>
+
+    // About setting
+
+    <string name="label_privacy_setting_question_1">Who can view your profile ?</string>
+    <string name="label_privacy_setting_question_2">Who can view your posts in your friends section ?</string>
+    <string name="label_privacy_setting_question_3">Who can comment on your public post ?</string>
+    <string name="label_privacy_setting_question_4">Who can comment on your posts in friend section ?</string>
+
+
+    <string name="label_choose_privacy"> Choose the privacy options \n for your club </string>
+    <string name="label_save"> save</string>
+    <string name="label_club_visibility"> Club Visibility</string>
+    <string name="label_member_visibility"> Member Visibility</string>
+
+    <string name="alert_club_visible">Please Choose Club Visibility</string>
+    <string name="alert_member_visible">Please Choose Member Visibility </string>
+
+
+    <!--Personal Settings-->
+
+
+    <string name="label_personal_setting_info">Please provide the following information for setting your account</string>
+    <string name="label_door_no">Door No.</string>
+    <string name="label_Street_no">Street No/Name</string>
+    <string name="label_rest_address">Rest of your Address</string>
+
+    <string name="label_home_town">Home Town</string>
+    <string name="label_current_city">Current City</string>
+
+    <string name="alert_pincode">Please Enter your Pincode</string>
+    <string name="alert_country">Please Choose your Country</string>
+
+    <string name="alert_state">Please Choose your State</string>
+    <string name="alert_city">Please Choose your Current city</string>
+    <string name="alert_country_code">Please Choose your Country Code</string>
+
+
+    <!--Account Settings-->
+    <string name="label_account_setting_info">Please provide the following information for \nsetting your account</string>
+
+    <string name="lable_username_email">User Name</string>
+    <string name="lable_gender">Gender</string>
+    <string name="lable_male">Male</string>
+    <string name="lable_female">Female</string>
+    <string name="lable_mobile_no">Mobile Number</string>
+    <string name="lable_current_password"> Current Password</string>
+    <string name="lable_new_password"> New Password</string>
+    <string name="lable_change_password">Change Password ?</string>
+    <string name="lable_register_success">You have successfully registered with Truelife. Login now to live beyond the known</string>
+
+    <!--Report screen-->
+    <string name="label_report_screen_alert">Not to report without content or media </string>
+
+
+    <string name="share_post_hint_text">Share your thoughts about this post...\n (Optional)  </string>
+    <string name="hide_post_label">Hide this post</string>
+    <string name="edit_post_label">Edit this post</string>
+    <string name="report_post_label">Report this post</string>
+
+    <string name="report_user_label">Report this user</string>
+
+    <string name="block_user_label">Block this user</string>
+
+    <string name="unfollow_user_label">Unfollow this user</string>
+
+
+    <!-- Notification Screen-->
+    <string name="label_notifications">Notifications</string>
+    <string name="notify_not_found"> Notification not found</string>
+    <string name="label_delete">Delete</string>
+    <string name="labe_confirm">Confirm</string>
+
+    <!--Profile Screen-->
+    <string name="label_add_friends">Add friend</string>
+    <string name="label_follow"> Follow</string>
+
+
+    <string name="label_message"> Message</string>
+
+
+    <string name="label_photos"> PHOTOS</string>
+    <string name="label_friends"> FRIENDS</string>
+    <string name="label_followers">FOLLOWERS</string>
+
+    <string name="label_following">FOLLOWING</string>
+
+    <string name="label_education"> E D U C A T I O N</string>
+    <string name="label_friend">FRIENDS</string>
+    <string name="labe_update"> Update</string>
+    <string name="label_logout_msg"> Do you want to logout?</string>
+    <string name="label_delete_msg">Are you sure want to delete your account?</string>
+    <string name="yes">Yes</string>
+
+
+    <!--Club -->
+
+    <string name="label_club_request_send">REQUEST SENT</string>
+
+    <string name="label_you_are_member">YOU\'RE A MEMBER</string>
+
+    <string name="label_you_are_admin">YOU\'RE THE \nADMINISTRATOR</string>
+
+    <!-- Club Suggestion -->
+    <string name="label_club_suggestion"> Club Suggestions </string>
+    <string name="label_no_club_suggestion">No Club Suggestions </string>
+    <string name="label_club_no_feed_found">No posts yet</string>
+
+    <!-- Create club  -->
+    <string name="label_public_club">Public Club</string>
+    <string name="label_friends_club">Friends Club</string>
+
+
+    <!--Club by you about-->
+
+    <string name="label_admin"> Administrator : </string>
+    <string name="label_club_type"> Club Type : </string>
+    <string name="label_no_records">No data found.</string>
+    <!--NEWS FEED-->
+    <string name="label_contact">CONTACTS</string>
+    <string name="label_club">CLUBS</string>
+<!--    <string name="CLOUDINARY_URL">cloudinary://916761644728719:pMF785a3EKUjUr3KfKvafK_NDL4@dspzocayn</string>-->
+    <string name="CLOUDINARY_URL">cloudinary://624232599556294:xoQuufRZKxuHReEO-GBmAvqkTXA@drrs4nuuj</string>
+
+    <string name="labe_private_info"> Private Information</string>
+    <string name="labe_privacy"> Privacy</string>
+    <string name="labe_block_list"> Block List</string>
+    <string name="labe_notification">Notifications</string>
+    <string name="labe_file"> Files</string>
+    <string name="labe_last_seen"> Last Seen</string>
+
+    <string name="label_image_video"> Photos &amp; Videos</string>
+    <string name="labe_document"> Documents</string>
+
+    <string name="label_year">Year</string>
+    <string name="lable_shared_a_post">Shared a Post</string>
+
+    <string name="labe_read_notification"> Read Notifications </string>
+    <string name="write_your_comment">Write your comment</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+
+    <!--club by you more screen-->
+    <string name="label_add_invite_member">ADD/INVITE MEMBERS</string>
+    <string name="label_remove_member"> REMOVE MEMBERS</string>
+
+    <string name="label_change_admin">CHANGE \nADMINISTRATION</string>
+    <string name="label_members_rights">MEMBERS\' RIGHTS</string>
+
+    <string name="label_privacy">PRIVACY</string>
+
+
+    <string name="label_visible_to_Everyone">Visible to Everyone</string>
+    <string name="label_visible_to_members_only">Visible to Members Only</string>
+    <string name="label_visible_only_to_me">Visible only to me</string>
+
+
+    <string name="labe_image">Images</string>
+
+    <string name="labe_video"> Video</string>
+    <string name="labe_audio"> Audio</string>
+    <string name="labe_please_select_network">Please select Network...</string>
+    <string name="label_chat_file_setting_content"> Please select your preferred network for \n auto download</string>
+
+    <string name="labe_message_tone">Message Tone</string>
+    <string name="labe_message_alerts">Message Alerts</string>
+    <string name="labe_preview_message">Preview Message </string>
+    <string name="labe_play_sound_new_message">Play sound on new Message </string>
+    <string name="labe_show_preview_notification">Show preview in Notification </string>
+
+    <string name="label_choose_general_public_friends_contact"> Here you can invite general public \n friends of friends and add your \n friends/contacts to the club </string>
+    <string name="label_general_public"> GENERAL PUBLIC</string>
+    <string name="label_friends_contact"> FRIENDS &amp; CONTACTS </string>
+    <string name="label_add_invite_general_member">INVITE MEMBERS\nGENERAL PUBLIC</string>
+    <string name="label_friends_contacts">\tADD/INVITE MEMBERS\n  FRIENDS &amp; CONTACTS</string>
+
+    <string name="label_general_public_area"> AREA</string>
+    <string name="label_general_public_city"> CITY</string>
+    <string name="label_general_public_state"> STATE</string>
+    <string name="label_general_public_india"> INDIA</string>
+
+    <!-- club by you more Privacy -->
+    <string name="label_here_you_can_decide"> Here you can decide the members \n authtority over the club </string>
+    <string name="label_member_rights_post"> Posting</string>
+
+    <!--Club by you change admin-->
+    <string name="label_select">Select</string>
+    <string name="label_change_admin_change">\t CHANGE \n ADMINISTRATION</string>
+
+    <!--Search List Screen -->
+
+    <string name="label_by_public">By Public</string>
+    <string name="label_by_friends">By Friends</string>
+    <string name="label_by_clubs">By Clubs</string>
+
+
+    <string name="label_no_friends_found">No friends found</string>
+    <string name="label_no_clubs_found">No Clubs Found</string>
+    <string name="label_search_filter_selection_validation"> Please choose any one filter type  </string>
+    <string name="label_people_search_place">Name a City/State/Country</string>
+
+    <string name="label_filter">Filter</string>
+    <string name="label_people">People</string>
+    <string name="label_see_all">See All</string>
+
+    <string name="label_search_post">P O S T S</string>
+    <string name="label_search_friends">F R I E N D S  </string>
+    <string name="label_search_people">P E O P L E</string>
+    <string name="label_search_club">C L U B S </string>
+    <string name="report_a_problem">Report a problem</string>
+    <string name="no_one_yet">No one yet</string>
+
+    <!--    OTP-->
+    <string name="label_post_otp_verify">We have to verify your mobile \n number before you can post \n in %s. Please enter your number \n to receive a one time password</string>
+    <string name="label_chat_otp_verify">We have to verify your mobile number before you can start using \n messenger. Please enter your number \n to receive a one time password</string>
+    <string name="label_comment_otp_verify">We have to verify your mobile number before you can start comment the post. Please enter your number \n to receive a one time password</string>
+    <string name="label_share_otp_verify">We have to verify your mobile number before you can share the post. Please enter your number \n to receive a one time password</string>
+    <string name="label_otp_send">S E N D</string>
+    <string name="label_enter_mobile_no">Your mobile number</string>
+    <string name="alert_otp_mobile_no">Please enter the mobile number </string>
+    <string name="alert_otp_mobile_no_validate">Please enter minimum 10 numbers </string>
+    <string name="alert_otp_country_code_validate">Please select country code</string>
+    <string name="label_chat_otp_send">We have sent an OTP to your number </string>
+    <string name="label_enter_the_otp">Please enter the OTP</string>
+    <string name="label_enter_the_otp_validate">Please enter valid OTP</string>
+    <string name="the_otp_submit">SUBMIT</string>
+    <string name="the_otp_sent">SEND OTP</string>
+    <string name="the_otp_resent">RESEND OTP</string>
+    <string name="youtube_api_key">AIzaSyAIpX1M8Npa63thgsXuCqhr_xnRRYoWHcU</string>
+    <string name="player_error">Error initializing YouTube player: %s</string>
+    <string name="coming_soon">Coming Soon</string>
+    <string name="see_more">…See more</string>
+<string name="hello_worldBlue"><font> color=\'#FF8000\'>Hello world!</font></string>
+
+
+    <string name="title_activity_view_status">ViewStatusActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="title_activity_my_status">My Status</string>
+    <string name="your_status_will_disappear_note">Your status updates will disappear after 24 hours.</string>
+    <string name="deleting">Deleting...</string>
+    <string name="delete_status_confirmation">are you sure you want to delete this status?</string>
+    <string name="uploading_status">Uploading status...</string>
+    <string name="voice_call_hint">Voice Call</string>
+    <string name="video_call_hint">Video Call</string>
+    <string name="connecting">Connecting</string>
+    <string name="fireapp_video_call">%s Video Call</string>
+    <string name="fireapp_voice_call">%s Voice Call</string>
+    <string name="call_ended">Call ended</string>
+    <string name="call_denied">Denied</string>
+    <string name="call_failure">Failed to connect</string>
+    <string name="call_cancelled">Cancelled</string>
+    <string name="user_hungup">User Hung up</string>
+    <string name="call_no_answer">No answer</string>
+    <string name="voice_call_confirmation">Are you sure you want to make a voice call?</string>
+    <string name="video_call_confirmation">Are you sure you want to make a video call?</string>
+    <string name="error_calling">Error performing call</string>
+    <string name="missed_call_notification">Missed call from:</string>
+    <string name="answer">ANSWER</string>
+    <string name="decline">DECLINE</string>
+    <string name="incoming_video_call">Incoming Video Call</string>
+    <string name="incoming_voice_call">Incoming Voice Call</string>
+    <string name="hangup">HANGUP</string>
+    <string name="video_call">Video Call</string>
+    <string name="voice_call">Voice Call</string>
+    <string name="delete_calls_confirmation">Delete Selected Calls?</string>
+    <string name="viewed_statuses">Viewed updates</string>
+    <string name="video_length_is_too_long">Video length is too long</string>
+    <string name="there_is_active_call_currently">There is already an active call</string>
+    <string name="status_uploaded">Status uploaded Successfully</string>
+    <string name="error_uploading_status">Error uploading status</string>
+    <string name="invite">Invite</string>
+    <string name="share_app_text">Download now %s App for Instant messaging,groups support,Video Calls, and more. </string>
+    <string name="no_contacts">No %s Contacts</string>
+    <string name="minutes_ago">minutes ago</string>
+    <string name="hours_ago">hours ago</string>
+    <string name="yesterday_at">Yesterday at</string>
+    <string name="today_at">Today at</string>
+    <string name="day_ago">day ago</string>
+    <string name="days_ago">days ago</string>
+    <string name="just_now">Just now</string>
+    <string name="today">Today</string>
+    <string name="yesterday">Yesterday</string>
+    <string name="now">now</string>
+    <string name="clear_chat">Clear chat</string>
+    <string name="clear_chat_message">are you sure you want to delete all messages in this chat?</string>
+    <string name="chat_settings">Chat settings</string>
+    <string name="wallpaper">Wallpaper</string>
+    <string name="failed_to_load_wallpaper">Failed to load Wallpaper</string>
+    <string name="mark_as_read">mark as read</string>
+    <string name="choose_wallpaper">Choose Wallpaper</string>
+    <string name="restore_default_wallpaper">Restore Default Wallpaper</string>
+    <string name="unsupported_type">Unsupported type, please update the app</string>
+    <string name="write_your_message">Type a message</string>
+    <string name="profile_translation_name" translatable="false">profile_translation_name</string>
+    <string name="chat_backup">Chat backup</string>
+    <string name="title_activity_backup_chat">BackupChatActivity</string>
+    <string name="last_backup">Last Backup</string>
+    <string name="backup">BACK UP</string>
+    <string name="backing_up">Backing up ...</string>
+    <string name="backing_up_message">Backing up message, please don\'t exit the app</string>
+    <string name="backup_success">Backup success</string>
+    <string name="backup_failed">Backup failed</string>
+    <string name="restore_backup">Restore backup</string>
+    <string name="error_restoring_backup">Error restoring backup</string>
+    <string name="backup_file_mismatched">Backup file does not match your phone number!</string>
+    <string name="invalid_group_link">invalid group link</string>
+    <string name="share_invite_link">Share Invite link</string>
+    <string name="share_link_notice">anyone has this link can join this group</string>
+    <string name="send_link_via_fireapp">Send Link via %s</string>
+    <string name="copy_link">Copy link</string>
+    <string name="share_link">Share link</string>
+    <string name="revoke_link">Revoke link</string>
+    <string name="fetching_group">Fetching Group...</string>
+    <string name="join_group">Join group</string>
+    <string name="you_are_already_joined_the_group">You already joined the group!</string>
+    <string name="banned_from_group">You are banned from this group</string>
+    <string name="joined_via_invite_link">joined via invite link</string>
+    <string name="new_broadcast">New broadcast</string>
+    <string name="broadcast_name">Broadcast name</string>
+    <string name="broadcast_list_info">Broadcast list info</string>
+    <string name="created">Created</string>
+    <string name="recipients">recipients</string>
+    <string name="edit_recipients">Edit recipients</string>
+    <string name="delete_broadcast_list">Delete broadcast list</string>
+    <string name="add_recipients">Add recipients</string>
+    <string name="user_already_added_to_broadcast">user already added to broadcast</string>
+    <string name="delete_broadcast_confirmation">Delete this broadcast?</string>
+    <string name="no_link_gnerated">No link generated</string>
+    <string name="select_this_location">Select this Location</string>
+    <string name="nearby_places">Nearby Places</string>
+    <string name="user_this_location">Use this location?</string>
+    <string name="change_location">Change location</string>
+    <string name="select">Select</string>
+    <string name="message">Message</string>
+    <string name="add_contact">Add Contact</string>
+    <string name="add">ADD</string>
+    <string name="photo">Photo</string>
+    <string name="video">Video</string>
+    <string name="voice_message">Voice Message</string>
+    <string name="do_not_show_again">Do not show this message again</string>
+    <string name="ignore_battery_dialog_title">Ignore Battery Optimization</string>
+    <string name="ignore_battery_dialog_message">In order to make sure that all messages delivered correctly you have to disable Battery Optimization.\n after clicking OK , choose %s and click on \'Don\'t optimize\'</string>
+    <string name="ignore_battery_summary">In order to make sure that all messages delivered correctly you have to disable Battery Optimizations</string>
+    <string name="status_hint">Type a status</string>
+    <string name="call_type">%s Call</string>
+    <string name="privacy_policy_info">By Clicking the button below you Agree to our %s</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="agree_and_continue">Agree and Continue</string>
+    <string name="privacy_policy_html">
+
+        <![CDATA[
+"<!DOCTYPE html>\n"
+                "    <html>\n"
+                "\n"
+                "    <body>\n"
+                "    <h2>Privacy Policy</h2> <p>\n"
+                "                    [DEVELOPER_NAME] built the [APP_NAME] app as\n"
+                "                    an Ad Supported app. This SERVICE is provided by\n"
+                "                    [DEVELOPER_NAME] at no cost and is intended for\n"
+                "                    use as is.\n"
+                "                  </p> <p>\n"
+                "                    This page is used to inform visitors regarding\n"
+                "                    my policies with the collection, use, and\n"
+                "                    disclosure of Personal Information if anyone decided to use\n"
+                "                    my Service.\n"
+                "                  </p> <p>\n"
+                "                    If you choose to use my Service, then you agree\n"
+                "                    to the collection and use of information in relation to this\n"
+                "                    policy. The Personal Information that I collect is\n"
+                "                    used for providing and improving the Service.\n"
+                "                    I will not use or share your\n"
+                "                    information with anyone except as described in this Privacy\n"
+                "                    Policy.\n"
+                "                  </p> <p>\n"
+                "                    The terms used in this Privacy Policy have the same meanings\n"
+                "                    as in our Terms and Conditions, which is accessible at\n"
+                "                    [APP_NAME] unless otherwise defined in this Privacy\n"
+                "                    Policy.\n"
+                "                  </p> <p><strong>Information Collection and Use</strong></p> <p>\n"
+                "                    For a better experience, while using our Service,\n"
+                "                    I may require you to provide us with certain\n"
+                "                    personally identifiable information, including but not limited to Contacts in your Phonebook,Your Phone Number,Your Profile Picture. The\n"
+                "                    information that I request will be\n"
+                "                    securely saved on our secure Servers, we will never share these information without your permission.\n"
+                "                    <br>\n"
+                "                     your name, number, and your profile Picture will be available publicly to other users.\n"
+                "                  </p> <p>\n"
+                "                    The app does use third party services that may collect\n"
+                "                    information used to identify you.\n"
+                "                  </p> <div><p>\n"
+                "                      Link to privacy policy of third party service providers\n"
+                "                      used by the app\n"
+                "                    </p> <ul><li><a href=\"https://www.google.com/policies/privacy/\" target=\"_blank\">Google Play Services</a></li><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----></ul></div> <p><strong>Log Data</strong></p> <p>\n"
+                "                    I want to inform you that whenever\n"
+                "                    you use my Service, in a case of an error in the\n"
+                "                    app I collect data and information (through third\n"
+                "                    party products) on your phone called Log Data. This Log Data\n"
+                "                    may include information such as your device Internet\n"
+                "                    Protocol (“IP”) address, device name, operating system\n"
+                "                    version, the configuration of the app when utilizing\n"
+                "                    my Service, the time and date of your use of the\n"
+                "                    Service, and other statistics.\n"
+                "                  </p> \n"
+                "                  <p><strong>Permissions we request</strong></p> <p>\n"
+                "                    <ul>\n"
+                "                      <li>Contacts: to be able to communicate with your Friends that are in your Contacts</li>\n"
+                "                      <li>Camera: to be able to Take Pictures/Videos and to be able to make Video Calls.</li>\n"
+                "                      <li>Microphpone: to be able to send Voice Messages and also to be able to make Voice/Video Calls.</li>\n"
+                "                      <li>Storage: to save the Sent/Received Files in your Device</li>\n"
+                "                    </ul>\n"
+                "                  </p>\n"
+                "\n"
+                "                  <p><strong>Cookies</strong></p> <p>\n"
+                "                    Cookies are files with a small amount of data that are\n"
+                "                    commonly used as anonymous unique identifiers. These are\n"
+                "                    sent to your browser from the websites that you visit and\n"
+                "                    are stored on your device's internal memory.\n"
+                "                  </p> <p>\n"
+                "                    This Service does not use these “cookies” explicitly.\n"
+                "                    However, the app may use third party code and libraries that\n"
+                "                    use “cookies” to collect information and improve their\n"
+                "                    services. You have the option to either accept or refuse\n"
+                "                    these cookies and know when a cookie is being sent to your\n"
+                "                    device. If you choose to refuse our cookies, you may not be\n"
+                "                    able to use some portions of this Service.\n"
+                "                  </p> <p><strong>Service Providers</strong></p> <p>\n"
+                "                    I may employ third-party companies\n"
+                "                    and individuals due to the following reasons:\n"
+                "                  </p> <ul><li>To facilitate our Service;</li> <li>To provide the Service on our behalf;</li> <li>To perform Service-related services; or</li> <li>To assist us in analyzing how our Service is used.</li></ul> <p>\n"
+                "                    I want to inform users of this\n"
+                "                    Service that these third parties have access to your\n"
+                "                    Personal Information. The reason is to perform the tasks\n"
+                "                    assigned to them on our behalf. However, they are obligated\n"
+                "                    not to disclose or use the information for any other\n"
+                "                    purpose.\n"
+                "                  </p> <p><strong>Security</strong></p> <p>\n"
+                "                    I value your trust in providing us\n"
+                "                    your Personal Information, thus we are striving to use\n"
+                "                    commercially acceptable means of protecting it. But remember\n"
+                "                    that no method of transmission over the internet, or method\n"
+                "                    of electronic storage is 100% secure and reliable, and\n"
+                "                    I cannot guarantee its absolute security.\n"
+                "                  </p> <p><strong>Links to Other Sites</strong></p> <p>\n"
+                "                    This Service may contain links to other sites. If you click\n"
+                "                    on a third-party link, you will be directed to that site.\n"
+                "                    Note that these external sites are not operated by\n"
+                "                    me. Therefore, I strongly advise you to\n"
+                "                    review the Privacy Policy of these websites.\n"
+                "                    I have no control over and assume no\n"
+                "                    responsibility for the content, privacy policies, or\n"
+                "                    practices of any third-party sites or services.\n"
+                "                  </p> <p><strong>Children’s Privacy</strong></p> <p>\n"
+                "                    These Services do not address anyone under the age of 13.\n"
+                "                    I do not knowingly collect personally\n"
+                "                    identifiable information from children under 13. In the case\n"
+                "                    I discover that a child under 13 has provided\n"
+                "                    me with personal information,\n"
+                "                    I immediately delete this from our servers. If you\n"
+                "                    are a parent or guardian and you are aware that your child\n"
+                "                    has provided us with personal information, please contact\n"
+                "                    me so that I will be able to do\n"
+                "                    necessary actions.\n"
+                "                  </p> <p><strong>Changes to This Privacy Policy</strong></p> <p>\n"
+                "                    I may update our Privacy Policy from\n"
+                "                    time to time. Thus, you are advised to review this page\n"
+                "                    periodically for any changes. I will\n"
+                "                    notify you of any changes by posting the new Privacy Policy\n"
+                "                    on this page. These changes are effective immediately after\n"
+                "                    they are posted on this page.\n"
+                "                  </p> <p><strong>Contact Us</strong></p> <p>\n"
+                "                    If you have any questions or suggestions about\n"
+                "                    my Privacy Policy, do not hesitate to contact\n"
+                "                    me at [DEVELOPER_MAIL]\n"
+                "                  </p> \n"
+                "    </body>\n"
+                "    </html>\n"
+]]>
+    </string>
+    <string name="sending_reply">Sending Reply</string>
+    <string name="update_app">Please update the app to the latest version</string>
+    <string name="update">UPDATE</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="phone_auth_info">Please select your country &amp;\n enter your phone number</string>
+    <string name="verify">VERIFY</string>
+    <!--    <string name="enter_phone_confirmation_message">we will send you a SMS message to %s to verify your number</string>-->
+    <string name="enter_phone_confirmation_message">We will send you an OTP to %s, please enter it to verify your number</string>
+    <string name="enter_correct_number">Please enter a correct number</string>
+    <string name="otp_verification">Enter the OTP to \n Verify your phone number</string>
+    <string name="enter_the_otp_sent_to">We have sent you an SMS with a code \n to the number %s</string>
+    <string name="invalid_verification_code">Verification code is invalid</string>
+    <string name="invalid_phone_number">Invalid Phone Number</string>
+    <string name="too_many_verification_attempts">Too many verification attempts</string>
+    <string name="cancel_verification_confirmation_message">Are you sure you want to cancel the request to verifiy your phone number?</string>
+    <string name="enter_your_phone_number">Verify Your Number</string>
+    <string name="title_activity_lockscreen">FullscreenActivity</string>
+    <string name="locked">Locked</string>
+    <string name="face">Face</string>
+    <string name="fingerprint">Fingerprint</string>
+    <string name="iris">Iris</string>
+    <string name="biometric">Biometric</string>
+    <string name="unavailable">Unavailable</string>
+    <string name="biometrics_not_available">Biometrics Not Available on this Device!</string>
+    <string name="authenticate_with">Authenticate with %s</string>
+    <string name="security">Security</string>
+    <string name="unlock_with_fingerprint">Unlock with Fingerprint</string>
+    <string name="lock_after">Lock after</string>
+    <string name="immediately">Immediately</string>
+    <string name="after_1_minute">After 1 minute</string>
+    <string name="after_5_minutes">After 5 minutes</string>
+    <string name="after_30_minutes">After 30 minutes</string>
+    <string name="profile">Profile</string>
+    <string name="notifications">Notifications</string>
+    <string name="chat">Chat</string>
+    <string name="about">About</string>
+    <string name="could_not_add_fingerprint">Could not add Fingerprint</string>
+
+
+
+    <string name="initiating">INITIATING</string>
+    <string name="waiting_for_answer">WAITING FOR ANSWER</string>
+    <string name="failed">FAILED</string>
+    <string name="reconnecting">RECONNECTING</string>
+    <string name="answered">ANSWERED</string>
+    <string name="fireapp_conference_video_call">%s Group Video Call</string>
+    <string name="fireapp_conference_voice_call">%s Group Voice Call</string>
+    <string name="sticker">Sticker</string>
+    <string name="status_not_exists">Status not exists</string>
+    <string name="wifi_chat">Wi-Msg</string>
+    <string name="pref_header_delete">Delete Account</string>
+    <string name="question_agree_personal_data_access">Do you consent to the use/ processing of your personally identifiable data by Relay ?</string>
+    <string name="don_not_consent">Do not consent</string>
+    <string name="label_consent">Consent</string>
+    <string name="label_are_sure_delete_account">Are you sure that you want to delete your account?</string>
+    <string name="agree_tc">I agree <u><font color='#2196F3'>terms&amp;condition</font></u> and <u><font color='#2196F3'>privacy policy</font></u></string>
+    <string name="tc"><u><font color='#2196F3'>terms &amp; conditions</font></u></string>
+    <string name="pp"><u><font color='#2196F3'>privacy policies</font></u></string>
+
+
+    <string name="pref_header_notifications">Notifications</string>
+
+    <string name="pref_title_new_message_notifications">New message notifications</string>
+
+    <string name="pref_title_ringtone">Ringtone</string>
+    <string name="pref_ringtone_silent">Silent</string>
+
+    <string name="pref_title_vibrate">Vibrate</string>
+    <string name="key_autodownload_roaming" translatable="false">key_autodownload_roaming</string>
+    <string name="key_autodownload_wifi" translatable="false">key_autodownload_wifi</string>
+    <string name="key_autodownload_cellular" translatable="false">key_autodownload_cellular</string>
+    <string name="pref_header_chat">Chat</string>
+    <string name="pref_header_about">About</string>
+    <string name="camera_tip">Tap to Take a Photo,Hold to Record Video</string>
+    <string name="audio_permission_error">Audio Permissions are Missing</string>
+    <string name="space_or_permissions_error_toast">Error :( ,Please check Space or Permissions</string>
+    <string name="voice_message_is_short_toast">Voice Message is Too Short</string>
+    <string name="file_is_too_big">file is Too BIG</string>
+    <string name="type_not_supported">type not supported!</string>
+    <string name="unblock_contact">Unblock Contact</string>
+    <string name="block_contact">Block Contact</string>
+    <string name="unmute_notifications">UnMute Notifications</string>
+    <string name="mute_notifications">Mute Notifications</string>
+    <string name="loading">Loading..</string>
+    <string name="sms_charge_info">We will send you an OTP ,\n please fill it in the next screen</string>
+
+    <string name="copied_to_clipboard">Copied To Clipboard...</string>
+    <string name="image_video_not_found">CHOSEN IMAGE/Video Not Found</string>
+    <string name="sending_messages">Sending Messages...</string>
+    <string name="message_is_too_long">Message is Too long please try to reduce it</string>
+    <string name="error_playing_this">Error playing this :(</string>
+    <string name="cannot_open_this_file">cannot open this file</string>
+    <string name="checking">Checking..</string>
+    <string name="does_not_have_fireapp">does not have %s</string>
+    <string name="user_is_blocked">User is Blocked</string>
+    <string name="unblock">UnBlock</string>
+
+    <string name="not_contact_selected">No Contact Selected</string>
+
+    <string name="no_close_the_app">NO Close The App</string>
+    <string name="you_have_to_grant_permissions">You have to grant permissions in order to use this App</string>
+    <string name="confirmation">Confirmation</string>
+    <string name="delete_conversation_confirmation">Are you sure you want to delete this conversation?</string>
+
+
+    <string name="select_contact">Select Contact</string>
+    <string name="profile_photo">Profile Photo</string>
+    <string name="image_changed">Image has been changed</string>
+    <string name="username_is_empty">user name cannot be empty</string>
+    <string name="default_status">Heeey I am using %s!</string>
+    <string name="reply">Reply</string>
+    <string name="choose_number">Choose a Number</string>
+    <string name="delete_messages_confirmation">Delete Message?</string>
+    <string name="you">You</string>
+    <string name="enter_your_name">Enter your name</string>
+    <string name="enter_your_status">Enter your status</string>
+    <string name="status_is_empty">Status is Empty</string>
+    <string name="no_media_summary">no media</string>
+    <string name="photos">Photos</string>
+
+    <string name="videos">Videos</string>
+    <string name="files">Files</string>
+    <string name="no">NO</string>
+    <string name="file">File</string>
+    <string name="camera">Camera</string>
+    <string name="gallery">Gallery</string>
+    <string name="audio">Audio</string>
+    <string name="location">Location</string>
+    <string name="contact">Contact</string>
+    <string name="media">Files</string>
+    <string name="count">Count</string>
+    <string name="about_and_phone_number">About user</string>
+
+    <string name="copy">Copy</string>
+    <string name="forward">Forward</string>
+    <string name="share">Share</string>
+    <string name="add_to_contacts">Add to Contacts</string>
+    <string name="edit">Edit</string>
+    <string name="checking_contact">Checking Contact</string>
+    <string name="online">Online</string>
+    <string name="could_not_get_audio_file">could not get audio file</string>
+    <string name="could_not_get_this_image">Could not get this image</string>
+    <string name="delete_media_from_phone">Delete Media From Phone</string>
+    <string name="media_player_error">file not found or permissions missing</string>
+    <string name="select_numbers">Select Numbers</string>
+    <string name="contact_info">Contact Info</string>
+    <string name="not_found">Not found</string>
+    <string name="enter_is_sent_smmary">Enter is Send</string>
+    <string name="enter_is_send_title">Enter key will send your message</string>
+    <string name="mobile_data_title">when using mobile data</string>
+    <string name="roaming_title">when roaming</string>
+    <string name="wifi_title">when using Wifi</string>
+    <string name="media_auto_download_title">Media auto download</string>
+    <string name="could_not_get_this_file">could not get this file</string>
+    <string name="send_to_toolbar_title">Send To ..</string>
+    <string name="item_deleted_from_storage">this item was deleted from your storage</string>
+    <string name="app_info">%s is a Chat App that connects people with each other with a simple and great UI</string>
+
+    <string name="error">error</string>
+    <string name="new_group">New Group</string>
+    <string name="add_participants">Add Participants</string>
+    <string name="max_number_of_users_reached">Max Number of users reached</string>
+    <string name="group_title">Group Title</string>
+    <string name="set_title_for_group">Set a title for Group</string>
+    <string name="group_hint">Group name</string>
+    <string name="exit_group">Exit group</string>
+    <string name="participants">Participants</string>
+    <string name="delete_member">Delete Member</string>
+    <string name="delete_member_message">are you sure you want to delete this member?</string>
+    <string name="removing_member">Removing member...</string>
+    <string name="member_removed">Member removed</string>
+    <string name="error_removing_member">error removing member</string>
+    <string name="user_already_added_to_group">user already added to group</string>
+    <string name="adding">Adding...</string>
+    <string name="added_successfully">added successfully</string>
+    <string name="group_name_changed">group name changed</string>
+    <string name="exiting_group">Exiting group...</string>
+    <string name="you_cant_send_messages_to_group">You cant\'t send message to this group because you are no longer a participant</string>
+    <string name="no_longer_participant">You are no longer a participant in this group</string>
+    <string name="delete_group">Delete group</string>
+    <string name="created_this_group">created this group</string>
+    <string name="removed">Removed</string>
+    <string name="is_now_an_admin">is now an Admin</string>
+    <string name="exit_the_group">Exit the group</string>
+    <string name="added">Added</string>
+    <string name="group_info">Group info</string>
+    <string name="are_now_an_admin">are now an Admin</string>
+    <string name="at">at</string>
+    <string name="created_by">Created by</string>
+    <string name="you_deleted_this_message">You deleted this message</string>
+    <string name="this_message_was_deleted">This message was deleted</string>
+    <string name="delete_for_me">DELETE FOR ME</string>
+    <string name="delete_for_everyone">DELETE FOR EVERYONE</string>
+    <string name="message_member">Message</string>
+    <string name="make_group_admin">Make group admin</string>
+    <string name="dismiss_admin">Dismiss admin</string>
+
+    <string name="remove_member">Remove</string>
+    <string name="only_admins_can_post">Only admins can post</string>
+    <string name="are_no_longer_an_admin">are no longer an admin</string>
+    <string name="is_no_longer_an_admin">is no longer an admin</string>
+    <string name="you_added">You added</string>
+    <string name="you_left">You Left</string>
+    <string name="left_group">Left group</string>
+    <string name="you_removed">You removed</string>
+    <string name="you_created_this_group">You created this group</string>
+    <string name="you_changed_group_preferences">You changed group preferences</string>
+    <string name="changed_group_preferences">changed group preferences</string>
+    <string name="this_user_has_old_version">This user has old version of this app</string>
+    <string name="exit_group_confirmation_dialog">are you sure you want to exit this group?</string>
+    <string name="delete_group_confirmation">are you sure you want to delete this chat</string>
+    <string name="playing_audio">Playing Audio</string>
+    <string name="chats">Chats</string>
+    <string name="status">Status</string>
+    <string name="calls">Calls</string>
+
+
+    <string name="recent_updates">Recent Updates</string>
+    <string name="my_status">My Status</string>
+    <string name="tap_to_add_status">Tap to add status update</string>
+
+
+    <string name="view_contact">View Contact</string>
+    <string name="sign_in_cancelled">Cancelled</string>
+    <string name="unknown_error">Unknown Error</string>
+    <string name="unknown_sign_in_response">No Response</string>
+    <string name="Settings">Settings</string>
+    <string name="title_activity_user_details">UserDetailsActivity</string>
+       <string name="img_transition">img_transition</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="typing">Typing...</string>
+    <string name="recording">Recording...</string>
+    <string name="pref_header_profile">Profile</string>
+
+    <string-array name="autodownload">
+        <item>Photos</item>
+        <item>Audio</item>
+        <item>Videos</item>
+        <item>Files</item>
+    </string-array>
+
+
+    <string-array name="autodownload_cellular_defaults">
+        <item>0</item>
+    </string-array>
+
+    <array name="autodownload_roaming_defaults" />
+    <string-array name="autodownload_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+
+    <string-array name="autodownload_wifi_defaults">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+
+    <string-array name="pref_security_entries">
+        <item>Immediately</item>
+        <item>After 1 Minute</item>
+        <item>After 5 Minutes</item>
+        <item>After 30 Minutes</item>
+    </string-array>
+
+</resources>

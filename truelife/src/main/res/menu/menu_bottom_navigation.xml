@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_chat"
+        android:checked="true"
+        android:icon="@drawable/ic_bottom_chat"
+        android:title="Chat"
+        android:iconTint="@color/icon_gray"
+        app:showAsAction="ifRoom" />
+    <!--<item
+        android:id="@+id/action_contact"
+        android:checked="false"
+        android:icon="@drawable/ic_contact"
+        android:title="Contacts"
+        android:iconTint="@color/icon_gray"
+        app:showAsAction="ifRoom" />-->
+    <item
+        android:id="@+id/action_call"
+        android:checked="false"
+        android:iconTint="@color/icon_gray"
+        android:icon="@drawable/ic_call"
+        android:title="@string/calls"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_wifi_chat"
+        android:checked="false"
+        android:iconTint="@color/icon_gray"
+        android:icon="@drawable/ic_wifi_msg1"
+        android:title="@string/wifi_chat"
+        app:showAsAction="ifRoom" />
+</menu>

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:clickable="true"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    tools:context=".app.fragment.club.more.invite.TLClubGeneralInviteScreen">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/dimen10">
+
+        <RelativeLayout
+
+            android:id="@+id/header"
+            android:layout_width="match_parent"
+
+            android:layout_height="65dp"
+            android:background="@color/white"
+            android:fitsSystemWindows="true"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true">
+
+                <ImageView
+                    android:id="@+id/common_back_arrow"
+                    android:layout_width="@dimen/dimen_25"
+                    android:layout_height="@dimen/dimen_25"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/dimen10"
+                    android:gravity="left"
+                    android:src="@drawable/ic_drop_down_bold"
+                    android:tint="@color/black" />
+
+
+                <TextView
+                    android:id="@+id/common_text_header"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentTop="true"
+
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center"
+                    android:fontFamily="@string/opensans_bold"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="@string/label_add_invite_general_member"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/font16"
+                    android:textStyle="bold" />
+
+
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/fragment_horizontal_recycler_member"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/dimen5"
+        android:layout_weight="1"
+        android:orientation="horizontal" />
+
+    <include layout="@layout/layout_no_data_found" />
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_gravity="center"
+        android:progressTint="@color/create_club"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/invite_general_public_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="75dp"
+        android:layout_marginTop="@dimen/dimen10"
+        android:layout_marginRight="75dp"
+        android:layout_marginBottom="@dimen/dimen10"
+        android:background="@drawable/bg_round_corner_for_feed"
+        android:backgroundTint="@color/create_club"
+        android:fontFamily="@string/opensans_bold"
+        android:gravity="center"
+        android:text="@string/label_invite"
+        android:textAllCaps="true"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="@color/white"
+        android:textSize="16dp"
+        android:visibility="visible" />
+
+</LinearLayout>

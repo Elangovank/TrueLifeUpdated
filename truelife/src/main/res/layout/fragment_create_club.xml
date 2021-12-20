@@ -1,0 +1,546 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/fragment_crate_club_root_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:clickable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical"
+    android:padding="@dimen/dimen5">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="5dp"
+        android:orientation="vertical"
+        app:cardBackgroundColor="@color/white"
+        app:cardElevation="5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent_black_fifty"
+                android:orientation="vertical">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="5dp">
+
+                    <ImageView
+                        android:id="@+id/close_club_button"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="@dimen/dimen10"
+                        android:contentDescription="@null"
+                        android:padding="5dp"
+                        android:src="@drawable/ic_close_slim"
+                        android:tint="@color/app_gray_dark" />
+
+                    <TextView
+                        android:id="@+id/fragment_header_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_gravity="center"
+                        android:layout_toEndOf="@+id/close_club_button"
+                        android:layout_toRightOf="@+id/close_club_button"
+                        android:fontFamily="@font/opendans_bold"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="@string/create_a_club"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_18"
+                        android:textStyle="bold" />
+
+
+                </FrameLayout>
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="3dp"
+                    android:background="@color/medium_grey" />
+            </LinearLayout>
+
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fillViewport="true"
+                android:scrollbars="none"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:orientation="vertical">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:weightSum="2">
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/fragment_circular_image"
+                            android:layout_width="0dp"
+                            android:layout_height="80dp"
+                            android:layout_weight="0.5"
+                            android:padding="6dp"
+                            android:src="@drawable/club_placeholder"
+                            app:civ_border_color="@color/white" />
+
+
+                        <Button
+                            android:id="@+id/mClubProfilePicBTN"
+                            style="?android:attr/borderlessButtonStyle"
+                            android:layout_width="0dp"
+                            android:layout_height="30dp"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_weight="1.5"
+                            android:background="@drawable/style_theme_button"
+                            android:backgroundTint="@color/colorPrimary"
+                            android:gravity="center"
+                            android:text="@string/upload_profile_picture"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:textColor="@color/white"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="@dimen/dimen20"
+                        android:orientation="vertical"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp">
+
+                        <EditText
+                            android:id="@+id/fragment_club_name_edt"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:layout_gravity="center"
+                            android:background="@drawable/style_theme_edittext"
+                            android:gravity="center"
+                            android:hint="@string/club_name"
+                            android:imeOptions="actionNext"
+                            android:importantForAutofill="no"
+                            android:inputType="text"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:textColor="@color/black"
+                            android:textColorHint="@color/app_gray"
+                            android:textCursorDrawable="@drawable/style_black_cursor"
+                            android:textSize="16sp" />
+
+                        <EditText
+                            android:id="@+id/fragment_club_type_edt"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/style_theme_edittext"
+                            android:gravity="center"
+                            android:hint="@string/club_type"
+                            android:imeOptions="actionNext"
+                            android:importantForAutofill="no"
+                            android:inputType="text"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:textColor="@color/black"
+                            android:textColorHint="@color/app_gray"
+                            android:textCursorDrawable="@drawable/style_black_cursor"
+                            android:textSize="16sp" />
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/style_theme_edittext"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/fragment_club_type"
+                                android:layout_width="0dp"
+                                android:layout_height="40dp"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:hint="@string/club_for"
+                                android:paddingLeft="25dp"
+                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                android:textColor="@color/black"
+                                android:textColorHint="@color/app_gray"
+                                android:textSize="16sp" />
+
+                            <ImageView
+                                android:id="@+id/fragment_club_type_img"
+                                android:layout_width="@dimen/dimen20"
+                                android:layout_height="@dimen/dimen20"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="@dimen/dimen5"
+                                android:layout_marginRight="@dimen/dimen5"
+                                android:padding="3dp"
+                                android:rotation="270"
+                                android:src="@drawable/ic_back_slim" />
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimen20"
+                            android:background="@drawable/bg_border_view_darkgray"
+                            android:orientation="vertical"
+                            android:padding="@dimen/dimen_10">
+
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:background="@android:color/transparent"
+                                android:fontFamily="@font/opensans_extrabold"
+                                android:gravity="center"
+                                android:padding="5dp"
+                                android:text="@string/assign_club_rights_for_members"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/font16"
+                                android:textStyle="normal" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/dimen_25"
+                                android:layout_marginRight="@dimen/dimen_25"
+                                android:orientation="horizontal"
+                                android:padding="@dimen/dimen_5"
+                                android:weightSum="2">
+
+                                <CheckBox
+                                    android:id="@+id/fragment_post_chkbox"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_weight="1"
+                                    android:button="@drawable/style_selector_check"
+                                    android:gravity="center_vertical"
+                                    android:paddingStart="@dimen/dimen5"
+                                    android:text="@string/posting"
+                                    android:textColor="@color/white" />
+
+                                <CheckBox
+                                    android:id="@+id/fragment_share_chkbox"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_weight="1"
+                                    android:button="@drawable/style_selector_check"
+                                    android:gravity="center_vertical"
+                                    android:paddingStart="@dimen/dimen5"
+                                    android:text="@string/label_share"
+                                    android:textColor="@color/white" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/dimen_25"
+                                android:layout_marginRight="@dimen/dimen_25"
+                                android:orientation="horizontal"
+                                android:padding="@dimen/dimen_5"
+                                android:weightSum="2">
+
+                                <CheckBox
+                                    android:id="@+id/fragment_like_chkbox"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_weight="1"
+                                    android:button="@drawable/style_selector_check"
+                                    android:gravity="center_vertical"
+                                    android:paddingStart="@dimen/dimen5"
+                                    android:text="@string/label_like"
+                                    android:textColor="@color/white" />
+
+                                <CheckBox
+                                    android:id="@+id/fragment_comments_chkbox"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_weight="1"
+                                    android:button="@drawable/style_selector_check"
+                                    android:gravity="center_vertical"
+                                    android:paddingStart="@dimen/dimen5"
+                                    android:text="@string/label_comments"
+                                    android:textColor="@color/white" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1.5dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@color/dark_grey" />
+
+                        <TextView
+                            android:id="@+id/fragment_admittance_header"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="10dp"
+                            android:fontFamily="@font/opensans_extrabold"
+                            android:gravity="center"
+                            android:text="@string/admittance_of_members"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/font16"
+                            android:textStyle="normal" />
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/style_theme_background"
+                            android:padding="10dp">
+
+                            <RadioGroup
+                                android:id="@+id/fragment_members_type_rg"
+                                android:layout_width="match_parent"
+
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <RadioButton
+                                    android:id="@+id/fragment_open_forever_rb"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="top|center"
+                                    android:gravity="center|left"
+                                    android:text="@string/open_to_eveyone_forever"
+                                    android:textColor="@color/dark_grey"
+                                    android:textSize="12sp"
+                                    android:theme="@style/RadioButtonStyle" />
+
+                                <RadioButton
+                                    android:id="@+id/fragment_approve_by_admin_rb"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="top|center"
+                                    android:layout_marginTop="5dp"
+                                    android:gravity="center|left"
+                                    android:text="@string/approval_by_the_administrator"
+                                    android:textColor="@color/dark_grey"
+                                    android:textSize="12sp"
+                                    android:theme="@style/RadioButtonStyle" />
+
+                                <EditText
+                                    android:id="@+id/fragment_approve_by_edt"
+                                    android:layout_width="100dp"
+                                    android:layout_height="30dp"
+                                    android:layout_gravity="left"
+                                    android:layout_marginLeft="35dp"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_marginBottom="10dp"
+                                    android:background="@drawable/style_theme_edittext"
+                                    android:gravity="center_vertical|left"
+                                    android:imeOptions="actionDone"
+                                    android:importantForAutofill="no"
+                                    android:inputType="number"
+                                    android:maxLength="6"
+                                    android:maxLines="1"
+                                    android:paddingLeft="5dp"
+                                    android:singleLine="true"
+                                    android:text="122"
+                                    android:textAppearance="?android:attr/textAppearanceMedium"
+                                    android:textColor="@color/black"
+                                    android:textCursorDrawable="@drawable/style_black_cursor"
+                                    android:textSize="14sp" />
+
+                                <RadioButton
+                                    android:id="@+id/fragment_only_approve_by_admin_rb"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="top|center"
+                                    android:layout_marginTop="5dp"
+                                    android:gravity="center|left"
+                                    android:text="@string/only_through_the_approval"
+                                    android:textColor="@color/dark_grey"
+                                    android:textSize="12sp"
+                                    android:theme="@style/RadioButtonStyle" />
+
+                                <RadioButton
+                                    android:id="@+id/fragment_invite_people_rb"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="top|center"
+                                    android:layout_marginTop="5dp"
+                                    android:gravity="center|left"
+                                    android:text="@string/invite_only_the_people_you_want_to"
+                                    android:textColor="@color/dark_grey"
+                                    android:textSize="12sp"
+                                    android:theme="@style/RadioButtonStyle" />
+                            </RadioGroup>
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
+
+                            android:id="@+id/add_invite_LAY"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/style_selector_back_blue"
+
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/fragment_invite_header"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+
+                                android:layout_gravity="center"
+                                android:background="@drawable/create_club_top_left_right_corner_background"
+                                android:backgroundTint="@color/create_club_serach_header"
+                                android:gravity="center"
+                                android:padding="10dp"
+                                android:text="@string/add_people_optional"
+                                android:textAppearance="?android:attr/textAppearanceSmall"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/text_18"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/fragment_friends_header"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center|bottom"
+                                android:layout_marginTop="@dimen/text_10"
+                                android:fontFamily="@font/opensans_semibold"
+                                android:gravity="center"
+
+                                android:padding="10dp"
+                                android:text="@string/friends_contacts"
+
+                                android:textAllCaps="true"
+                                android:textAppearance="?android:attr/textAppearanceSmall"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/text_16"
+                                android:textStyle="normal" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:paddingLeft="20dp"
+                                android:paddingRight="20dp"
+                                android:paddingBottom="10dp">
+
+                                <FrameLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+
+                                    <EditText
+                                        android:id="@+id/fragment_search_friend"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:background="@drawable/bg_edtxt_search"
+                                        android:drawableLeft="@drawable/ic_search"
+                                        android:drawablePadding="10dp"
+                                        android:drawableTint="@color/black"
+                                        android:hint="@string/label_search"
+                                        android:importantForAutofill="no"
+                                        android:padding="@dimen/dimen10"
+                                        android:paddingStart="15dp"
+                                        android:paddingEnd="5dp"
+                                        android:singleLine="true"
+                                        android:textColor="@color/black"
+                                        android:textColorHint="@color/grey"
+
+                                        android:textCursorDrawable="@drawable/black_cursor" />
+
+                                    <ImageView
+                                        android:id="@+id/clear_search_text"
+
+                                        android:layout_width="20dp"
+                                        android:layout_height="20dp"
+                                        android:layout_alignParentRight="true"
+                                        android:layout_alignParentBottom="true"
+
+                                        android:layout_gravity="center|right"
+                                        android:layout_marginRight="@dimen/dimen_10"
+                                        android:layout_toRightOf="@+id/fragment_search_friend"
+                                        android:src="@drawable/close_circle_white"
+                                        android:tint="@color/black"
+                                        android:visibility="gone" />
+                                </FrameLayout>
+                            </LinearLayout>
+
+                            <!--<ListView
+                                android:id="@+id/fragment_friends_list"
+                                android:layout_width="match_parent"
+
+                                android:layout_height="100dp"
+                                />-->
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/friends_recycler"
+                                android:layout_width="match_parent"
+                                android:layout_height="300dp"
+                                android:orientation="horizontal" />
+
+                        </LinearLayout>
+
+
+                        <Button
+
+                            android:id="@+id/fragment_create_club_but"
+                            style="?android:attr/borderlessButtonStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:layout_marginTop="35dp"
+                            android:layout_marginBottom="@dimen/dimen20"
+                            android:background="@drawable/style_theme_button"
+                            android:backgroundTint="@color/colorPrimary"
+                            android:text="@string/create_your_club"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:textColor="@color/white"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </androidx.core.widget.NestedScrollView>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

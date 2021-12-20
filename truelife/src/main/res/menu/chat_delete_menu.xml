@@ -1,0 +1,23 @@
+<?xml version="1.0"   encoding="utf-8"?>
+
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <item
+        android:id="@+id/copy"
+        android:icon="@drawable/text_copy_icon"
+        android:iconTint="@color/dark_grey"
+        app:showAsAction="collapseActionView" />
+
+
+    <item
+        android:id="@+id/delete"
+
+        android:icon="@drawable/message_delete_icon"
+        android:iconTint="@color/dark_grey"
+        app:showAsAction="collapseActionView" />
+
+
+</menu>

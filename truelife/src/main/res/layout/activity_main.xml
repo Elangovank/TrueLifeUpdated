@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/app_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                style="@style/Base_ToolbarStyle"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize">
+                <!--app:layout_scrollFlags="scroll|snap"-->
+
+                <TextView
+                    android:id="@+id/tv_selected_chat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:gravity="center_vertical"
+                    android:text="0"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="17sp"
+                    android:visibility="gone" />
+
+            </androidx.appcompat.widget.Toolbar>
+
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tab_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:tabSelectedTextColor="@android:color/white" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/view_pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/app_bar"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            tools:showIn="@layout/activity_main">
+
+
+        </androidx.viewpager.widget.ViewPager>
+
+
+        <ImageView
+            android:id="@+id/open_new_chat_fab"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_above="@+id/bottom_navigation"
+            android:layout_alignParentRight="true"
+            android:layout_margin="@dimen/fab_margin"
+            android:padding="10dp"
+            android:background="@drawable/circular_img_view"
+            android:visibility="visible"
+            app:tint="@color/white"
+            app:srcCompat="@drawable/ic_chat_fab" />
+
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/text_status_fab"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="bottom|right"
+            android:layout_margin="@dimen/fab_margin"
+            android:tint="@color/colorWhite"
+            android:visibility="invisible"
+            app:backgroundTint="@color/colorGreen"
+            app:fabCustomSize="40dp"
+            app:layout_anchor="@id/bottom_navigation"
+            app:layout_anchorGravity="bottom|right|end"
+            app:srcCompat="@drawable/ic_edit" />
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_navigation"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="bottom"
+            android:layout_marginTop="@dimen/dimen5"
+            app:itemBackground="@color/white"
+            app:itemIconTint="@drawable/bottom_navigation_color_selector"
+            app:itemTextColor="@drawable/bottom_navigation_color_selector"
+            app:labelVisibilityMode="labeled"
+            app:menu="@menu/menu_bottom_navigation" />
+    </RelativeLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

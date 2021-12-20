@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/tools"
+    android:id="@+id/layout_club_linear_layout"
+    android:layout_width="100dp"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_margin="@dimen/dimen10"
+    android:orientation="vertical"
+    app:cardCornerRadius="5dp"
+    card_view:cardElevation="0dp">
+
+
+    <LinearLayout
+        android:id="@+id/image_LAY"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/layout_club_image"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_gravity="center"
+                android:contentDescription="@null"
+                android:scaleType="fitXY"
+                android:src="@mipmap/ic_launcher" />
+
+
+            <ImageView
+                android:id="@+id/inflate_menu_right_arrow"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="right"
+                android:background="@color/white"
+                android:contentDescription="@null"
+                android:gravity="end"
+                android:padding="@dimen/dimen5"
+                android:src="@drawable/member_tick_white"
+                android:tint="@color/blue"
+                android:visibility="gone" />
+
+
+        </FrameLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/transparent_black_fifty"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/layout_club_name"
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:layout_gravity="center"
+                android:background="@color/white"
+                android:fontFamily="@string/opensans_regular"
+                android:gravity="center"
+                android:maxLines="1"
+                android:paddingLeft="@dimen/dimen_3"
+                android:paddingRight="@dimen/dimen_3"
+                android:singleLine="true"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="@color/black"
+                android:textSize="10sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</androidx.cardview.widget.CardView>
+

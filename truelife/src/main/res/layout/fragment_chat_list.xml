@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_white"
+    android:focusableInTouchMode="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/tool"
+            layout="@layout/app_chat_header" />
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/fragment_chat_swipe_ref"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/dimen10">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <include layout="@layout/search_layout" />
+
+                <include layout="@layout/no_data_text" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/fragment_chat_recycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="@dimen/dimen5"
+                    android:layout_weight="1" />
+
+                <LinearLayout
+                    android:id="@+id/fragment_messenger_bottom_lay"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/dimen10"
+                    android:orientation="horizontal"
+                    android:visibility="gone"
+                    android:weightSum="2">
+
+                    <TextView
+                        android:id="@+id/bottom_layout_cancel"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/dimen_40"
+                        android:layout_marginRight="@dimen/dimen5"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_border_white_filled"
+                        android:gravity="center"
+                        android:text="@string/cancel"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font16" />
+
+                    <TextView
+                        android:id="@+id/bottom_layout_delete"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/dimen_40"
+                        android:layout_marginLeft="@dimen/dimen5"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_border_gray_filled"
+                        android:enabled="false"
+                        android:gravity="center"
+                        android:text="@string/delete"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font16" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    </LinearLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/startNewChat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/dimen_35"
+        android:backgroundTint="@color/white"
+        android:src="@drawable/chat_plus"
+        app:fabSize="normal"
+        app:rippleColor="@color/light_gray" />
+
+</RelativeLayout>

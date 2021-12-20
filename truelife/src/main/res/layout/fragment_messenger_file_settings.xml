@@ -1,0 +1,222 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:clickable="true"
+    android:orientation="vertical">
+
+    <include layout="@layout/app_chat_header" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:paddingTop="@dimen/dimen10"
+        android:paddingBottom="@dimen/dimen10"
+        android:text="@string/label_chat_file_setting_content"
+        android:textColor="@color/black" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:id="@+id/images_popup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1.65"
+                android:gravity="center_vertical"
+                android:padding="10dp"
+                android:text="@string/labe_image"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_medium"
+                android:textStyle="normal" />
+
+
+            <TextView
+                android:id="@+id/fragment_messenger_privacy_settings_image_TXT"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:gravity="center_vertical"
+                android:paddingLeft="5dp"
+                android:text="@string/labe_please_select_network"
+                android:textColor="@color/dark_grey"
+                android:textSize="@dimen/text_size_small"
+                android:textStyle="normal" />
+
+
+        </LinearLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.3dp"
+            android:layout_marginLeft="10dp"
+            android:background="@color/black" />
+
+
+        <LinearLayout
+            android:id="@+id/videos_popup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1.65"
+                android:gravity="center_vertical"
+                android:padding="10dp"
+                android:text="@string/labe_video"
+
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_medium"
+                android:textStyle="normal" />
+
+
+            <TextView
+                android:id="@+id/fragment_messenger_privacy_settings_video_TXT"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:gravity="center_vertical"
+                android:paddingLeft="5dp"
+                android:text="@string/labe_please_select_network"
+
+                android:textColor="@color/dark_grey"
+                android:textSize="@dimen/text_size_small"
+                android:textStyle="normal" />
+
+
+        </LinearLayout>
+
+
+        <View
+
+            android:layout_width="match_parent"
+            android:layout_height="0.3dp"
+            android:layout_marginLeft="10dp"
+            android:background="@color/black" />
+
+
+        <LinearLayout
+            android:id="@+id/audios_popup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1.65"
+                android:gravity="center_vertical"
+                android:padding="10dp"
+                android:text="@string/labe_audio"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_medium"
+                android:textStyle="normal" />
+
+
+            <TextView
+                android:id="@+id/fragment_messenger_privacy_settings_audio_TXT"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:gravity="center_vertical"
+                android:paddingLeft="5dp"
+                android:text="@string/labe_please_select_network"
+
+                android:textColor="@color/dark_grey"
+                android:textSize="@dimen/text_size_small"
+                android:textStyle="normal" />
+
+
+        </LinearLayout>
+
+        <View
+
+            android:layout_width="match_parent"
+            android:layout_height="0.3dp"
+            android:layout_marginLeft="10dp"
+            android:background="@color/black" />
+
+
+        <LinearLayout
+            android:id="@+id/docs_popup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1.65"
+                android:gravity="center_vertical"
+                android:padding="10dp"
+                android:text="@string/labe_document"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_medium"
+                android:textStyle="normal" />
+
+
+            <TextView
+                android:id="@+id/fragment_messenger_privacy_settings_document_TXT"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:gravity="center_vertical"
+                android:paddingLeft="5dp"
+                android:text="@string/labe_please_select_network"
+
+                android:textColor="@color/dark_grey"
+                android:textSize="@dimen/text_size_small"
+                android:textStyle="normal" />
+
+
+        </LinearLayout>
+
+
+        <View
+
+            android:layout_width="match_parent"
+            android:layout_height="0.3dp"
+            android:layout_marginLeft="10dp"
+            android:background="@color/black" />
+    </LinearLayout>
+
+
+</LinearLayout>

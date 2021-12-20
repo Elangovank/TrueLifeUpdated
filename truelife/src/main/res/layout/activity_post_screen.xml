@@ -1,0 +1,461 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fragment_feed_post_screen_main_LAY"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/new_feed_bg"
+    android:clickable="true"
+   android:focusableInTouchMode="true"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/content_post_LAY"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_gravity="top"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/header"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:gravity="left|center"
+                    android:weightSum="2">
+
+                    <ImageView
+                        android:id="@+id/common_back_arrow"
+                        android:layout_width="20dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="left"
+                        android:layout_weight="0.3"
+                        android:contentDescription="@null"
+                        android:gravity="center_vertical"
+                        android:padding="2dp"
+                        android:src="@drawable/ic_back"
+                        android:tint="@color/dark_grey" />
+
+                    <TextView
+                        android:id="@+id/common_text_header"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1.5"
+                        android:fontFamily="@font/opensans_semibold"
+                        android:gravity="center"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:paddingLeft="-30dp"
+                        android:text="Your Post"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_25"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/post_LAY"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/header"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:orientation="vertical">
+
+                        <ScrollView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:fillViewport="true">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <LinearLayout
+                                    android:id="@+id/fragment_feed_post_Liner_LAY_Posttext"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    android:paddingTop="@dimen/dimen_15">
+                                    <TextView
+                                        android:id="@+id/text_header"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:fontFamily="@string/opensans_semi_bold"
+                                        android:gravity="center"
+                                        android:text="Your Post"
+                                        android:textAppearance="?android:attr/textAppearanceMedium"
+                                        android:textColor="@color/black"
+                                        android:textSize="@dimen/text_25"
+                                        android:layout_marginBottom="@dimen/dimen_25"
+                                        android:visibility="gone"/>
+
+                                    <View
+                                        android:layout_width="fill_parent"
+                                        android:layout_height="1dp"
+                                        android:background="@color/top_popup_separattion_line_color"/>
+                                    <EditText
+                                        android:id="@+id/fragment_feed_post_thoughts_Edt"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="150dp"
+                                        android:background="@color/white"
+                                        android:fontFamily="@font/opensans_regular"
+                                        android:gravity="top|left"
+                                        android:focusableInTouchMode="true"
+                                        android:hint="@string/labe_share_thoughts"
+                                        android:importantForAutofill="no"
+                                        android:inputType="textMultiLine"
+                                        android:maxLength="500"
+                                        android:maxLines="10"
+                                        android:padding="10dp"
+                                        android:singleLine="false"
+                                        android:textColor="@color/black"
+                                        android:textColorHint="@color/dark_grey"
+                                        android:textSize="@dimen/text_18"
+                                        android:textStyle="normal" />
+                                    <View
+                                        android:layout_width="fill_parent"
+                                        android:layout_height="1dp"
+                                        android:background="@color/top_popup_separattion_line_color" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:id="@+id/fragment_feed_post_Liner_LAY_photo"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/fragment_feed_post_Liner_LAY_Posttext"
+                                    android:gravity="center"
+                                    android:orientation="vertical"
+                                    android:paddingLeft="10dp"
+                                    android:paddingRight="10dp">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:paddingBottom="@dimen/dimen_25">
+
+                                        <ImageView
+                                            android:layout_width="30dp"
+                                            android:layout_height="30dp"
+                                            android:layout_gravity="center"
+                                            android:layout_margin="@dimen/dimen_5"
+                                            android:background="@drawable/ic_cameraicon"
+                                            android:backgroundTint="@color/dark_grey" />
+
+                                        <TextView
+                                            android:id="@+id/fragment_feed_post_photo_TXT"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:layout_marginTop="10dp"
+                                            android:layout_marginBottom="10dp"
+                                            android:drawablePadding="5sp"
+                                            android:drawableTint="@color/dark_grey"
+                                            android:fontFamily="@font/opensans_regular"
+                                            android:gravity="center|left"
+                                            android:padding="5sp"
+                                            android:text="@string/labe_add_photo_video"
+                                            android:textAllCaps="false"
+                                            android:textColor="@color/dark_grey"
+                                            android:textSize="@dimen/text_18"
+                                            android:textStyle="normal"/>
+                                    </LinearLayout>
+
+                                    <androidx.recyclerview.widget.RecyclerView
+                                        android:id="@+id/fragment_feed_post_screen_post_RCY"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:clickable="true"
+                                        android:orientation="horizontal"
+                                        android:padding="3dp"
+                                        android:visibility="gone" />
+
+                                    <Button
+                                        android:id="@+id/fragment_feed_post_viewmore_button"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="35dp"
+                                        android:layout_gravity="center"
+                                        android:layout_marginBottom="10dp"
+                                        android:gravity="center"
+                                        android:textColor="@color/blue"
+                                        android:textSize="15dp"
+                                        android:visibility="gone" />
+
+                                    <View
+                                        android:layout_width="fill_parent"
+                                        android:layout_height="1dp"
+                                        android:background="@color/app_gray" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:id="@+id/fragment_feed_post_Liner_LAY_notify_friend"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/fragment_feed_post_Liner_LAY_photo"
+                                    android:orientation="vertical"
+                                    android:paddingLeft="10dp"
+                                    android:paddingTop="10dp"
+                                    android:paddingRight="10dp"
+                                    android:visibility="gone">
+
+                                    <androidx.recyclerview.widget.RecyclerView
+                                        android:id="@+id/fragment_feed_post_screen_notify_friend_RCY"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal"
+                                        android:padding="3dp"
+                                        android:visibility="gone" />
+
+                                    <View
+                                        android:layout_width="fill_parent"
+                                        android:layout_height="1dp"
+                                        android:background="@color/app_gray" />
+                                </LinearLayout>
+
+
+                                <LinearLayout
+                                    android:id="@+id/fragment_feed_post_Liner_LAY_your_club"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/fragment_feed_post_Liner_LAY_notify_friend"
+                                    android:orientation="vertical"
+                                    android:paddingLeft="10dp"
+                                    android:paddingTop="10dp"
+                                    android:paddingRight="10dp"
+                                    android:visibility="visible">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="10dp"
+                                        android:layout_marginBottom="10dp"
+                                        android:layout_gravity="center"
+                                        android:orientation="horizontal"
+                                        android:weightSum="2">
+                                        <ImageView
+                                            android:layout_width="30dp"
+                                            android:layout_height="30dp"
+                                            android:layout_gravity="center"
+                                            android:background="@drawable/ic_club"
+                                            android:layout_margin="@dimen/dimen_5"
+                                            android:backgroundTint="@color/dark_grey" />
+
+                                        <TextView
+                                            android:id="@+id/fragment_feed_post_your_club_TXT"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="match_parent"
+                                            android:layout_gravity="left"
+                                            android:layout_weight="0.1"
+                                            android:fontFamily="@font/opensans_regular"
+                                            android:gravity="center|left"
+                                            android:padding="5sp"
+                                            android:text="@string/labe_your_club"
+                                            android:textAllCaps="false"
+                                            android:textColor="@color/dark_grey"
+                                            android:textSize="@dimen/text_18"
+                                            android:textStyle="normal" />
+
+                                        <TextView
+                                            android:id="@+id/fragment_feed_post_your_club_puls_TXT"
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:layout_marginTop="10dp"
+                                            android:layout_marginBottom="10dp"
+                                            android:layout_weight="1.85"
+                                            android:drawableRight="@drawable/ic_drop_down"
+                                            android:drawableTint="@color/dark_grey"
+                                            android:fontFamily="@font/opensans_regular"
+                                            android:gravity="center|right"
+                                            android:hint="@string/labe_select_club"
+                                            android:textColorHint="@color/dark_grey"
+                                            android:textSize="13sp"
+                                            android:textStyle="normal" />
+
+                                    </LinearLayout>
+
+                                    <TextView
+                                        android:id="@+id/fragment_feed_post_club_name_TXT"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="left"
+                                        android:layout_margin="3sp"
+                                        android:layout_weight="0.1"
+                                        android:drawablePadding="5sp"
+                                        android:drawableTint="@color/white"
+                                        android:gravity="center|left"
+                                        android:padding="5sp"
+                                        android:text="@string/labe_your_club"
+                                        android:textColor="@color/dark_grey"
+                                        android:textSize="18sp"
+                                        android:textStyle="bold"
+                                        android:visibility="gone" />
+
+                                    <androidx.recyclerview.widget.RecyclerView
+                                        android:id="@+id/fragment_feed_post_screen_your_club_RCY"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:background="@color/transparent"
+                                        android:orientation="horizontal"
+                                        android:padding="8dp"
+                                        android:paddingLeft="3dp"
+                                        android:paddingRight="3dp"
+                                        android:visibility="gone" />
+
+                                    <View
+                                        android:layout_width="fill_parent"
+                                        android:layout_height="1dp"
+                                        android:background="@color/app_gray" />
+
+                                </LinearLayout>
+
+
+                                <LinearLayout
+                                    android:id="@+id/fragment_feed_post_Liner_LAY_where_post"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/fragment_feed_post_Liner_LAY_your_club"
+                                    android:orientation="vertical"
+                                    android:paddingLeft="10dp"
+                                    android:paddingTop="10dp"
+                                    android:paddingRight="10dp"
+                                    android:paddingBottom="10dp">
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal">
+                                    <ImageView
+                                        android:layout_width="35dp"
+                                        android:layout_height="40dp"
+                                        android:background="@drawable/ic_location"
+                                        android:layout_margin="@dimen/dimen_5"
+                                        android:backgroundTint="@color/dark_grey" />
+
+                                    <TextView
+                                        android:id="@+id/fragment_feed_post_TXT_where_post"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="left"
+                                        android:layout_marginTop="10dp"
+                                        android:layout_marginBottom="10dp"
+                                        android:fontFamily="@font/opensans_regular"
+                                        android:gravity="center|left"
+                                        android:padding="5sp"
+                                        android:text="@string/labe_where_do_you_want_to_post"
+                                        android:textAllCaps="false"
+                                        android:textColor="@color/dark_grey"
+                                        android:textSize="@dimen/text_18"
+                                        android:textStyle="normal" />
+                                    </LinearLayout>
+
+                                    <TextView
+                                        android:id="@+id/fragment_feed_post_SPN_where_post"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:background="@drawable/md_transparent"
+                                        android:drawableTint="@color/white"
+                                        android:fontFamily="@font/opensans_regular"
+                                        android:gravity="center"
+                                        android:hint="@string/lable_spinner_select"
+                                        android:inputType="text"
+                                        android:padding="5dp"
+                                        android:paddingLeft="50dp"
+                                        android:textColor="@color/dark_grey"
+                                        android:textColorHint="@color/dark_grey"
+                                        android:textSize="@dimen/text_18"
+                                        android:textStyle="normal" />
+
+                                    <View
+                                        android:layout_width="fill_parent"
+                                        android:layout_height="1dp"
+                                        android:background="@color/app_gray" />
+                                </LinearLayout>
+                            </RelativeLayout>
+                        </ScrollView>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/progress_bar_LAY"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/custom_dialog_box_TXT_loading"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:text="@string/label_loading"
+                        android:textColor="@android:color/white"
+                        android:visibility="gone" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/fragment_feed_post_btn_LAY"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/feed_post_button"
+                    android:layout_width="100dp"
+                    android:layout_height="35dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/post_button_bg"
+                    android:fontFamily="@font/opensans_regular"
+                    android:gravity="center"
+                    android:text="@string/labe_post"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_20"
+                    android:paddingBottom="2dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/progress_area"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:background="@color/transparent_black"
+        android:clickable="true"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+
+    </LinearLayout>
+</RelativeLayout>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/app_white"
+    android:orientation="horizontal">
+
+    <EditText
+        android:id="@+id/fragment_search"
+        style="@style/CreateAccountMain"
+        android:layout_width="0dp"
+        android:layout_margin="5dp"
+        android:layout_weight="1"
+        android:background="@drawable/bg_border_view_gray"
+        android:drawableLeft="@drawable/ic_search"
+        android:drawableTint="@color/app_gray"
+        android:hint="@string/label_search"
+        android:inputType="text"
+        android:textColorHint="@color/app_gray_dark" />
+
+    <TextView
+        android:id="@+id/fragment_cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginRight="@dimen/dimen_5"
+        android:fontFamily="opensans_regular"
+        android:gravity="center"
+        android:text="@string/cancel"
+        android:textColor="@color/blue"
+        android:textSize="15sp"
+        android:textStyle="normal"
+        android:visibility="gone" />
+
+</LinearLayout>

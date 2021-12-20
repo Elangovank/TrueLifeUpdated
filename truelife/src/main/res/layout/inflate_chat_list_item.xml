@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:clickable="true">
+
+    <LinearLayout
+        android:id="@+id/chat_member_LAY"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dimen10"
+        android:layout_marginRight="@dimen/dimen10"
+        android:layout_marginBottom="@dimen/dimen_8"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:padding="@dimen/dimen_3">
+
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:id="@+id/multiple_list_item_check_RD_button"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:visibility="gone"
+            app:buttonTint="@color/chat_list_delete_box_color" />
+
+
+        <LinearLayout
+            android:id="@+id/inflate_chat_list_item_chat_LAY"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/chat_list_item_IMG_profile"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/ic_man_placeholder" />
+
+                <TextView
+                    android:id="@+id/message_status"
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:layout_gravity="bottom|end"
+                    android:layout_marginRight="@dimen/dimen_5"
+                    android:layout_marginBottom="@dimen/dimen_5"
+                    android:background="@drawable/bg_chat_sent"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:visibility="gone" />
+
+
+            </FrameLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10dp"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/chat_list_item_TXT_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@string/opensans_regular"
+                    android:maxLines="1"
+                    android:text="Chat person name"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/font16"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="35dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/chat_list_item_IMG_attachment"
+                        android:layout_width="@dimen/dimen20"
+                        android:layout_height="@dimen/dimen20"
+                        android:layout_marginRight="10dp"
+                        android:src="@mipmap/ic_attachment"
+                        android:tint="@color/dark_grey"
+                        android:visibility="gone" />
+
+
+                    <TextView
+                        android:id="@+id/chat_list_item_TXT_msg"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:ellipsize="end"
+                        android:fontFamily="@string/opensans_regular"
+                        android:maxLines="1"
+                        android:textColor="@color/dark_grey"
+                        android:textSize="@dimen/font15"
+                        android:textStyle="normal" />
+                </LinearLayout>
+
+                <com.eyalbira.loadingdots.LoadingDots
+                    android:id="@+id/chat_list_item_loading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginBottom="@dimen/dimen2"
+                    android:gravity="center"
+                    android:visibility="gone"
+                    app:LoadingDots_auto_play="true"
+                    app:LoadingDots_dots_count="3"
+                    app:LoadingDots_dots_size="5dp" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/chat_list_item_TXT_unread"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/bg_unread_count"
+        android:paddingLeft="10dp"
+        android:paddingTop="5dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="5dp"
+        android:textColor="@color/white"
+        android:visibility="gone" />
+
+
+</RelativeLayout>

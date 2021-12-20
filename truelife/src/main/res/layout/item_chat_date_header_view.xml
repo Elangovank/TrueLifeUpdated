@@ -1,0 +1,82 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/date_header_left_LAY"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dimen10"
+        android:layout_marginRight="@dimen/dimen10"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/date_header_left_side"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_gravity="center|left"
+            android:background="@drawable/bg_round_button_club"
+            android:backgroundTint="@color/chat_list_search_bar_bg"
+            android:gravity="center"
+            android:hint=""
+            android:singleLine="true"
+            android:textColor="@color/black"
+            android:textSize="@dimen/dimen10"
+            android:visibility="visible" />
+
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_weight="1"
+            android:background="@color/chat_list_search_bar_bg" />
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/date_header_right_LAY"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dimen10"
+        android:layout_marginRight="@dimen/dimen10"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_weight="1"
+            android:background="@color/chat_list_search_bar_bg" />
+
+
+        <TextView
+            android:id="@+id/date_header_right_side"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_gravity="center|right"
+            android:background="@drawable/bg_round_button_club"
+            android:backgroundTint="@color/chat_list_search_bar_bg"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="31 may,2019"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font12"
+            android:visibility="visible" />
+
+
+    </LinearLayout>
+
+</LinearLayout>

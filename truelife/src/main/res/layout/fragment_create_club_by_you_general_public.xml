@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:background="@android:color/white"
+    android:clickable="true"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    tools:context=".app.fragment.club.more.invite.TLClubGeneralPublic">
+    <!--
+
+        <com.angler.autoscrollviewpager.AutoScrollViewPager
+            android:id="@+id/fragment_home_ASVP_image_gallery"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/image_slidersize" />
+    -->
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/dimen10">
+
+        <RelativeLayout
+
+            android:id="@+id/header"
+            android:layout_width="match_parent"
+
+            android:layout_height="65dp"
+            android:background="@color/white"
+            android:fitsSystemWindows="true"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true">
+
+                <ImageView
+                    android:id="@+id/common_back_arrow"
+                    android:layout_width="@dimen/dimen_25"
+                    android:layout_height="@dimen/dimen_25"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/dimen10"
+                    android:gravity="left"
+                    android:src="@drawable/ic_drop_down_bold"
+                    android:tint="@color/black" />
+
+
+                <TextView
+                    android:id="@+id/common_text_header"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentTop="true"
+
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/opendans_bold"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="@string/label_add_invite_general_member"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/font16" />
+
+
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/fragment_horizontal_recycler_member"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/semi_dark_grey"
+        android:orientation="horizontal" />
+
+</LinearLayout>

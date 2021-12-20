@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ImageView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_club_image"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:layout_gravity="center"
+    android:layout_margin="1dp"
+    android:contentDescription="@null"
+    android:scaleType="centerCrop"
+    android:src="@drawable/new_feed_image_place_holder">
+
+
+</ImageView>
+

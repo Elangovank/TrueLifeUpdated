@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/chat"
+        android:icon="@drawable/ic_chat_msg"
+        android:title="" />
+
+    <item
+        android:id="@+id/friends"
+        android:icon="@drawable/ic_friends"
+        android:title="" />
+
+    <item
+        android:id="@+id/contacts"
+        android:icon="@drawable/ic_call_black_24dp"
+        android:title="" />
+
+
+    <item
+        android:id="@+id/wifi"
+        android:icon="@drawable/ic_wifi"
+        android:title="" />
+</menu>

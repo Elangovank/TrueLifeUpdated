@@ -1,0 +1,162 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fragment_welcome2_parent_layout_RLAY"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:clickable="true"
+    android:fitsSystemWindows="true">
+
+    <include
+        android:id="@+id/toolbar_lay"
+        layout="@layout/app_chat_header" />
+
+    <RelativeLayout
+        android:id="@+id/fragment_notify_friend_list_Search_LAY"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar_lay"
+        android:orientation="horizontal"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingRight="20dp"
+        android:paddingBottom="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="15dp"
+                android:layout_weight="1.8">
+
+                <FrameLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+
+
+                    <EditText
+                        android:id="@+id/fragment_search_friend"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:background="@drawable/bg_square_corner_messager_filter_search"
+                        android:drawableLeft="@drawable/ic_search"
+                        android:drawableTint="@color/dark_grey"
+                        android:importantForAutofill="no"
+                        android:paddingStart="15dp"
+                        android:paddingLeft="25dp"
+                        android:paddingEnd="5dp"
+                        android:paddingRight="5dp"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/dark_grey"
+                        android:textCursorDrawable="@drawable/black_cursor"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:id="@+id/clear_image_view"
+
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_gravity="center|right"
+                        android:layout_marginRight="@dimen/dimen_15"
+                        android:layout_toRightOf="@+id/fragment_search_friend"
+                        android:src="@drawable/ic_close"
+                        android:visibility="gone" />
+
+
+                </FrameLayout>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="0.3"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/add_user"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:background="@drawable/ic_blocklist"
+                    android:backgroundTint="@color/black"
+                    android:gravity="center" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/fragment_notify_friend_list_check_frd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="center"
+            android:text="No friends Available"
+            android:textColor="@color/black"
+            android:visibility="gone" />
+    </LinearLayout>
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/fragment_notify_friend_list_Search_LAY">
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/fragment_menu_list_RV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:animateLayoutChanges="false"
+            android:divider="@android:color/white"
+            android:gravity="center_vertical"
+            android:nestedScrollingEnabled="false"
+            android:scrollbars="vertical" />
+
+
+        <TextView
+            android:id="@+id/no_block_friends_found"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_gravity="center"
+            android:fontFamily="@string/opensans_bold"
+            android:gravity="center"
+            android:text="@string/label_no_block_friends"
+            android:textColor="@color/black"
+            android:visibility="gone" />
+
+
+    </FrameLayout>
+
+
+</RelativeLayout>

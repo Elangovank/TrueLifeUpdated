@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="2dp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="12.5dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/dialog_title"
+            style="@style/DialogTitle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="0dp"
+            android:background="@drawable/bg_border_blue_corners"
+            android:textColor="@color/app_white" />
+
+        <include
+            android:id="@+id/search"
+            layout="@layout/search_layout"
+            android:visibility="gone" />
+
+        <include layout="@layout/layout_no_data_found" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/dialog_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="0.5dp"
+            android:layout_marginRight="0.5dp"
+            android:background="@drawable/bg_border_white_bottom_corners"
+            android:paddingLeft="10dp"
+            android:paddingTop="2dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="10dp" />
+
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/dialog_close_button"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:padding="3dp"
+        android:tint="@color/app_white"
+        android:background="@drawable/bg_round_button"
+        android:src="@android:drawable/ic_delete" />
+
+
+</RelativeLayout>

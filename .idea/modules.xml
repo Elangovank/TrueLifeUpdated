@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/TrueLife.iml" filepath="$PROJECT_DIR$/.idea/modules/TrueLife.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/YouTubeAndroidPlayerApi/TrueLife.YouTubeAndroidPlayerApi.iml" filepath="$PROJECT_DIR$/.idea/modules/YouTubeAndroidPlayerApi/TrueLife.YouTubeAndroidPlayerApi.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/cameraView/TrueLife.cameraView.iml" filepath="$PROJECT_DIR$/.idea/modules/cameraView/TrueLife.cameraView.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/imageeditengine/TrueLife.imageeditengine.iml" filepath="$PROJECT_DIR$/.idea/modules/imageeditengine/TrueLife.imageeditengine.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/stories-progress-view/TrueLife.stories-progress-view.iml" filepath="$PROJECT_DIR$/.idea/modules/stories-progress-view/TrueLife.stories-progress-view.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/truelife/TrueLife.truelife.iml" filepath="$PROJECT_DIR$/.idea/modules/truelife/TrueLife.truelife.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/wheelpicker/TrueLife.wheelpicker.iml" filepath="$PROJECT_DIR$/.idea/modules/wheelpicker/TrueLife.wheelpicker.iml" />
+    </modules>
+  </component>
+</project>

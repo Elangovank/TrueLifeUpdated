@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/first_page"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+                <LinearLayout
+                    android:id="@+id/popup_header"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dimen10">
+
+
+                    <ImageView
+                        android:id="@+id/back_share"
+                        android:layout_width="@dimen/dimen_35"
+                        android:layout_height="@dimen/dimen_35"
+                        android:layout_gravity="center"
+                        android:padding="@dimen/dimen5"
+                        android:src="@drawable/user_share" />
+
+
+                    <TextView
+                        android:id="@+id/share"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/opensans_regular"
+                        android:gravity="left|center"
+                        android:text="@string/label_share"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_18"
+                        android:textStyle="normal" />
+
+
+                </LinearLayout>
+
+
+                <View
+                    android:id="@+id/view"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.75dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@color/app_gray" />
+
+
+                <LinearLayout
+                    android:id="@+id/show_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/view"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="@dimen/dimen20"
+                    android:orientation="horizontal">
+
+
+                    <LinearLayout
+                        android:id="@+id/share_public"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/share_image_height"
+                            android:layout_gravity="center"
+                            android:contentDescription="@null"
+                            android:padding="@dimen/dimen_10"
+                            android:src="@drawable/ic_public_new" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/opendans_bold"
+                            android:gravity="center"
+                            android:padding="5dp"
+                            android:text="@string/label_share_public"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:textColor="@color/black"
+                            android:textStyle="normal" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/share_friends"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/share_image_height"
+                            android:layout_gravity="center"
+                            android:contentDescription="@null"
+                            android:padding="@dimen/dimen_10"
+                            android:src="@drawable/clubs_main_icon" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/opendans_bold"
+                            android:gravity="center"
+                            android:padding="5dp"
+                            android:text="@string/label_share_friends"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:textColor="@color/black"
+                            android:textStyle="normal" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/share_club"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/share_image_height"
+                            android:contentDescription="@null"
+                            android:padding="@dimen/dimen_10"
+                            android:src="@drawable/clubs_friend_icon" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/opendans_bold"
+                            android:gravity="center"
+                            android:padding="5dp"
+                            android:text="@string/label_share_club"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:textColor="@color/black"
+                            android:textStyle="normal" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/share_other_app"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/share_image_height"
+                            android:layout_gravity="center"
+                            android:contentDescription="@null"
+                            android:padding="@dimen/dimen_10"
+                            android:src="@drawable/ic_share_app" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/opendans_bold"
+                            android:gravity="center"
+                            android:padding="5dp"
+                            android:text="@string/label_share_other_app"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:textColor="@color/black"
+                            android:textStyle="normal" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/friends_public_lay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/dimen5"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/back_arrow"
+                        android:layout_width="@dimen/dimen_35"
+                        android:layout_height="@dimen/dimen_35"
+                        android:layout_gravity="center"
+                        android:padding="@dimen/dimen5"
+                        android:src="@drawable/back_arrow_slim" />
+
+                    <ImageView
+                        android:id="@+id/header_image"
+                        android:layout_width="@dimen/dimen_40"
+                        android:layout_height="@dimen/dimen_40"
+                        android:layout_gravity="center"
+                        android:contentDescription="@null"
+                        android:src="@drawable/clubs_main_icon_header" />
+
+                    <TextView
+                        android:id="@+id/header_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="@dimen/dimen10"
+                        android:fontFamily="@font/opensans_regular"
+                        android:gravity="left|center"
+                        android:text="@string/title_caps"
+                        android:textAllCaps="false"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_18"
+                        android:textStyle="normal" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.75dp"
+                    android:layout_margin="10dp"
+                    android:background="@color/app_gray" />
+
+                <TextView
+                    android:id="@+id/question"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dimen10"
+                    android:fontFamily="@font/opensans_regular"
+                    android:text="@string/label_share_feed_public_friends"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/font_18" />
+
+                <NumberPicker
+                    android:id="@+id/numberFriendsPicker"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:layout_marginLeft="@dimen/dimen30"
+                    android:layout_marginRight="@dimen/dimen30"
+                    android:layout_marginBottom="@dimen/text_10"
+                    android:fadingEdge="vertical"
+                    android:textAlignment="center"
+                    android:descendantFocusability="blocksDescendants"
+                    android:theme="@style/GreyDividerNumberPickerTheme" />
+
+                <NumberPicker
+                    android:id="@+id/numberPublicPicker"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:layout_marginLeft="@dimen/dimen30"
+                    android:layout_marginRight="@dimen/dimen30"
+                    android:layout_marginBottom="@dimen/text_10"
+                    android:fadingEdge="vertical"
+                    android:textAlignment="center"
+                    android:descendantFocusability="blocksDescendants"
+                    android:theme="@style/GreyDividerNumberPickerTheme" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/clubs_recycler"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dimen_150"
+                        android:visibility="gone" />
+
+                </RelativeLayout>
+
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/share_now_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/dimen_15"
+                    android:background="@drawable/bg_round_button"
+                    android:fontFamily="@font/opensans_semibold"
+                    android:gravity="center"
+                    android:paddingLeft="@dimen/dimen_25"
+                    android:paddingRight="@dimen/dimen_25"
+                    android:text="@string/label_share_post"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:textStyle="normal" />
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/progress_bar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/transparent_black"
+            android:clickable="true"
+            android:focusable="true"
+            android:visibility="gone">
+
+            <ProgressBar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:indeterminateTint="@color/colorPrimary" />
+        </RelativeLayout>
+
+</RelativeLayout>
