@@ -104,7 +104,8 @@ android {
         resValue 'string', "email", ""
 
        // resValue 'string', "agora_app_id", "18e3cfe0f6fc4735b69980a1479c30af"
-        resValue 'string', "agora_app_id", "225748a1aac9441eacf5be8f12a42c7f"
+        //resValue 'string', "agora_app_id", "225748a1aac9441eacf5be8f12a42c7f"
+        resValue 'string', "agora_app_id", "18e3cfe0f6fc4735b69980a1479c30af"
 
         resValue 'integer', "max_group_call_count", "11"
 

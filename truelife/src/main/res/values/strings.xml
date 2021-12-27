@@ -563,7 +563,7 @@
     <string name="choose_wallpaper">Choose Wallpaper</string>
     <string name="restore_default_wallpaper">Restore Default Wallpaper</string>
     <string name="unsupported_type">Unsupported type, please update the app</string>
-    <string name="write_your_message">Type a message</string>
+    <string name="write_your_message">Write a response</string>
     <string name="profile_translation_name" translatable="false">profile_translation_name</string>
     <string name="chat_backup">Chat backup</string>
     <string name="title_activity_backup_chat">BackupChatActivity</string>

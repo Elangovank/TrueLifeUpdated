@@ -299,11 +299,11 @@
             android:name="CLOUDINARY_URL"
             android:value="@string/CLOUDINARY_URL" />
 
-        <service android:name=".notification.MyFirebaseMessengingService">
+       <!-- <service android:name=".notification.MyFirebaseMessengingService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
-        </service>
+        </service>-->
 
         <provider
             android:name="androidx.core.content.FileProvider"

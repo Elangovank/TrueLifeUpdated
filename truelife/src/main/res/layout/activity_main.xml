@@ -65,12 +65,15 @@
             android:layout_height="50dp"
             android:layout_above="@+id/bottom_navigation"
             android:layout_alignParentRight="true"
-            android:layout_margin="@dimen/fab_margin"
-            android:padding="10dp"
+            android:layout_marginStart="@dimen/fab_margin"
+            android:layout_marginTop="@dimen/fab_margin"
+            android:layout_marginEnd="@dimen/fab_margin"
+            android:layout_marginBottom="@dimen/fab_margin"
             android:background="@drawable/circular_img_view"
+            android:padding="10dp"
             android:visibility="visible"
-            app:tint="@color/white"
-            app:srcCompat="@drawable/ic_chat_fab" />
+            app:srcCompat="@drawable/ic_chat_fab"
+            app:tint="@color/white" />
 
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton

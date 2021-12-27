@@ -87,7 +87,6 @@ class MainActivity : BaseActivity(), FabRotationAnimation.RotateAnimationListene
         return true
     }
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -98,7 +97,7 @@ class MainActivity : BaseActivity(), FabRotationAnimation.RotateAnimationListene
             ViewModelFactory(this.application)
         ).get(MainViewModel::class.java)
 
-        toolbar.logo = this.resources.getDrawable(R.drawable.img_title)
+        toolbar.logo = this.resources.getDrawable(R.drawable.app_icon)
         toolbar.title = ""
         setSupportActionBar(toolbar)
 
