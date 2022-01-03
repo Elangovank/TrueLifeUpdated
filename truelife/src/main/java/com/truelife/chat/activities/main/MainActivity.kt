@@ -97,7 +97,7 @@ class MainActivity : BaseActivity(), FabRotationAnimation.RotateAnimationListene
             ViewModelFactory(this.application)
         ).get(MainViewModel::class.java)
 
-        toolbar.logo = this.resources.getDrawable(R.drawable.app_icon)
+       // toolbar.logo = this.resources.getDrawable(R.drawable.app_icon)
         toolbar.title = ""
         setSupportActionBar(toolbar)
 
