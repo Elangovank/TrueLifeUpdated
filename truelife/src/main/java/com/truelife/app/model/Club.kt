@@ -74,6 +74,7 @@ class Club : Response(), Serializable {
 
         @SerializedName("notification")
         var notification = ""
+
     }
 
 
@@ -117,6 +118,10 @@ class Club : Response(), Serializable {
 
         @SerializedName("maximum_member")
         var maximum_member: String? = null
+
+
+        @SerializedName("post_visibility")
+        var post_visibility = ""
 
     }
 

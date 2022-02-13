@@ -457,10 +457,15 @@ class TLClubsFeedFragment : BaseFragment(), ResponseListener, progressInterface,
                 if (r.requestType!! == AppServices.API.publicFeed.hashCode()) {
                     if (r.response!!.isSuccess) {
                         mTotalPages = r.totalPages!!
+                        val list = (r as PublicFeedModel).waitingList!!.apply {
+                            this.forEach {
+                                it.isWaitingList = true
+                            }
+                        }
+                        mList.addAll(0,list)
                         mList.addAll((r as PublicFeedModel).feedList!!)
                         mRecyclerView.setMediaObjects(mList)
-                        // mAdapter.notifyDataSetChanged()
-
+                        // mAdapter.notifyDataSetChanged
                         if (mPage == 1) {
                             mAdapter.notifyDataSetChanged()
                             mRecyclerView.smoothScrollBy(0, 1)

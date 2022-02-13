@@ -210,7 +210,30 @@
 
                         </LinearLayout>
 
+                        <LinearLayout
+                            android:id="@+id/post_approval_LAY"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bg_border_view_darkgray"
+                            android:layout_marginTop="@dimen/dimen_10"
+                            android:padding="@dimen/dimen_10"
+                            android:orientation="horizontal">
 
+
+                            <androidx.appcompat.widget.SwitchCompat
+                                android:id="@+id/post_approval_switch"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:checked="false"
+                                android:gravity="left|center"
+                                android:text="Required approval for new post"
+                                android:textColor="@color/white"
+                                android:textStyle="bold"
+                                android:fontFamily="@font/opensans_extrabold"
+                                android:theme="@style/RadioButtonStyleSwitch" />
+
+                        </LinearLayout>
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"

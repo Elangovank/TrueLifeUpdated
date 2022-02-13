@@ -11,6 +11,7 @@ import android.util.Base64
 import android.util.Log
 import android.view.View
 import android.widget.*
+import androidx.appcompat.widget.SwitchCompat
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -85,7 +86,7 @@ class CreateClub : BaseActivity(), ResponseListener,
     private var myLikeStr = "0"
     private var myCommentsStr = "0"
     private var myRule = ""
-
+    lateinit var mPostVisibilitySwitch: SwitchCompat
 
     private var myFriendsRecyclerView: RecyclerView? = null
     private var myFriendsMenuRecyclerAdapter: CreateClubFriendsListAdapter? = null
@@ -140,6 +141,7 @@ class CreateClub : BaseActivity(), ResponseListener,
             myUserInfo = LocalStorageSP.getLoginUser(myContext)
             myCountryDialogue = TLProgressDialog(myContext)
             myFragmentManager = TLFragmentManager(myContext)
+            mPostVisibilitySwitch = findViewById(R.id.post_approval_switch)
             myRootLayout =
                 findViewById<View>(R.id.fragment_crate_club_root_layout) as LinearLayout
             myAddInviteMemberLAY =
@@ -596,6 +598,7 @@ class CreateClub : BaseActivity(), ResponseListener,
             club.setShare(if (myShareChkBox!!.isChecked) "1" else "0")
             club.setComment(if (myCommentsChkBox!!.isChecked) "1" else "0")
             club.setLike(if (myLikeChkBox!!.isChecked) "1" else "0")
+            club.setPost_visibility( if (mPostVisibilitySwitch.isChecked) "1" else "0")
             club.setMaximum_members(
                 if (myTotalMemberEDT!!.text.toString().length > 0) myTotalMemberEDT!!.text.toString()
                     .trim { it <= ' ' } else "0")
@@ -815,7 +818,7 @@ class CreateClub : BaseActivity(), ResponseListener,
             jsonParam1.put("share", aClub.getShare())
             jsonParam1.put("comment", aClub.getComment())
             jsonParam1.put("maximum_members", aClub.getMaximum_members())
-            //  jsonParam1.put("maximum_members", aClub.getMaximum_members());
+            jsonParam1.put("post_visibility", aClub.getPost_visibility())
             val jsonParam = JSONObject()
             jsonParam.put("CreateClub", jsonParam1)
             Log.e("CreateClub", " $jsonParam")

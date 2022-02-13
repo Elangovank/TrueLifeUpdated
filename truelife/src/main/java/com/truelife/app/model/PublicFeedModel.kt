@@ -10,8 +10,11 @@ class PublicFeedModel : Response(), Serializable {
     var clubInfo: List<ClubInfo>? =
         null
     @SerializedName("feed_list")
-    var feedList: List<FeedList>? =
-        null
+    var feedList: List<FeedList>? = null
+
+    @SerializedName("waiting_list")
+    var waitingList: List<FeedList>? = null
+
     @SerializedName("is_friend")
     var isFriend: Int? = null
     @SerializedName("user_data")
@@ -118,6 +121,9 @@ class PublicFeedModel : Response(), Serializable {
         var data: ArrayList<FeedList>? = null
         @SerializedName("isProfile")
         var isProfile: String? = "no"
+
+       // @SerializedName("isProfile")
+        var isWaitingList: Boolean = false
 
         @SerializedName("club_id")
         var clubId: String? = null

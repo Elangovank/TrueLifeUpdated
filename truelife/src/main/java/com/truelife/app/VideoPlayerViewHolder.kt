@@ -47,6 +47,7 @@ class VideoPlayerViewHolder(var parent: View) :
     var sharedFeedDate_TXT: TextView
     var shareLay: RelativeLayout
     var shareUserImg: ImageView
+    var waiting_img: ImageView
     var images_rv: RecyclerView
     var imageCount: TextView
     var seeAll: TextView
@@ -125,6 +126,12 @@ class VideoPlayerViewHolder(var parent: View) :
             //title.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16F);
             youtubeThumbnail.visibility = View.GONE
             youThumbLay.visibility = View.GONE
+
+            if(mediaObject.isWaitingList == true){
+                waiting_img.visibility = View.VISIBLE
+            }else{
+                waiting_img.visibility = View.GONE
+            }
 
             if (mediaObject.isSharedPost == 1) {
 
@@ -572,6 +579,7 @@ class VideoPlayerViewHolder(var parent: View) :
         sharedFeedDate_TXT = parent.findViewById(R.id.feed_shared_date_time)
         shareLay = parent.findViewById(R.id.feed_shared_profile_LAY)
         shareUserImg = parent.findViewById(R.id.feed_shared_user_image)
+        waiting_img = parent.findViewById(R.id.waiting_img)
         culb_shared_by = parent.findViewById(R.id.club_post_shared_by)
         itemlay = parent.findViewById(R.id.item_lay)
         progressLay = parent.findViewById(R.id.progress_bar_LAY)

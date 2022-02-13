@@ -38,6 +38,7 @@ class ClubPrivacyAcitivty : BaseActivity(), ResponseListener {
     var user: User? = null
     var list = ArrayList<String>()
     lateinit var mNotificationSwitch: SwitchCompat
+    lateinit var mPostVisibilitySwitch: SwitchCompat
     var mClubVisibility = 0
     var mMemberVisibility = 0
 
@@ -124,6 +125,7 @@ class ClubPrivacyAcitivty : BaseActivity(), ResponseListener {
         mBackBtn = findViewById(R.id.close_club_button)
         mSave = findViewById(R.id.privacy_post_btn)
         mNotificationSwitch = findViewById(R.id.notification_switch)
+        mPostVisibilitySwitch = findViewById(R.id.post_approval_switch)
 
         clickListener()
     }
@@ -180,6 +182,12 @@ class ClubPrivacyAcitivty : BaseActivity(), ResponseListener {
             else -> false
         }
 
+        mPostVisibilitySwitch.isChecked = when (mclubObj.clubs?.clubRights?.post_visibility!!) {
+            "1" -> true
+            "0" -> false
+            else -> false
+        }
+
     }
 
 
@@ -210,6 +218,7 @@ class ClubPrivacyAcitivty : BaseActivity(), ResponseListener {
             jsonParam1.put("member_visibility", mMemberVisibility)
             jsonParam1.put("rule", "2")
             jsonParam1.put("notification", if (mNotificationSwitch.isChecked) "1" else "0")
+            jsonParam1.put("post_visibility", if (mPostVisibilitySwitch.isChecked) "1" else "0")
             val jsonParam = JSONObject()
             jsonParam.put("ClubPrivacySettings", jsonParam1)
             Log.e("ClubPrivacySettings", " $jsonParam")

@@ -15,6 +15,7 @@ import com.google.firebase.iid.InstanceIdResult
 import com.truelife.R
 import com.truelife.app.constants.TLConstant
 import com.truelife.base.BaseActivity
+import com.truelife.chat.utils.IntentUtils
 import com.truelife.storage.LocalStorageSP
 import com.truelife.util.PermissionChecker
 import kotlinx.android.synthetic.main.activity_splash_screen.*
@@ -37,7 +38,6 @@ class TLSplashActivity : BaseActivity() {
 
     override fun init() {
         mContext = this
-
         LocalStorageSP.put(mContext!!, "profile_Screen", "0")
 
     }

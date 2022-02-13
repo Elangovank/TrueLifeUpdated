@@ -18,6 +18,15 @@ public class TLCreateClubModel {
     String share = "";
     String maximum_members = "";
 
+    public String getPost_visibility() {
+        return post_visibility;
+    }
+
+    public void setPost_visibility(String post_visibility) {
+        this.post_visibility = post_visibility;
+    }
+
+    String post_visibility = "0";
     public String getClubname() {
         return clubname;
     }
