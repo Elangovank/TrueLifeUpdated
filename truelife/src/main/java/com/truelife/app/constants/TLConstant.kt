@@ -94,4 +94,7 @@ object TLConstant {
     var PUSH_FEED_TYPE = "share"
     var PUSH_CHAT_TYPE = "chat_message"
     var PUSH_DASHBOARD = "dashboard"
+
+    const val SELECTED_COUNTRY_CODE ="SELECTED_COUNTRY_CODE"
+    const val SELECTED_MOBILE_NUMBER ="SELECTED_MOBILE_NUMBER"
 }

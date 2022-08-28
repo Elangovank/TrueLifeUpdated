@@ -11,12 +11,11 @@ import android.view.inputmethod.EditorInfo
 import androidx.activity.OnBackPressedCallback
 import androidx.core.widget.doOnTextChanged
 import androidx.navigation.Navigation
-import  com.truelife.R
+import com.truelife.R
 import com.truelife.TLApplication
 import com.truelife.chat.utils.IntentUtils
 import com.truelife.chat.utils.NetworkHelper
 import com.truelife.chat.utils.Util
-import kotlinx.android.synthetic.main.fragment_enter_phone_number.*
 import kotlinx.android.synthetic.main.fragment_verify_phone.*
 
 
@@ -24,12 +23,14 @@ class VerifyPhoneFragment : BaseAuthFragment() {
 
     private var countryCode = ""
     private var rawPhone = ""
-    private lateinit var timer : CountDownTimer
+    private lateinit var timer: CountDownTimer
 
     private lateinit var onotpsent: OnOTPSent
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_verify_phone, container, false)
     }
@@ -62,30 +63,39 @@ class VerifyPhoneFragment : BaseAuthFragment() {
             }
         }
 
+
         resend_otp.setOnClickListener {
             if (NetworkHelper.isConnected(TLApplication.context())) {
                 callbacks?.verifyPhoneNumber(rawPhone, countryCode, "otp", onotpsent)
             } else {
-                Util.showSnackbar(requireActivity(), requireActivity().getString(R.string.no_internet_connection))
+                Util.showSnackbar(
+                    requireActivity(),
+                    requireActivity().getString(R.string.no_internet_connection)
+                )
             }
         }
 
+        btn_verify1.setOnClickListener {
+            if (et_otp.text?.length == 6)
+                completeRegistration()
+        }
 
-        val callback: OnBackPressedCallback = object : OnBackPressedCallback(true /* enabled by default */) {
-            override fun handleOnBackPressed() {
+        val callback: OnBackPressedCallback =
+            object : OnBackPressedCallback(true /* enabled by default */) {
+                override fun handleOnBackPressed() {
 
-                AlertDialog.Builder(requireActivity()).apply {
-                    setMessage(R.string.cancel_verification_confirmation_message)
-                    setNegativeButton(R.string.no, null)
-                    setPositiveButton(R.string.yes) { _, _ ->
-                        callbacks?.cancelVerificationRequest()
-                        Navigation.findNavController(et_otp).navigateUp()
+                    AlertDialog.Builder(requireActivity()).apply {
+                        setMessage(R.string.cancel_verification_confirmation_message)
+                        setNegativeButton(R.string.no, null)
+                        setPositiveButton(R.string.yes) { _, _ ->
+                            callbacks?.cancelVerificationRequest()
+                            Navigation.findNavController(et_otp).navigateUp()
+                        }
+                        show()
                     }
-                    show()
-                }
 
+                }
             }
-        }
 
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
     }
@@ -93,10 +103,10 @@ class VerifyPhoneFragment : BaseAuthFragment() {
     private fun startTimer() {
         Log.d("VerifyPhoneFragment", "startTimer: ")
         resend_otp.isEnabled = false
-        timer = object: CountDownTimer(120000, 1000) {
+        timer = object : CountDownTimer(120000, 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 resend_timer_label.setText(" in ")
-                resend_timer.setText((millisUntilFinished / 1000).toString()+" Sec")
+                resend_timer.setText((millisUntilFinished / 1000).toString() + " Sec")
             }
 
             override fun onFinish() {

@@ -19,7 +19,6 @@
             android:layout_height="wrap_content"
             android:checkMark="?android:attr/listChoiceIndicatorMultiple"
             android:checked="true"
-            android:drawableLeft="@drawable/ic_phone_wrapped"
             android:drawableTint="@color/iconTintColor"
             android:drawablePadding="20dp"
             android:gravity="center"

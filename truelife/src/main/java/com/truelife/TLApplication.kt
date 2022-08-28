@@ -14,16 +14,8 @@ import com.aghajari.emojiview.AXEmojiManager
 import com.aghajari.emojiview.emoji.iosprovider.AXIOSEmojiProvider
 import com.cloudinary.android.MediaManager
 import com.evernote.android.job.JobManager
-
-import com.google.android.exoplayer2.ExoPlayerFactory
-import com.google.android.exoplayer2.SimpleExoPlayer
-import com.google.android.exoplayer2.trackselection.AdaptiveTrackSelection
-import com.google.android.exoplayer2.trackselection.DefaultTrackSelector
-import com.google.android.exoplayer2.trackselection.TrackSelection
-import com.google.android.exoplayer2.trackselection.TrackSelector
-import com.google.android.exoplayer2.upstream.BandwidthMeter
-import com.google.android.exoplayer2.upstream.DefaultBandwidthMeter
 import com.google.android.gms.ads.MobileAds
+import com.truelife.app.model.FriendsList
 import com.truelife.chat.activities.calling.model.AGEventHandler
 import com.truelife.chat.activities.calling.model.EngineConfig
 import com.truelife.chat.activities.calling.model.MyEngineEventHandler
@@ -34,12 +26,12 @@ import io.agora.rtc.Constants
 import io.agora.rtc.RtcEngine
 import io.realm.Realm
 import io.realm.RealmConfiguration
-import java.lang.Exception
-import java.lang.RuntimeException
 
 public class TLApplication : Application(), ActivityLifecycleCallbacks {
 
     companion object {
+
+        var mFriendsList = arrayListOf<FriendsList>()
 
         private var INSTANCE: TLApplication? = null
         private var mApp: TLApplication? = null
@@ -53,12 +45,21 @@ public class TLApplication : Application(), ActivityLifecycleCallbacks {
             return mApp?.getApplicationContext()
         }
 
-           fun isChatActivityVisible(): Boolean {
+        fun isChatActivityVisible(): Boolean {
             return chatActivityVisible
         }
 
         fun getCurrentChatId(): String? {
             return currentChatId
+        }
+
+        fun addFriendsList(friendsList : ArrayList<FriendsList>) {
+            clearFriendsList()
+            mFriendsList.addAll(friendsList)
+        }
+
+        fun clearFriendsList(){
+            mFriendsList.clear()
         }
 
         private var hasMovedToForeground = false
@@ -139,109 +140,109 @@ public class TLApplication : Application(), ActivityLifecycleCallbacks {
     }
 
 
-        override fun onCreate() {
-            super.onCreate()
-            MediaManager.init(this)
-            //add support for vector drawables on older APIs
-            AppCompatDelegate.setCompatVectorFromResourcesEnabled(true)
-            //init realm
-            Realm.init(this)
-            //init set realm configs
-            val realmConfiguration = RealmConfiguration.Builder()
-                .schemaVersion(MyMigration.SCHEMA_VERSION.toLong())
-                .migration(MyMigration())
-                .build()
-            Realm.setDefaultConfiguration(realmConfiguration)
-            //init shared prefs manager
-            SharedPreferencesManager.init(this)
-            //init evernote job
-            JobManager.create(this).addJobCreator(FireJobCreator())
-            initEmojiKeyboard()
+    override fun onCreate() {
+        super.onCreate()
+        MediaManager.init(this)
+        //add support for vector drawables on older APIs
+        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true)
+        //init realm
+        Realm.init(this)
+        //init set realm configs
+        val realmConfiguration = RealmConfiguration.Builder()
+            .schemaVersion(MyMigration.SCHEMA_VERSION.toLong())
+            .migration(MyMigration())
+            .build()
+        Realm.setDefaultConfiguration(realmConfiguration)
+        //init shared prefs manager
+        SharedPreferencesManager.init(this)
+        //init evernote job
+        JobManager.create(this).addJobCreator(FireJobCreator())
+        initEmojiKeyboard()
 
 
-            //initialize ads for faster loading in first time
-            if (resources.getBoolean(R.bool.are_ads_enabled)) MobileAds.initialize(this)
-            registerActivityLifecycleCallbacks(this)
-            createRtcEngine()
-            mApp = this
-        }
+        //initialize ads for faster loading in first time
+        if (resources.getBoolean(R.bool.are_ads_enabled)) MobileAds.initialize(this)
+        registerActivityLifecycleCallbacks(this)
+        createRtcEngine()
+        mApp = this
+    }
 
-        private fun initEmojiKeyboard() {
-            AXEmojiManager.install(this, AXIOSEmojiProvider(this))
-            val bgColor = ContextCompat.getColor(this, R.color.bgColor)
-            val accentColor = ContextCompat.getColor(this, R.color.colorAccent)
-            AXEmojiManager.getEmojiViewTheme().footerBackgroundColor = bgColor
-            AXEmojiManager.getEmojiViewTheme().categoryColor = bgColor
-            AXEmojiManager.getEmojiViewTheme().backgroundColor = bgColor
-            AXEmojiManager.getEmojiViewTheme().selectedColor = accentColor
-            AXEmojiManager.getStickerViewTheme().categoryColor = bgColor
-            AXEmojiManager.getStickerViewTheme().backgroundColor = bgColor
-            AXEmojiManager.getStickerViewTheme().selectedColor = accentColor
-        }
+    private fun initEmojiKeyboard() {
+        AXEmojiManager.install(this, AXIOSEmojiProvider(this))
+        val bgColor = ContextCompat.getColor(this, R.color.bgColor)
+        val accentColor = ContextCompat.getColor(this, R.color.colorAccent)
+        AXEmojiManager.getEmojiViewTheme().footerBackgroundColor = bgColor
+        AXEmojiManager.getEmojiViewTheme().categoryColor = bgColor
+        AXEmojiManager.getEmojiViewTheme().backgroundColor = bgColor
+        AXEmojiManager.getEmojiViewTheme().selectedColor = accentColor
+        AXEmojiManager.getStickerViewTheme().categoryColor = bgColor
+        AXEmojiManager.getStickerViewTheme().backgroundColor = bgColor
+        AXEmojiManager.getStickerViewTheme().selectedColor = accentColor
+    }
 
-        fun context(): Context? {
-            return mApp?.getApplicationContext()
-        }
+    fun context(): Context? {
+        return mApp?.getApplicationContext()
+    }
 
-        //to run multi dex
-        override fun attachBaseContext(base: Context?) {
-            super.attachBaseContext(base)
-            MultiDex.install(this)
-        }
+    //to run multi dex
+    override fun attachBaseContext(base: Context?) {
+        super.attachBaseContext(base)
+        MultiDex.install(this)
+    }
 
-        override fun onActivityCreated(activity: Activity, bundle: Bundle?) {}
+    override fun onActivityCreated(activity: Activity, bundle: Bundle?) {}
 
-        override fun onActivityStarted(activity: Activity) {
-            hasMovedToForeground =
-                if (++activityReferences == 1 && !isActivityChangingConfigurations) {
-                    true
-                } else {
-                    false
-                }
-        }
-
-        override fun onActivityResumed(activity: Activity) {}
-
-        override fun onActivityPaused(activity: Activity) {}
-
-        override fun onActivityStopped(activity: Activity) {
-            isActivityChangingConfigurations = activity.isChangingConfigurations
-            if (--activityReferences == 0 && !isActivityChangingConfigurations) {
-                // App enters background
-                SharedPreferencesManager.setLastActive(System.currentTimeMillis())
+    override fun onActivityStarted(activity: Activity) {
+        hasMovedToForeground =
+            if (++activityReferences == 1 && !isActivityChangingConfigurations) {
+                true
+            } else {
+                false
             }
+    }
+
+    override fun onActivityResumed(activity: Activity) {}
+
+    override fun onActivityPaused(activity: Activity) {}
+
+    override fun onActivityStopped(activity: Activity) {
+        isActivityChangingConfigurations = activity.isChangingConfigurations
+        if (--activityReferences == 0 && !isActivityChangingConfigurations) {
+            // App enters background
+            SharedPreferencesManager.setLastActive(System.currentTimeMillis())
         }
+    }
 
-        override fun onActivitySaveInstanceState(activity: Activity, bundle: Bundle) {}
+    override fun onActivitySaveInstanceState(activity: Activity, bundle: Bundle) {}
 
-        override fun onActivityDestroyed(activity: Activity) {}
+    override fun onActivityDestroyed(activity: Activity) {}
 
 
-        private fun createRtcEngine() {
-            val context = applicationContext
-            val appId = context.getString(R.string.agora_app_id)
-            if (TextUtils.isEmpty(appId)) {
-                throw RuntimeException("NEED TO use your App ID, get your own ID at https://dashboard.agora.io/")
-            }
-            mEventHandler = MyEngineEventHandler()
-            mRtcEngine = try {
-                // Creates an RtcEngine instance
-                RtcEngine.create(context, appId, mEventHandler)
-            } catch (e: Exception) {
-                throw RuntimeException(
-                    """
+    private fun createRtcEngine() {
+        val context = applicationContext
+        val appId = context.getString(R.string.agora_app_id)
+        if (TextUtils.isEmpty(appId)) {
+            throw RuntimeException("NEED TO use your App ID, get your own ID at https://dashboard.agora.io/")
+        }
+        mEventHandler = MyEngineEventHandler()
+        mRtcEngine = try {
+            // Creates an RtcEngine instance
+            RtcEngine.create(context, appId, mEventHandler)
+        } catch (e: Exception) {
+            throw RuntimeException(
+                """
                     NEED TO check rtc sdk init fatal error
                     ${Log.getStackTraceString(e)}
                     """.trimIndent()
-                )
-            }
+            )
+        }
 
-            /*
-          Sets the channel profile of the Agora RtcEngine.
-          The Agora RtcEngine differentiates channel profiles and applies different optimization
-          algorithms accordingly. For example, it prioritizes smoothness and low latency for a
-          video call, and prioritizes video quality for a video broadcast.
-         */mRtcEngine?.setChannelProfile(Constants.CHANNEL_PROFILE_COMMUNICATION)
+        /*
+      Sets the channel profile of the Agora RtcEngine.
+      The Agora RtcEngine differentiates channel profiles and applies different optimization
+      algorithms accordingly. For example, it prioritizes smoothness and low latency for a
+      video call, and prioritizes video quality for a video broadcast.
+     */mRtcEngine?.setChannelProfile(Constants.CHANNEL_PROFILE_COMMUNICATION)
 
 
 //        /*
@@ -252,7 +253,8 @@ public class TLApplication : Application(), ActivityLifecycleCallbacks {
 //          is speaking in the channel.
 //         */
 //        mRtcEngine.enableAudioVolumeIndication(200, 3, false);
-            mConfig = EngineConfig()
-        }
+        mConfig = EngineConfig()
+    }
+
 
 }

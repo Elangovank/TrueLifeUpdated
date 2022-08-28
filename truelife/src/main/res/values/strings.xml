@@ -1,9 +1,14 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
     <string name="app_name" translatable="false">TrueLife</string>
-       <string name="title_activity_settings">Settings</string>
+    <string name="title_activity_settings">Settings</string>
 
     <string name="missing_permissions">Missing Permissions</string>
+
+    <string name="update_user_profile">Update profile</string>
+
+    <string name="error_mob_country_code">Mobile Number or Country code is missing</string>
+
     <!-- Login-->
     <string name="label_sign_forgot_password" tools:ignore="MissingTranslation">Forgot Password</string>
     <string name="label_sign_reset_password">Reset Password</string>
@@ -42,6 +47,7 @@
     <string name="label_city">City</string>
     <string name="label_pincode">Pincode</string>
     <string name="label_join">JOIN</string>
+    <string name="label_update">UPDATE</string>
     <string name="label_male">Male</string>
     <string name="label_female">Female</string>
     <string name="label_register_terms">I agree to the <u>terms &amp; conditions</u> and</string>
@@ -80,7 +86,6 @@
     <string name="login_space">L o g i n</string>
     <string name="comming_soon">Coming Soon...</string>
     <string name="label_password">Password</string>
-
 
 
     <!--Signup AlertBox Text-->
@@ -320,6 +325,7 @@
     <string name="lable_new_password"> New Password</string>
     <string name="lable_change_password">Change Password ?</string>
     <string name="lable_register_success">You have successfully registered with Truelife. Login now to live beyond the known</string>
+    <string name="lable_update_profile_success">Your information has been successfully updated.</string>
 
     <!--Report screen-->
     <string name="label_report_screen_alert">Not to report without content or media </string>
@@ -391,7 +397,7 @@
     <!--NEWS FEED-->
     <string name="label_contact">CONTACTS</string>
     <string name="label_club">CLUBS</string>
-<!--    <string name="CLOUDINARY_URL">cloudinary://916761644728719:pMF785a3EKUjUr3KfKvafK_NDL4@dspzocayn</string>-->
+    <!--    <string name="CLOUDINARY_URL">cloudinary://916761644728719:pMF785a3EKUjUr3KfKvafK_NDL4@dspzocayn</string>-->
     <string name="CLOUDINARY_URL">cloudinary://624232599556294:xoQuufRZKxuHReEO-GBmAvqkTXA@drrs4nuuj</string>
 
     <string name="labe_private_info"> Private Information</string>
@@ -502,7 +508,7 @@
     <string name="player_error">Error initializing YouTube player: %s</string>
     <string name="coming_soon">Coming Soon</string>
     <string name="see_more">…See more</string>
-<string name="hello_worldBlue"><font> color=\'#FF8000\'>Hello world!</font></string>
+    <string name="hello_worldBlue"><font> color=\'#FF8000\'>Hello world!</font></string>
 
 
     <string name="title_activity_view_status">ViewStatusActivity</string>
@@ -588,16 +594,16 @@
     <string name="you_are_already_joined_the_group">You already joined the group!</string>
     <string name="banned_from_group">You are banned from this group</string>
     <string name="joined_via_invite_link">joined via invite link</string>
-    <string name="new_broadcast">New broadcast</string>
-    <string name="broadcast_name">Broadcast name</string>
-    <string name="broadcast_list_info">Broadcast list info</string>
+    <string name="new_broadcast">New Wide Relay</string>
+    <string name="broadcast_name">Wide Relay name</string>
+    <string name="broadcast_list_info">Wide Relay list info</string>
     <string name="created">Created</string>
     <string name="recipients">recipients</string>
     <string name="edit_recipients">Edit recipients</string>
-    <string name="delete_broadcast_list">Delete broadcast list</string>
+    <string name="delete_broadcast_list">Delete Wide Relay list</string>
     <string name="add_recipients">Add recipients</string>
-    <string name="user_already_added_to_broadcast">user already added to broadcast</string>
-    <string name="delete_broadcast_confirmation">Delete this broadcast?</string>
+    <string name="user_already_added_to_broadcast">user already added to Wide Relay</string>
+    <string name="delete_broadcast_confirmation">Delete this Wide Relay?</string>
     <string name="no_link_gnerated">No link generated</string>
     <string name="select_this_location">Select this Location</string>
     <string name="nearby_places">Nearby Places</string>
@@ -788,7 +794,6 @@
     <string name="could_not_add_fingerprint">Could not add Fingerprint</string>
 
 
-
     <string name="initiating">INITIATING</string>
     <string name="waiting_for_answer">WAITING FOR ANSWER</string>
     <string name="failed">FAILED</string>
@@ -834,6 +839,8 @@
     <string name="mute_notifications">Mute Notifications</string>
     <string name="loading">Loading..</string>
     <string name="sms_charge_info">We will send you an OTP ,\n please fill it in the next screen</string>
+
+    <string name="label_already_user"><u>I already have Truelife Username &amp; Passowrd</u></string>
 
     <string name="copied_to_clipboard">Copied To Clipboard...</string>
     <string name="image_video_not_found">CHOSEN IMAGE/Video Not Found</string>
@@ -977,11 +984,12 @@
     <string name="unknown_sign_in_response">No Response</string>
     <string name="Settings">Settings</string>
     <string name="title_activity_user_details">UserDetailsActivity</string>
-       <string name="img_transition">img_transition</string>
+    <string name="img_transition">img_transition</string>
     <string name="title_activity_maps">Map</string>
     <string name="typing">Typing...</string>
     <string name="recording">Recording...</string>
     <string name="pref_header_profile">Profile</string>
+    <string name="update_your_status">Update your information to use True life’s features</string>
 
     <string-array name="autodownload">
         <item>Photos</item>

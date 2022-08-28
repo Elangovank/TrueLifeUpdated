@@ -59,7 +59,7 @@ class ReportDailogFragment : DialogFragment() {
     private var myPostImageTXT: TextView? = null
     private var myRecyclerView: RecyclerView? = null
     private var myPath = ArrayList<String>()
-    private val filePaths: ArrayList<String>? = ArrayList()
+    private val filePaths: ArrayList<Uri>? = ArrayList()
     private var myPostImageFile = ArrayList<File>()
     private var myPostThumbFile = ArrayList<File>()
     private var myRootLayout: RelativeLayout? = null

@@ -7,19 +7,6 @@
     android:orientation="vertical">
 
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="start"
-        android:layout_marginLeft="@dimen/dimen2"
-        android:background="@drawable/received_message"
-        android:layout_marginTop="@dimen/margin_top_message"
-        android:layout_marginEnd="20dp"
-        app:cardBackgroundColor="@color/received_message_background_color"
-        android:padding="@dimen/dimen5"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="@dimen/margin_bottom_message">
-
         <LinearLayout
             android:id="@+id/container"
             android:layout_width="wrap_content"
@@ -27,6 +14,25 @@
             android:orientation="vertical"
            >
 
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginLeft="@dimen/dimen_4"
+                android:background="@drawable/received_message"
+                android:layout_marginTop="@dimen/margin_top_message"
+                app:cardBackgroundColor="@color/received_message_background_color"
+                app:cardCornerRadius="@dimen/dimen5"
+                android:layout_marginBottom="@dimen/margin_bottom_message"
+                app:contentPadding="@dimen/dimen_10"
+                android:layout_marginRight="10dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -57,7 +63,9 @@
                     android:autoLink="web"
                     android:minWidth="60dp"
                     android:paddingTop="5dp"
+                    android:paddingEnd="@dimen/dimen_4"
                     android:text="Test"
+                    android:textSize="@dimen/text_18"
                     android:textColor="@color/received_message_title_color"
                     android:textColorLink="#8498fc"
                     android:textDirection="anyRtl"
@@ -66,6 +74,8 @@
 
             </LinearLayout>
 
+</LinearLayout>
+            </androidx.cardview.widget.CardView>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -79,12 +89,12 @@
                     android:id="@+id/tv_time"
                     style="@style/ReceivedMessageTimeTextStyle"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:gravity="right"
                     android:paddingRight="4dp"
                     android:text="12:20 AM" />
 
             </LinearLayout>
+
         </LinearLayout>
-    </androidx.cardview.widget.CardView>
 </LinearLayout>

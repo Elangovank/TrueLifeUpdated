@@ -7,5 +7,6 @@ import  com.truelife.R
 
 internal class HeaderHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     var header: TextView = itemView.findViewById<View>(R.id.tv_day) as TextView
+    var headerLine: View = itemView.findViewById<View>(R.id.header_line) as View
 
 }

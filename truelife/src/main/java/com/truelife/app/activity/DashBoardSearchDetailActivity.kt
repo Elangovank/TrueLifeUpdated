@@ -89,10 +89,10 @@ class DashBoardSearchDetailActivity : BaseActivity(), FeedClickListener, Feedist
             finish()
         }
 
-        myCountyId = myUserInfo.mCountryId!!
-        myStateId = myUserInfo.mStateId!!
-        myPincode = myUserInfo.mPincode!!
-        myCurrent_city_id = myUserInfo.mCurrentCityId!!
+        myCountyId = myUserInfo.mCountryId ?: "0"
+        myStateId = myUserInfo.mStateId ?: "0"
+        myPincode = myUserInfo.mPincode ?: "0"
+        myCurrent_city_id = myUserInfo.mCurrentCityId ?: "0"
 
         LocalBroadcastManager.getInstance(myContext)
             .registerReceiver(

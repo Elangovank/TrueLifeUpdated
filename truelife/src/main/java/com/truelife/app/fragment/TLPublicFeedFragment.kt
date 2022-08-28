@@ -12,6 +12,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.ProgressBar
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.FragmentActivity
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
@@ -35,11 +36,13 @@ import com.truelife.app.activity.ProfileActivity
 import com.truelife.app.activity.TLDashboardActivity
 import com.truelife.app.constants.TLConstant
 import com.truelife.app.fragment.feed.FragmentLifeCycleInterface
+import com.truelife.app.listeners.DailogFragmentToFragmentListener
 import com.truelife.app.listeners.Feedistener
 import com.truelife.app.model.LikeList
 import com.truelife.app.model.PublicFeedModel
 import com.truelife.app.model.User
 import com.truelife.base.BaseFragment
+import com.truelife.base.TLFeedFragmentManager
 import com.truelife.base.TLFragmentManager
 import com.truelife.http.Response
 import com.truelife.http.ResponseListener
@@ -54,6 +57,7 @@ import java.net.URI
 class TLPublicFeedFragment : BaseFragment(), ResponseListener,
     FragmentLifeCycleInterface, Feedistener, FeedClickListener, FeedMenuClickListener {
     lateinit var mRecyclerView: VideoPlayerRecyclerView
+    lateinit var statusUpdate: TextView
     var mView: View? = null
     lateinit var mContext: FragmentActivity
     lateinit var mList: ArrayList<PublicFeedModel.FeedList>
@@ -63,8 +67,9 @@ class TLPublicFeedFragment : BaseFragment(), ResponseListener,
     lateinit var mUser: User
     var mPage: Int = 1
     var mTotalPages: Int = 0
-
+    private var myFragmentManager: TLFeedFragmentManager? = null
     var mProgressBar: ProgressBar? = null
+    var isInternationalPostOnlyInSocket = true
 
     companion object {
         var TAG: String = TLPublicFeedFragment::class.java.simpleName
@@ -77,10 +82,12 @@ class TLPublicFeedFragment : BaseFragment(), ResponseListener,
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_tlpublic_feed, container, false)
         mRecyclerView = view.findViewById(R.id.publicRv)
+        statusUpdate = view.findViewById(R.id.statusUpdate)
         mSwipeRefresh = view.findViewById(R.id.swipeRefereshPublic)
         mProgressBar = view.findViewById(R.id.progress_bar)
+        myFragmentManager = TLFeedFragmentManager(requireActivity())
         mView = view
-        mContext = activity!!
+        mContext = requireActivity()
         init(mView!!)
         LocalBroadcastManager.getInstance(mContext)
             .registerReceiver(
@@ -106,8 +113,14 @@ class TLPublicFeedFragment : BaseFragment(), ResponseListener,
 
     override fun onResume() {
         super.onResume()
-
-
+        mUser = LocalStorageSP.getLoginUser(mContext)
+        if (mUser.mCountryId.isNullOrEmpty() || mUser.mCountryId.equals("0")) {
+            isInternationalPostOnlyInSocket = true
+            statusUpdate.visibility = View.VISIBLE
+        } else {
+            isInternationalPostOnlyInSocket = true
+            statusUpdate.visibility = View.GONE
+        }
         LocalStorageSP.put(mContext, TLConstant.SourceType, "1")
         // initSocket()
         if ((mRecyclerView.isVideoViewAdded)) {
@@ -151,36 +164,73 @@ class TLPublicFeedFragment : BaseFragment(), ResponseListener,
                     if (!mValue.data.isNullOrEmpty()) {
 
 
-                        if (mValue.data!![0].source.equals("1") && !mValue.data!![0].source.isNullOrEmpty()) {
+                        if (!mValue.data!![0].source.isNullOrEmpty() && mValue.data!![0].source.equals(
+                                "1"
+                            )
+                        ) {
 
-                            for (i in mList.indices) {
-                                if (mList[i].id.equals(mValue.data!![0].id)) {
+                            if (isInternationalPostOnlyInSocket) {
+                                if (mValue.data!![0].level.equals("International", true)) {
 
-                                    val oldlike = mList[i].isUserLike
-                                    mList.removeAt(i)
-                                    mValue.data!![0].isUserLike = oldlike
-                                    mList.add(i, mValue.data!![0])
+                                    for (i in mList.indices) {
+                                        if (mList[i].id.equals(mValue.data!![0].id)) {
 
-                                    mContext.runOnUiThread {
-                                        mRecyclerView.setMediaObjects(mList)
-                                        mAdapter.notifyDataSetChanged()
+                                            val oldlike = mList[i].isUserLike
+                                            mList.removeAt(i)
+                                            mValue.data!![0].isUserLike = oldlike
+                                            mList.add(i, mValue.data!![0])
 
+                                            mContext.runOnUiThread {
+                                                mRecyclerView.setMediaObjects(mList)
+                                                mAdapter.notifyDataSetChanged()
+
+                                            }
+                                            // isFound = true
+                                            break
+                                        } else {
+                                            if (i == (mList.size - 1)) {
+                                                mList.add(0, mValue.data!![0])
+                                                mContext.runOnUiThread {
+                                                    mRecyclerView.setMediaObjects(mList)
+                                                    mAdapter.notifyDataSetChanged()
+                                                    mRecyclerView.smoothScrollBy(0, 2)
+
+                                                }
+                                            }
+                                        }
                                     }
-                                    // isFound = true
-                                    break
-                                } else {
-                                    if (i == (mList.size - 1)) {
-                                        mList.add(0, mValue.data!![0])
+                                }
+
+                            } else {
+
+                                for (i in mList.indices) {
+                                    if (mList[i].id.equals(mValue.data!![0].id)) {
+
+                                        val oldlike = mList[i].isUserLike
+                                        mList.removeAt(i)
+                                        mValue.data!![0].isUserLike = oldlike
+                                        mList.add(i, mValue.data!![0])
+
                                         mContext.runOnUiThread {
                                             mRecyclerView.setMediaObjects(mList)
                                             mAdapter.notifyDataSetChanged()
-                                            mRecyclerView.smoothScrollBy(0, 2)
 
+                                        }
+                                        // isFound = true
+                                        break
+                                    } else {
+                                        if (i == (mList.size - 1)) {
+                                            mList.add(0, mValue.data!![0])
+                                            mContext.runOnUiThread {
+                                                mRecyclerView.setMediaObjects(mList)
+                                                mAdapter.notifyDataSetChanged()
+                                                mRecyclerView.smoothScrollBy(0, 2)
+
+                                            }
                                         }
                                     }
                                 }
                             }
-
 
                         }
                     }
@@ -281,12 +331,12 @@ class TLPublicFeedFragment : BaseFragment(), ResponseListener,
         val mCase = getFeedCaseInfo(
             "1",
             mUser.mUserId!!,
-            mUser.mCountryId!!,
-            mUser.mStateId!!,
-            mUser.mCurrentCityId!!,
+            mUser.mCountryId ?: "0",
+            mUser.mStateId ?: "0",
+            mUser.mCurrentCityId ?: "0",
             mPage.toString(),
             "0",
-            mUser.mPincode!!
+            mUser.mPincode ?: "0"
         )
         val result =
             Helper.GenerateEncrptedUrl(
@@ -376,8 +426,22 @@ class TLPublicFeedFragment : BaseFragment(), ResponseListener,
 
         mRecyclerView.addOnScrollListener(listener)
 
+        statusUpdate.setOnClickListener {
+            UserupdateDialogFragment.newInstance("Hello",
+                object : DailogFragmentToFragmentListener {
+                    override fun onSuccess() {
+                        isInternationalPostOnlyInSocket = true
+                        statusUpdate.visibility = View.GONE
+                    }
+
+                }).show(requireActivity().supportFragmentManager, UserupdateDialogFragment.TAG)
+
+            //   startActivity(Intent(mContext, TLSignupActivity::class.java))
+        }
+
         loadData()
     }
+
 
     override fun initBundle() {
 

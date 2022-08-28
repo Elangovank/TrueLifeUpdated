@@ -4,12 +4,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/ic_news_feed_bg"
-    tools:context=".app.fragment.TLPublicFeedFragment">
+    tools:context=".app.fragment.TLFriendsFeedFragment">
+
+    <TextView
+        android:id="@+id/statusUpdate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/transparent"
+        android:fontFamily="@font/lato_bold"
+        android:gravity="center"
+        android:paddingBottom="@dimen/dimen_5"
+        android:paddingTop="@dimen/dimen_5"
+        android:text="@string/update_your_status"
+        android:textColor="@color/colorPrimary" />
+
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swipeRefereshPublic"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/dimen_5"
+        android:paddingTop="@dimen/dimen_5"
+        android:layout_below="@+id/statusUpdate"
         android:background="@color/transparent">
 
         <com.truelife.app.VideoPlayerRecyclerView

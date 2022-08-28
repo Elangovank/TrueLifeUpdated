@@ -6,12 +6,14 @@
         android:id="@+id/voice_call_item"
         android:icon="@drawable/ic_call"
         android:title="@string/voice_call_hint"
+        android:iconTint="@color/black"
         app:showAsAction="always" />
 
     <item
         android:id="@+id/video_call_item"
         android:icon="@drawable/ic_video_call"
         android:title="@string/video_call_hint"
+        android:iconTint="@color/black"
         app:showAsAction="always" />
     
     <item

@@ -2,7 +2,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:ads="http://schemas.android.com/apk/res-auto"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -33,6 +32,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    app:tint="@color/gray"
                     android:background="?selectableItemBackgroundBorderless"
                     app:srcCompat="@drawable/ic_refresh" />
 
@@ -61,7 +61,7 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:tint="@color/light_gray"
+            app:tint="@color/light_gray"
             ads:srcCompat="@drawable/ic_person_big" />
 
         <TextView

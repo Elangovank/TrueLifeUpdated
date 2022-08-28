@@ -16,6 +16,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.media.AudioManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Parcelable;
@@ -37,6 +38,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.content.res.AppCompatResources;
 import androidx.appcompat.widget.SearchView;
@@ -375,6 +377,7 @@ public class ChatActivity extends BaseActivity implements GroupTyping.GroupTypin
         return true;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -384,6 +387,9 @@ public class ChatActivity extends BaseActivity implements GroupTyping.GroupTypin
         init();
         changeSendButtonState(true);
         setBackgroundImage();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            toolbar.getOverflowIcon().setTint(getColor(R.color.black));
+        }
         setSupportActionBar(toolbar);
 
         viewModel = new ViewModelProvider(this).get(ChatViewModel.class);

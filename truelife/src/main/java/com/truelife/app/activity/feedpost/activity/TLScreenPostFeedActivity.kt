@@ -256,11 +256,15 @@ class TLScreenPostFeedActivity : BaseActivity(), ResponseListener,
             mPostTypeList!!.add("Friends")
             mPostTypeList!!.add("Friends of friends")
         } else {
-            mPostTypeList!!.add("Your Area")
-            mPostTypeList!!.add("Your City")
-            mPostTypeList!!.add("Your State")
-            mPostTypeList!!.add("Your Country")
-            mPostTypeList!!.add("Internationally")
+            if (mUser?.mCountryId.isNullOrEmpty() || mUser?.mCountryId  == "0") {
+                mPostTypeList!!.add("Internationally")
+            } else {
+                mPostTypeList!!.add("Your Area")
+                mPostTypeList!!.add("Your City")
+                mPostTypeList!!.add("Your State")
+                mPostTypeList!!.add("Your Country")
+                mPostTypeList!!.add("Internationally")
+            }
         }
     }
 

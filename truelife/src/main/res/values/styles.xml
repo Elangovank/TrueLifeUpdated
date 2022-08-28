@@ -388,7 +388,7 @@
     </style>
 
     <style name="SplashScreenTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
-        <item name="android:windowBackground">@drawable/splash_image_dr</item>
+        <item name="android:windowBackground">@drawable/app_icon</item>
     </style>
     <style name="ExpandedAppBar" parent="@android:style/TextAppearance.Medium">
         <item name="android:textSize">24sp</item>

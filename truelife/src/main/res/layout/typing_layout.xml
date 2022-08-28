@@ -10,6 +10,15 @@
     android:orientation="horizontal"
     tools:showIn="@layout/content_chat">
 
+    <ImageView
+        android:id="@+id/img_attachment"
+        android:layout_width="46dp"
+        android:layout_height="46dp"
+        android:layout_gravity="center_vertical"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:layout_marginStart="@dimen/dimen_4"
+        android:paddingStart="@dimen/dimen_4"
+        app:srcCompat="@drawable/ic_attach_file" />
 
     <ImageView
         android:id="@+id/camera_btn"
@@ -17,6 +26,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         android:layout_marginLeft="4dp"
+        app:tint="@color/black"
+        android:visibility="gone"
         android:background="?attr/selectableItemBackgroundBorderless"
         app:srcCompat="@drawable/ic_photo_camera" />
 
@@ -25,29 +36,20 @@
         android:id="@+id/et_message"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="6dp"
         android:layout_marginRight="6dp"
         android:layout_weight="1"
-        android:background="@null"
+        android:minLines="2"
+        android:paddingStart="@dimen/dimen10"
+        android:padding="4dp"
+        android:textCursorDrawable="@drawable/style_black_cursor"
+        android:background="@drawable/bg_border_inside_trans_ten_radius"
         android:hint="@string/write_your_message"
         android:inputType="textCapSentences|textMultiLine"
-        android:maxLines="2"
         android:paddingTop="4dp"
         android:paddingBottom="4dp"
         android:textColorHint="@color/grey"
         android:textSize="@dimen/et_message_text_size" />
-
-
-    <ImageView
-        android:id="@+id/img_attachment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:padding="5dp"
-        app:srcCompat="@drawable/ic_attach_file"
-        app:tint="@color/iconTintColor" />
-
 
     <ImageView
 
@@ -60,7 +62,7 @@
         android:layout_marginRight="5dp"
         android:padding="6dp"
         app:srcCompat="@drawable/ic_chat_smile"
-        app:tint="@color/iconTintColor" />
+        app:tint="@color/black" />
 
 
 

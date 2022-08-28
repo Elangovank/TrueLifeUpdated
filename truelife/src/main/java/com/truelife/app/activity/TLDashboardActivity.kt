@@ -6,15 +6,19 @@ import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
+import android.util.Base64
 import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.widget.ImageView
-import com.google.android.exoplayer2.source.MediaSource
+import com.android.volley.Request
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.truelife.BuildConfig
 import com.truelife.FeedMenuClickListener
 import com.truelife.R
+import com.truelife.TLApplication
+import com.truelife.api.AppServices
 import com.truelife.app.VideoPreviewActivity
 import com.truelife.app.activity.feedpost.FeedDetailActivity
 import com.truelife.app.constants.TLConstant
@@ -30,16 +34,23 @@ import com.truelife.app.constants.TLConstant.SETTINGS
 import com.truelife.app.fragment.feed.TLFeedScreen
 import com.truelife.app.fragment.more.TLMoreFragment
 import com.truelife.app.fragment.notification.TLNotificationFragment
+import com.truelife.app.model.FriendsList
 import com.truelife.app.model.PublicFeedModel
+import com.truelife.app.model.User
 import com.truelife.base.BaseActivity
 import com.truelife.base.TLFragmentManager
-import com.truelife.chat.activities.SplashActivity
+import com.truelife.chat.activities.authentication.AuthenticationActivity
+import com.truelife.chat.activities.main.MainActivity
+import com.truelife.chat.utils.network.FireManager.Companion.isLoggedIn
+import com.truelife.http.Response
+import com.truelife.http.ResponseListener
 import com.truelife.storage.LocalStorageSP
 import com.truelife.util.AppDialogs
 import com.truelife.util.Helper
 import com.truelife.util.PermissionChecker
 import com.truelife.util.Utility
 import kotlinx.android.synthetic.main.app_main_header.*
+import org.json.JSONObject
 
 
 /**
@@ -47,12 +58,13 @@ import kotlinx.android.synthetic.main.app_main_header.*
  **/
 
 class TLDashboardActivity : BaseActivity(),
-    BottomNavigationView.OnNavigationItemSelectedListener {
-
-
+    BottomNavigationView.OnNavigationItemSelectedListener, ResponseListener {
     var exitCount = 0
     private var bottom_dialog: BottomSheetDialog? = null
     private var mPermission: Array<String> = arrayOf()
+
+
+    var user: User? = null
     override fun onNewIntent(intent: Intent?) {
         super.onNewIntent(intent)
         try {
@@ -125,6 +137,7 @@ class TLDashboardActivity : BaseActivity(),
         setContentView(R.layout.activity_dashboard)
         mContext = this
         init()
+        storeFriendsList()
         clickListener()
         mPermission = arrayOf(
             TLConstant.CAMERA,
@@ -149,7 +162,7 @@ class TLDashboardActivity : BaseActivity(),
                 val bundle = Bundle()
 
                 mFragmentManager!!.clearAllFragments()
-                mFragmentManager!!.replaceContent(TLFeedScreen(), "TLFeedScreen",null)
+                mFragmentManager!!.replaceContent(TLFeedScreen(), "TLFeedScreen", null)
                 hideToolbar()
                 LASTADDEDITEM = FEED
             }
@@ -177,19 +190,30 @@ class TLDashboardActivity : BaseActivity(),
             }
 
             CHAT -> {
+                if (isLoggedIn()) {
+                    val intent = Intent(this, MainActivity::class.java)
+                    startActivity(intent)
+                } else if (!isLoggedIn()) {
+                    val intent = Intent(this, AuthenticationActivity::class.java)
+                    startActivity(intent)
+                }
+                /* startActivity(
+                     Intent(this, SplashActivity::class.java).putExtra(
+                         "isFromChatClick",
+                         true
+                     )
+                 )*/
 
-                startActivity(Intent(this, SplashActivity::class.java))
-
-               /* val user = LocalStorageSP.getLoginUser(mContext)
-                if (user.mIsMessengerMobileVerified == "1") {
-                    navigateChat()
-                    LASTADDEDITEM = CHAT
-                } else
-                    Helper.navigateOTPScreen(
-                        myContext,
-                        getString(R.string.label_chat_otp_verify),
-                        1
-                    )*/
+                /* val user = LocalStorageSP.getLoginUser(mContext)
+                 if (user.mIsMessengerMobileVerified == "1") {
+                     navigateChat()
+                     LASTADDEDITEM = CHAT
+                 } else
+                     Helper.navigateOTPScreen(
+                         myContext,
+                         getString(R.string.label_chat_otp_verify),
+                         1
+                     )*/
             }
 
             SETTINGS -> {
@@ -247,6 +271,7 @@ class TLDashboardActivity : BaseActivity(),
 
     override fun init() {
         mFragmentManager = TLFragmentManager(this)
+        user = LocalStorageSP.getLoginUser(myContext)
         mBottomNavigation = findViewById(R.id.bottom_navigation)
         mToolbar = findViewById(R.id.tool)
         mBottomNavigation!!.setOnNavigationItemSelectedListener(this)
@@ -379,7 +404,7 @@ class TLDashboardActivity : BaseActivity(),
 
                 when (intent.extras!!.getString("message_type")) {
                     PUSH_FEED_TYPE -> {
-                       // navigateFragment(FEED)
+                        // navigateFragment(FEED)
                         val i = Intent(mContext, FeedDetailActivity::class.java)
                         i.putExtra("post_id", intent.extras!!.getString("post_id"))
                         startActivity(i)
@@ -407,10 +432,59 @@ class TLDashboardActivity : BaseActivity(),
             e.printStackTrace()
         }
     }
+
+    fun storeFriendsList() {
+        val result = Helper.GenerateEncrptedUrl(
+            BuildConfig.API_URL,
+            getTotalFriendsFollowCaseString( "FriendsListAll")!!
+        )
+        AppServices.execute(
+            myContext, this,
+            result,
+            Request.Method.POST,
+            AppServices.API.friendList,
+            FriendsList::class.java
+        )
+    }
+
+    private fun getTotalFriendsFollowCaseString(
+        aRequestType: String
+    ): String? {
+        var aCaseStr: String? = " "
+        try {
+            val jsonParam1 = JSONObject()
+            jsonParam1.put("user_id", user!!.mUserId)
+            jsonParam1.put("login_user_id", user!!.mUserId)
+            val jsonParam = JSONObject()
+            when (aRequestType) {
+
+                "FriendsListAll" -> {
+                    jsonParam.put("FriendsListAll", jsonParam1)
+                    Log.e("FriendsListAll", " $jsonParam")
+                }
+
+            }
+            aCaseStr = Base64.encodeToString(jsonParam.toString().toByteArray(), 0)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+        return aCaseStr
+    }
+
+    override fun onResponse(r: Response?) {
+
+        if (r != null) {
+            if (r.requestType!! == AppServices.API.friendList.hashCode()) {
+                if (r.response!!.isSuccess) {
+                    val obj = r as FriendsList
+                    TLApplication.addFriendsList(obj.mData)
+                } else {
+                    TLApplication.clearFriendsList()
+                }
+            }
+        }
+    }
 }
 
-private fun Intent.putExtra(name: String, videoSource: MediaSource?) {
 
-
-}
 

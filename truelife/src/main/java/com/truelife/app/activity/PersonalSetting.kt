@@ -113,7 +113,7 @@ class PersonalSetting : BaseActivity(), ResponseListener, SelectedListener, prog
         }
 
         mBackBtn!!.setOnClickListener {
-            finish()
+            super.onBackPressed()
         }
 
         mCountryTV!!.setOnClickListener {
@@ -275,7 +275,7 @@ class PersonalSetting : BaseActivity(), ResponseListener, SelectedListener, prog
         val mCase = getCountryStateCityApiCaseString(mCategory!!, mCategoryId!!, mStateId!!)
         val result = Helper.GenerateEncrptedUrl(BuildConfig.API_URL, mCase!!)
         Log.e("URL", result)
-        AppServices.getCountryStateCityApi(this, result)
+        AppServices.getCountryStateCityApi(this,this, result)
         /* } else {
              AppDialogs.customOkAction(
                  this,
@@ -493,7 +493,7 @@ class PersonalSetting : BaseActivity(), ResponseListener, SelectedListener, prog
 
     fun saveCaseAPI() {
 
-        AppDialogs.showProgressDialog(mContext!!)
+        AppDialogs.showProgressDialog(mContext)
         val result = Helper.GenerateEncrptedUrl(
             BuildConfig.API_URL,
             PostPersonalSettingCaseString(
@@ -509,7 +509,7 @@ class PersonalSetting : BaseActivity(), ResponseListener, SelectedListener, prog
             )!!
         )
         AppServices.execute(
-            mContext!!, this,
+            mContext, this,
             result,
             Request.Method.POST,
             AppServices.API.savepersonalsetting,

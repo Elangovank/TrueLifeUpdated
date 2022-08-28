@@ -53,7 +53,7 @@ class CallingGridLayout @JvmOverloads constructor(
         removeAllViews()
 
 
-        val columnsCount = items.maxBy { it.column }?.column ?: 1
+        val columnsCount = items.maxByOrNull { it.column }?.column ?: 1
         val gridHeight = height / columnsCount
         val gridWidth = width / 2 //2 rows max
         items.forEach {

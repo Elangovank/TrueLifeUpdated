@@ -103,8 +103,9 @@ class ProfilePhotoActivity : BaseActivity() {
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_profile_photo, menu)
         //show edit profile button if the user is viewing his photo or if group admin wants to update group profile photo
+        // Editing disable by isVisible to false for all
         if (isGroup && FireManager.isAdmin(user!!.group.adminsUids) || !intent.hasExtra(IntentUtils.UID)) {
-            menu.findItem(R.id.edit_profile_item).isVisible = true
+            menu.findItem(R.id.edit_profile_item).isVisible = false
         }
         return super.onCreateOptionsMenu(menu)
     }

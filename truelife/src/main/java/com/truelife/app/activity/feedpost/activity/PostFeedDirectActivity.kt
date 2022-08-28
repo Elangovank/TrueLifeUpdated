@@ -92,12 +92,13 @@ class PostFeedDirectActivity : BaseActivity(), ResponseListener, ClickListener {
                             }
                         } else {
                             //One Image
-                            val imageUri = getIntent().getParcelableExtra(Intent.EXTRA_STREAM) as Uri
+                            val imageUri =
+                                getIntent().getParcelableExtra(Intent.EXTRA_STREAM) as Uri
                             val filePath = RealPathUtil.getRealPath(this, imageUri)
                             myPostImageFile.add(File(filePath))
 
                         }
-                    }else{
+                    } else {
                         val imageUri = getIntent().getParcelableExtra(Intent.EXTRA_STREAM) as Uri
                         val filePath = RealPathUtil.getRealPath(this, imageUri)
                         myPostImageFile.add(File(filePath))
@@ -132,11 +133,15 @@ class PostFeedDirectActivity : BaseActivity(), ResponseListener, ClickListener {
             mPostTypeList!!.add("Friends")
             mPostTypeList!!.add("Friends of friends")
         } else {
-            mPostTypeList!!.add("Your Area")
-            mPostTypeList!!.add("Your City")
-            mPostTypeList!!.add("Your State")
-            mPostTypeList!!.add("Your Country")
-            mPostTypeList!!.add("International")
+            if (mUser?.mCountryId.isNullOrEmpty() || mUser?.mCountryId  == "0") {
+                mPostTypeList!!.add("Internationally")
+            } else {
+                mPostTypeList!!.add("Your Area")
+                mPostTypeList!!.add("Your City")
+                mPostTypeList!!.add("Your State")
+                mPostTypeList!!.add("Your Country")
+                mPostTypeList!!.add("Internationally")
+            }
         }
     }
 
@@ -197,7 +202,9 @@ class PostFeedDirectActivity : BaseActivity(), ResponseListener, ClickListener {
             aDlg.findViewById<View>(R.id.layout_inflate_feed_post_type_post_type) as TextView
         val aDoneBtn =
             aDlg.findViewById<View>(R.id.dialog_post_done_btn) as Button
-        if (LocalStorageSP.get(myContext, TLConstant.SourceType, "0").equals("1") || mSourceTypeStr.equals("1")) {
+        if (LocalStorageSP.get(myContext, TLConstant.SourceType, "0")
+                .equals("1") || mSourceTypeStr.equals("1")
+        ) {
             aPostType.setImageDrawable(
                 myContext.getResources().getDrawable(R.drawable.ic_public)
             )
@@ -520,7 +527,7 @@ class PostFeedDirectActivity : BaseActivity(), ResponseListener, ClickListener {
     fun report() {
         if (checkInternet())
             AppDialogs.showProgressDialog(myContext)
-            post()
+        post()
     }
 
     private fun post() {
@@ -719,20 +726,20 @@ class PostFeedDirectActivity : BaseActivity(), ResponseListener, ClickListener {
         Log.e("CLicked", position.toString())
         if (mSourceTypeStr.equals("3")) {
             fragment_feed_post_your_club_puls_TXT.performClick()
-        } else if(mSourceTypeStr.equals("2")) {
+        } else if (mSourceTypeStr.equals("2")) {
             mPostTypeList!!.clear()
             mPostTypeList!!.add("Friends")
             mPostTypeList!!.add("Friends of friends")
             fragment_feed_post_SPN_where_post.performClick()
-        }  else if(mSourceTypeStr.equals("1")) {
+        } else if (mSourceTypeStr.equals("1")) {
             mPostTypeList!!.clear()
             mPostTypeList!!.add("Your Area")
             mPostTypeList!!.add("Your City")
             mPostTypeList!!.add("Your State")
             mPostTypeList!!.add("Your Country")
-            mPostTypeList!!.add("International")
+            mPostTypeList!!.add("Internationally")
             fragment_feed_post_SPN_where_post.performClick()
-        }else
+        } else
             fragment_feed_post_SPN_where_post.performClick()
     }
 

@@ -23,6 +23,9 @@ class FriendsList : Response() {
     @SerializedName("profile_image")
     var profile_image: String? = null
 
+    @SerializedName("mobile_number")
+    var mobile_number: String? = null
+
     @SerializedName("last_name")
     var last_name: String? = null
 

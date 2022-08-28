@@ -25,6 +25,9 @@ import com.truelife.app.fragment.setting.adapter.TLSettingsAdapter
 import com.truelife.app.model.User
 import com.truelife.base.BaseFragment
 import com.truelife.base.TLFragmentManager
+import com.truelife.chat.activities.SplashActivity
+import com.truelife.chat.utils.SharedPreferencesManager
+import com.truelife.chat.utils.network.FireManager
 import com.truelife.http.Response
 import com.truelife.http.ResponseListener
 import com.truelife.storage.LocalStorageSP
@@ -86,7 +89,7 @@ class TLSettingScreen : BaseFragment(), ClickListener, ResponseListener {
         (mContext as TLDashboardActivity?)!!.hideBottomBar()
 
         user = LocalStorageSP.getLoginUser(mContext)
-        mFragmentManager = TLFragmentManager(activity!!)
+        mFragmentManager = TLFragmentManager(requireActivity())
         mRecycleView = view.findViewById(R.id.setting_Recycler) as RecyclerView
         mGifImageView = view.findViewById(R.id.gif_image) as ImageView
         mAppBarlayout = view.findViewById(R.id.app_bar_layout) as AppBarLayout
@@ -289,11 +292,15 @@ class TLSettingScreen : BaseFragment(), ClickListener, ResponseListener {
         if (r != null) {
             if (r.requestType!! == AppServices.API.logout.hashCode()) {
                 if (r.response!!.isSuccess) {
+                    if (FireManager.isLoggedIn()) {
+                        SharedPreferencesManager.deleteUser()
+                        FireManager.signout()
+                    }
                     LocalStorageSP.clearAll(mContext!!)
-                    val aIntent = Intent(mContext, TLSigninActivity::class.java)
+                    val aIntent = Intent(mContext, SplashActivity::class.java)
                     aIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                     mContext!!.startActivity(aIntent)
-                    activity!!.finish()
+                    requireActivity().finish()
                 } else AppDialogs.showToastDialog(mContext!!, r.response!!.responseMessage!!)
             } else if (r.requestType!! == AppServices.API.deleteAccount.hashCode()) {
                 if (r.response!!.isSuccess) {
@@ -302,7 +309,7 @@ class TLSettingScreen : BaseFragment(), ClickListener, ResponseListener {
                     val aIntent = Intent(mContext, TLSigninActivity::class.java)
                     aIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                     mContext!!.startActivity(aIntent)
-                    activity!!.finish()
+                    requireActivity().finish()
                 } else AppDialogs.showToastDialog(mContext!!, r.response!!.responseMessage!!)
             }
         }

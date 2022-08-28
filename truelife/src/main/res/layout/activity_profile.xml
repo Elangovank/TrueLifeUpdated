@@ -133,8 +133,8 @@
                                     android:layout_marginLeft="@dimen/dimen10"
                                     android:fitsSystemWindows="true"
                                     android:scaleType="fitCenter"
-                                    android:src="@drawable/ic_upload"
-                                    android:tint="@color/white"
+                                    android:background="@drawable/ic_upload"
+                                    android:backgroundTint="@color/white"
                                     android:visibility="gone" />
 
                             </LinearLayout>
@@ -153,11 +153,11 @@
 
                             <ImageView
                                 android:id="@+id/back_icon"
-                                android:layout_width="35dp"
-                                android:layout_height="35dp"
+                                android:layout_width="36dp"
+                                android:layout_height="36dp"
                                 android:background="@drawable/profile_back_btn"
                                 android:padding="2.5dp"
-                                android:tint="@color/white" />
+                                app:tint="@color/white" />
                         </androidx.appcompat.widget.Toolbar>
 
 

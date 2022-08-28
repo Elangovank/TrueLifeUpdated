@@ -47,6 +47,11 @@ import com.truelife.app.model.User
 import com.truelife.app.touchimageview.TLSingleImagePreview
 import com.truelife.base.BaseActivity
 import com.truelife.base.TLFragmentManager
+import com.truelife.chat.activities.main.MainActivity
+import com.truelife.chat.activities.main.messaging.ChatActivity
+import com.truelife.chat.utils.IntentUtils
+import com.truelife.chat.utils.RealmHelper
+import com.truelife.chat.utils.network.FireManager
 import com.truelife.http.Response
 import com.truelife.http.ResponseListener
 import com.truelife.storage.LocalStorageSP
@@ -54,6 +59,7 @@ import com.truelife.util.*
 import droidninja.filepicker.FilePickerBuilder
 import droidninja.filepicker.FilePickerConst.KEY_SELECTED_MEDIA
 import droidninja.filepicker.FilePickerConst.REQUEST_CODE_PHOTO
+import io.reactivex.disposables.CompositeDisposable
 import kotlinx.android.synthetic.main.activity_profile.*
 import org.apache.http.client.HttpClient
 import org.apache.http.client.methods.HttpPost
@@ -91,11 +97,23 @@ class ProfileActivity : BaseActivity(), ResponseListener, ProfileClickListener, 
     lateinit var isFollow: String
     lateinit var isFriend: String
 
+    private val fireManager: FireManager by lazy {
+        FireManager()
+    }
+
+    /*  private val disposables: CompositeDisposable by lazy {
+          CompositeDisposable()
+      }*/
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
-        Utility.loadPlaceHolder(myContext, LocalStorageSP.getLoginUser(myContext).mGender!!, profile_img)
+        Utility.loadPlaceHolder(
+            myContext,
+            LocalStorageSP.getLoginUser(myContext).mGender!!,
+            profile_img
+        )
         LocalBroadcastManager.getInstance(myContext)
             .registerReceiver(
                 myBroadcastReceiver,
@@ -145,13 +163,13 @@ class ProfileActivity : BaseActivity(), ResponseListener, ProfileClickListener, 
 
         val mCase = getFeedCaseInfo(
             "1",
-            user!!.mUserId!!,
-            user!!.mCountryId!!,
-            user!!.mStateId!!,
-            user!!.mCurrentCityId!!,
+            user!!.mUserId?:"0",
+            user!!.mCountryId?:"0",
+            user!!.mStateId?:"0",
+            user!!.mCurrentCityId?:"0",
             mPage.toString(),
             userId,
-            user!!.mPincode!!
+            user!!.mPincode?:"0"
         )
         val result =
             Helper.GenerateEncrptedUrl(
@@ -301,7 +319,7 @@ class ProfileActivity : BaseActivity(), ResponseListener, ProfileClickListener, 
             selectProfilePicture()
         }
         back_icon.setOnClickListener {
-            finish()
+            super.onBackPressed()
         }
         radio_group.setOnCheckedChangeListener { group, checkedId ->
 
@@ -396,7 +414,19 @@ class ProfileActivity : BaseActivity(), ResponseListener, ProfileClickListener, 
                 }
 
                 "1" -> {
-                    if (checkInternet()) {
+
+
+                        val user1 =  RealmHelper.getInstance().getUserByNumber("+91"+mProfileValue.userdetails?.mobileNumber)
+                    user1?.let{
+                        val intent = Intent(myContext, ChatActivity::class.java)
+                        intent.putExtra(IntentUtils.UID, user1.uid)
+                        startActivity(intent)
+                    }
+
+
+                   /* val intent = Intent(this, MainActivity::class.java)
+                    startActivity(intent)*/
+                    /*if (checkInternet()) {
                         val msg = String.format(
                             "You can search for %s here and send a message",
                             mProfileValue.userdetails!!.fullname
@@ -405,7 +435,7 @@ class ProfileActivity : BaseActivity(), ResponseListener, ProfileClickListener, 
                             Intent(this, TLChatActivity::class.java)
                                 .putExtra("content", msg)
                         )
-                    }
+                    }*/
                 }
 
                 "2" -> {
@@ -578,7 +608,7 @@ class ProfileActivity : BaseActivity(), ResponseListener, ProfileClickListener, 
                     value.isFollow = if (isFollow == "0") "1" else "0"
                     setProfileValues(value)
                 }
-            }else if (r.requestType!! == AppServices.API.likedetails.hashCode()) {
+            } else if (r.requestType!! == AppServices.API.likedetails.hashCode()) {
                 if (r.response!!.isSuccess) {
                     val value = r as LikeList
 
@@ -642,19 +672,22 @@ class ProfileActivity : BaseActivity(), ResponseListener, ProfileClickListener, 
         if (aValues.profileImage.isNullOrEmpty())
             Utility.loadPlaceHolder(myContext, aValues.gender!!, profile_img)
         else {
-            Utility.loadImageWithCallback(aValues.profileImage, profile_img, object : ImageLoaderCallback {
-                override fun load() {
-                    progress_bar.visibility = View.GONE
-                }
+            Utility.loadImageWithCallback(
+                aValues.profileImage,
+                profile_img,
+                object : ImageLoaderCallback {
+                    override fun load() {
+                        progress_bar.visibility = View.GONE
+                    }
 
-            })
+                })
             profile_img.setOnClickListener {
                 val dialogFragment =
                     TLSingleImagePreview(profileImage, R.drawable.image_placeholder)
                 dialogFragment.show(myContext.supportFragmentManager, TLClubMemberRights.TAG)
             }
         }
-     //   progress_bar.visibility = View.GONE
+        //   progress_bar.visibility = View.GONE
         setFriendsRecylceview()
         setImageRecylceview(aValues)
         profile_screen_photo_count.text = aValues.totalPhotos
@@ -909,6 +942,8 @@ class ProfileActivity : BaseActivity(), ResponseListener, ProfileClickListener, 
                             AppDialogs.showToastDialog(myContext, ss)
                             if (responsecode.equals("1")) {
                                 if (type == "profile_pic") {
+                                    if (FireManager.isLoggedIn())
+                                        uploadImageToFirebase()
                                     progress_bar.visibility = View.VISIBLE
                                     Utility.loadImage(profileImage, profile_img)
                                     progress_bar.visibility = View.GONE
@@ -917,6 +952,9 @@ class ProfileActivity : BaseActivity(), ResponseListener, ProfileClickListener, 
                                             myProfileFile!!))*/
 
                                 } else {
+                                    if(type.equals("status")){
+
+                                    }
                                     status_tv.text = aJsonObject.getString("status")
                                     profession_tv.text = aJsonObject.getString("profession")
                                     education_tv.text = aJsonObject.getString("education")
@@ -1654,6 +1692,24 @@ class ProfileActivity : BaseActivity(), ResponseListener, ProfileClickListener, 
             AppServices.API.hide_post,
             Response::class.java
         )
+
+    }
+
+    fun uploadImageToFirebase() {
+        val disposables = CompositeDisposable()
+
+        myProfileFile?.let {
+            val file = it
+            //     BitmapUtils.convertBitmapToJpeg(bitmap, file, 30)
+
+            disposables.add(
+                fireManager.updateMyPhoto(file.path)
+                    .subscribe({ tiple: Triple<String?, String?, String?>? ->
+
+                        //   Toast.makeText(myContext, R.string.image_changed, Toast.LENGTH_SHORT).show()
+                    }) { throwable: Throwable? -> }
+            )
+        }
 
     }
 }

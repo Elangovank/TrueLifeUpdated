@@ -51,6 +51,7 @@ import com.karumi.dexter.listener.PermissionGrantedResponse
 import com.karumi.dexter.listener.PermissionRequest
 import com.karumi.dexter.listener.single.PermissionListener
 import com.truelife.R
+import kotlinx.android.synthetic.main.activity_main.view.*
 import org.greenrobot.eventbus.EventBus
 
 
@@ -98,6 +99,10 @@ class MainActivity : BaseActivity(), FabRotationAnimation.RotateAnimationListene
         ).get(MainViewModel::class.java)
 
        // toolbar.logo = this.resources.getDrawable(R.drawable.app_icon)
+
+        toolbar.icon.setOnClickListener {
+            finish()
+        }
         toolbar.title = ""
         setSupportActionBar(toolbar)
 
@@ -493,7 +498,7 @@ class MainActivity : BaseActivity(), FabRotationAnimation.RotateAnimationListene
             }
 
         })
-        //revert back to original adapter
+        //revert back to original adaptersd
         searchView.setOnCloseListener {
             exitSearchMode()
             true

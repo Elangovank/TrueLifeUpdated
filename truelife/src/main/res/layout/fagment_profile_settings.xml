@@ -30,7 +30,8 @@
             android:layout_gravity="bottom|right"
             android:layout_marginRight="38dp"
             android:background="@drawable/ic_photo_camera"
-            android:padding="8dp" />
+            android:padding="8dp"
+            android:visibility="gone" />
 
     </FrameLayout>
 
@@ -62,6 +63,7 @@
             android:layout_marginRight="8dp"
             android:background="@null"
             android:tint="@color/iconTintColor"
+            android:visibility="gone"
             app:srcCompat="@drawable/ic_edit" />
     </LinearLayout>
     <!--  </androidx.cardview.widget.CardView>-->
@@ -75,8 +77,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/light_gray"
-        android:paddingTop="@dimen/dimen5"
         android:paddingLeft="@dimen/dimen10"
+        android:paddingTop="@dimen/dimen5"
         android:paddingBottom="@dimen/dimen5"
         android:text="About and Phone Number"
         android:textColor="@color/colorText"
@@ -96,6 +98,7 @@
             android:layout_marginTop="7dp"
             android:paddingLeft="@dimen/dimen5"
             android:textColor="@color/colorText"
+            android:visibility="gone"
             tools:text="TrueLife!!!" />
 
         <View
@@ -109,8 +112,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="14dp"
-            android:paddingLeft="@dimen/dimen5"
             android:drawableLeft="@drawable/ic_mobile"
+            android:paddingLeft="@dimen/dimen5"
             android:text="+1 111 111 111 "
             android:textColor="@color/colorText" />
 

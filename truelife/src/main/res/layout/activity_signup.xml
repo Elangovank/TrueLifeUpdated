@@ -3,6 +3,7 @@
     android:id="@+id/activity_sign_up_lay"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="@dimen/dimen_10"
     android:background="@drawable/bg_signup"
     android:orientation="horizontal"
     android:weightSum="3">

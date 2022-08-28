@@ -7,7 +7,6 @@ import com.android.volley.Request
 import com.truelife.BuildConfig
 import com.truelife.app.model.LikeList
 import com.truelife.app.model.LocationModel
-import com.truelife.app.model.PublicFeedModel
 import com.truelife.app.model.User
 import com.truelife.http.JsonRestClient
 import com.truelife.http.ResponseListener
@@ -59,6 +58,7 @@ class AppServices {
 
         // Login Screen
         val login = "login"
+        val loginwithRelay = "loginwithRelay"
         val gcmRegister = "gcmregister"
         val countryCode = "countrycode"
         val country = "country"
@@ -231,6 +231,23 @@ class AppServices {
             return true
         }
 
+        fun loginWithRelay(c: Context, data: String): Boolean {
+            try {
+                // Generating Req
+                val obj = JSONObject()
+
+                val client =
+                    JsonRestClient(c, Request.Method.POST, data, API.loginwithRelay.hashCode())
+                client.header("Content-Type", "application/json; charset=utf-8")
+                //client.add("Content-Type", "application/json; charset=utf-8")
+                client.execute(c as ResponseListener, obj, User::class.java)
+            } catch (e: Exception) {
+                e.printStackTrace()
+                return false
+            }
+            return true
+        }
+
         fun forgotpass(c: Context, data: String): Boolean {
             try {
                 // Generating Req
@@ -246,17 +263,18 @@ class AppServices {
             return true
         }
 
-        fun getCountryStateCityApi(c: Context, data: String) {
+        fun getCountryStateCityApi(c: Context, responseListener: ResponseListener, data: String) {
             try {
                 val obj = JSONObject()
                 val client = JsonRestClient(c, Request.Method.POST, data, API.country.hashCode())
                 client.header("Content-Type", "application/json; charset=utf-8")
-                client.execute(c as ResponseListener, obj, LocationModel::class.java)
+                client.execute(responseListener, obj, LocationModel::class.java)
             } catch (e: Exception) {
                 e.printStackTrace()
 
             }
         }
+
         fun postLikeDetailsString(
             aUserId: String,
             aPostId: String

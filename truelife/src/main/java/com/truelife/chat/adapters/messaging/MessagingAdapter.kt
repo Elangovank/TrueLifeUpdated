@@ -63,7 +63,11 @@ class MessagingAdapter(private val messages: OrderedRealmCollection<Message>, au
         //if there are no timestamps in this day then hide the header
         //otherwise show it
         val headerId = getHeaderId(position)
-        if (headerId == 0L) mHolder?.header?.visibility = View.GONE else {
+        if (headerId == 0L) {
+            mHolder?.header?.visibility = View.GONE
+            mHolder?.headerLine?.visibility = View.GONE
+        }
+        else {
             val formatted = TimeHelper.getChatTime(headerId)
             mHolder?.header?.text = formatted
         }

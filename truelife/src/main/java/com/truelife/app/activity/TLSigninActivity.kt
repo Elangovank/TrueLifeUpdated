@@ -35,6 +35,25 @@ class TLSigninActivity : BaseActivity(), ResponseListener, progressInterface {
         setContentView(R.layout.activity_tlsignin)
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN)
         mContext = this
+
+        val intenttData = intent.extras
+        intenttData?.let {
+            if (it.containsKey("alreadyUser")) {
+
+            } else {
+                val number = it.getString("number")
+
+                val user = LocalStorageSP.getLoginUser(mContext)
+                if (user.mUserId.isNullOrEmpty())
+                    callLoginwithRelayService(number!!)
+                else {
+                    startActivity(Intent(this, TLDashboardActivity::class.java))
+                    finish()
+                }
+            }
+        }
+
+
         init()
         clickListener()
     }
@@ -111,6 +130,34 @@ class TLSigninActivity : BaseActivity(), ResponseListener, progressInterface {
         getToken()
     }
 
+    private fun callLoginwithRelayService(
+        mobileNo: String = "",
+    ) {
+        val aMobileNo = LocalStorageSP.get(
+            mContext,
+            TLConstant.SELECTED_MOBILE_NUMBER, ""
+        )!!
+        val aCC = LocalStorageSP.get(
+            mContext,
+            TLConstant.SELECTED_COUNTRY_CODE, ""
+        )!!
+        if (aMobileNo.length > 0 && aCC.length > 0) {
+            AppDialogs.showProgressDialog(mContext)
+            val mCase = getLoginWithRelayMobileNumber(
+                aMobileNo, aCC
+            )
+            val result = Helper.GenerateEncrptedUrl(BuildConfig.API_URL, mCase!!)
+            Log.e("URL", result)
+            AppServices.loginWithRelay(this, result)
+        } else {
+            AppDialogs.showSnackbar(
+                activity_sign_up_txt,
+                getString(R.string.error_mob_country_code)
+            )
+        }
+    }
+
+
     private fun getLoginCaseString(
         aEmail: String,
         aPassword: String
@@ -131,6 +178,27 @@ class TLSigninActivity : BaseActivity(), ResponseListener, progressInterface {
         return aCaseStr
     }
 
+    private fun getLoginWithRelayMobileNumber(
+        aMobile: String = "",
+        aCountryCode: String = ""
+    ): String? {
+        var aCaseStr = " "
+        try {
+            val jsonParam1 = JSONObject()
+            jsonParam1.put("country_code", aCountryCode)
+            jsonParam1.put("mobile_number", aMobile)
+            jsonParam1.put("sendOTP", "0")
+            val jsonParam = JSONObject()
+            jsonParam.put("LoginWithOTP", jsonParam1)
+            Log.e("LoginWithOTP", " $jsonParam")
+            aCaseStr = Base64.encodeToString(jsonParam.toString().toByteArray(), 0)
+            Log.e("LoginWithOTP", " $aCaseStr")
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+        return aCaseStr
+    }
+
     override fun onResponse(r: Response?) {
         runOnUiThread {
             AppDialogs.hideProgressDialog()
@@ -138,6 +206,14 @@ class TLSigninActivity : BaseActivity(), ResponseListener, progressInterface {
 
         if (r != null) {
             if (r.requestType!! == AppServices.API.login.hashCode()) {
+                if (r.response!!.isSuccess) {
+                    val user = (r as User).mUserdetails
+                    registerGCM(user!!.mUserId!!)
+                    LocalStorageSP.storeLoginUser(this, user)
+                    startActivity(Intent(this, TLDashboardActivity::class.java))
+                    finish()
+                } else AppDialogs.showToastDialog(this, r.response!!.responseMessage!!)
+            } else if (r.requestType!! == AppServices.API.loginwithRelay.hashCode()) {
                 if (r.response!!.isSuccess) {
                     val user = (r as User).mUserdetails
                     registerGCM(user!!.mUserId!!)
@@ -156,7 +232,7 @@ class TLSigninActivity : BaseActivity(), ResponseListener, progressInterface {
 
     fun registerGCM(userId: String) {
 
-       // AppDialogs.showProgressDialog(mContext)
+        // AppDialogs.showProgressDialog(mContext)
         Thread(Runnable {
             val result = Helper.GenerateEncrptedUrl(
                 BuildConfig.API_URL,

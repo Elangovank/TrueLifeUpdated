@@ -4,18 +4,17 @@ import android.content.Context
 import android.database.Cursor
 import android.net.Uri
 import android.provider.ContactsContract
-import android.util.Log
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.ktx.getValue
+import com.thoughtbot.expandablecheckrecyclerview.models.MultiCheckExpandableGroup
+import com.thoughtbot.expandablerecyclerview.models.ExpandableGroup
+import com.truelife.TLApplication
 import com.truelife.chat.extensions.observeSingleValueEvent
 import com.truelife.chat.model.ExpandableContact
 import com.truelife.chat.model.PhoneContact
 import com.truelife.chat.model.realms.PhoneNumber
 import com.truelife.chat.model.realms.User
 import com.truelife.chat.utils.network.FireManager
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.ktx.getValue
-import com.thoughtbot.expandablecheckrecyclerview.models.MultiCheckExpandableGroup
-import com.thoughtbot.expandablerecyclerview.models.ExpandableGroup
-import com.truelife.TLApplication
 import com.wafflecopter.multicontactpicker.ContactResult
 import ezvcard.Ezvcard
 import ezvcard.VCard
@@ -38,14 +37,16 @@ import java.util.*
 object ContactUtils {
     private fun getRawContactsObservable(context: Context): Observable<PhoneContact> {
 
+
+
         return Observable.create { emitter: ObservableEmitter<PhoneContact> ->
 
 
             val contactsList: MutableList<PhoneContact> = ArrayList()
             val uri = ContactsContract.Contacts.CONTENT_URI
             val projection = arrayOf(
-                    ContactsContract.Contacts._ID,
-                    ContactsContract.Contacts.DISPLAY_NAME
+                ContactsContract.Contacts._ID,
+                ContactsContract.Contacts.DISPLAY_NAME
             )
             val selection = ContactsContract.Contacts.IN_VISIBLE_GROUP + " = '1'"
             val selectionArgs: Array<String>? = null
@@ -54,58 +55,92 @@ object ContactUtils {
             // Build adapter with contact entries
 //            var mCursor: Cursor? = null
             var mPhoneNumCursor: Cursor? = null
-            context.contentResolver.query(uri, projection, selection, selectionArgs, sortOrder)?.let { mCursor ->
-                try {
+            context.contentResolver.query(uri, projection, selection, selectionArgs, sortOrder)
+                ?.let { mCursor ->
+                    try {
+
+                        while (mCursor.moveToNext()) {
+                            //get contact name
+                            val name =
+                                mCursor.getString(mCursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME))
+
+                            //get contact name
+                            val contactID =
+                                mCursor.getString(mCursor.getColumnIndex(ContactsContract.Contacts._ID))
+                            //create new phoneContact object
+                            val contact = PhoneContact()
+                            contact.id = contactID.toInt()
+                            contact.name = name
 
 
-                    while (mCursor.moveToNext()) {
-                        //get contact name
-                        val name = mCursor.getString(mCursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME))
+                            //get all phone numbers in this contact if it has multiple numbers
+                            context.contentResolver.query(
+                                ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
+                                null,
+                                ContactsContract.CommonDataKinds.Phone.CONTACT_ID + "=?",
+                                arrayOf(contactID),
+                                null
+                            )?.let { phoneNumCursor ->
 
-                        //get contact name
-                        val contactID = mCursor.getString(mCursor.getColumnIndex(ContactsContract.Contacts._ID))
-                        //create new phoneContact object
-                        val contact = PhoneContact()
-                        contact.id = contactID.toInt()
-                        contact.name = name
+                                mPhoneNumCursor = phoneNumCursor
 
-
-                        //get all phone numbers in this contact if it has multiple numbers
-                        context.contentResolver.query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
-                                null, ContactsContract.CommonDataKinds.Phone.CONTACT_ID + "=?", arrayOf(contactID), null)?.let { phoneNumCursor ->
-
-                            mPhoneNumCursor = phoneNumCursor
-
-                            phoneNumCursor?.moveToFirst()
+                                phoneNumCursor?.moveToFirst()
 
 
-                            //create empty list to fill it with phone numbers for this contact
+                                //create empty list to fill it with phone numbers for this contact
+                                val phoneNumberList: MutableList<String> = ArrayList()
+                                while (!phoneNumCursor.isAfterLast) {
+                                    //get phone number
+                                    val number = phoneNumCursor.getString(
+                                        phoneNumCursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER)
+                                    )
+
+
+                                    //prevent duplicates numbers
+                                    if (!phoneNumberList.contains(number)) phoneNumberList.add(
+                                        number
+                                    )
+                                    phoneNumCursor.moveToNext()
+                                }
+
+                                //fill contact object with phone numbers
+                                contact.phoneNumbers = phoneNumberList
+                                //add final phoneContact object to contactList
+                                contactsList.add(contact)
+                                emitter.onNext(contact)
+
+                            /*    val contact1 = PhoneContact()
+                                val phoneNumberList1: MutableList<String> = ArrayList()
+                                phoneNumberList1.add("2222222222")
+                                contact1.id = 1234
+                                contact1.name = "Elango"
+                                contact1.phoneNumbers = phoneNumberList1
+                                contactsList.add(contact1)
+                                emitter.onNext(contact1)*/
+                            }
+                        }
+                        TLApplication.mFriendsList.forEach { friendItem ->
+                            val contact = PhoneContact()
                             val phoneNumberList: MutableList<String> = ArrayList()
-                            while (!phoneNumCursor.isAfterLast) {
-                                //get phone number
-                                val number = phoneNumCursor.getString(phoneNumCursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER))
+                            phoneNumberList.add(friendItem.mobile_number?:"")
+                            friendItem.id?.let {
+                                contact.id = it.toInt()
 
-
-                                //prevent duplicates numbers
-                                if (!phoneNumberList.contains(number)) phoneNumberList.add(number)
-                                phoneNumCursor.moveToNext()
+                                contact.name = friendItem.fullname
+                                contact.phoneNumbers = phoneNumberList
+                                contactsList.add(contact)
+                                emitter.onNext(contact)
                             }
 
-                            //fill contact object with phone numbers
-                            contact.phoneNumbers = phoneNumberList
-                            //add final phoneContact object to contactList
-                            contactsList.add(contact)
-                            emitter.onNext(contact)
                         }
+                    } catch (e: Exception) {
+                        e.printStackTrace()
+                    } finally {
+                        mCursor?.close()
+                        mPhoneNumCursor?.close()
+                        emitter.onComplete()
                     }
-                } catch (e: Exception) {
-                    e.printStackTrace()
-                } finally {
-                    mCursor?.close()
-                    mPhoneNumCursor?.close()
-                    emitter.onComplete()
                 }
-            }
         }
 
     }
@@ -191,10 +226,10 @@ object ContactUtils {
 
         //remove empty spaces and dashes and ()
         if (phone != null) phone = phone
-                .replace(" ", "")
-                .replace("-", "")
-                .replace("\\(", "")
-                .replace("\\)", "")
+            .replace(" ", "")
+            .replace("-", "")
+            .replace("\\(", "")
+            .replace("\\)", "")
         return phone
     }
 
@@ -204,7 +239,10 @@ object ContactUtils {
         val context = TLApplication.context()
         var name = phone
         try {
-            val uri = Uri.withAppendedPath(ContactsContract.PhoneLookup.CONTENT_FILTER_URI, Uri.encode(phone))
+            val uri = Uri.withAppendedPath(
+                ContactsContract.PhoneLookup.CONTENT_FILTER_URI,
+                Uri.encode(phone)
+            )
             val projection = arrayOf(ContactsContract.PhoneLookup.DISPLAY_NAME)
             val cursor = context?.contentResolver?.query(uri, projection, null, null, null)
             if (cursor != null) {
@@ -225,8 +263,15 @@ object ContactUtils {
         var cur: Cursor? = null
 
         try {
-            val lookupUri = Uri.withAppendedPath(ContactsContract.PhoneLookup.CONTENT_FILTER_URI, Uri.encode(number))
-            val mPhoneNumberProjection = arrayOf(ContactsContract.PhoneLookup._ID, ContactsContract.PhoneLookup.NUMBER, ContactsContract.PhoneLookup.DISPLAY_NAME)
+            val lookupUri = Uri.withAppendedPath(
+                ContactsContract.PhoneLookup.CONTENT_FILTER_URI,
+                Uri.encode(number)
+            )
+            val mPhoneNumberProjection = arrayOf(
+                ContactsContract.PhoneLookup._ID,
+                ContactsContract.PhoneLookup.NUMBER,
+                ContactsContract.PhoneLookup.DISPLAY_NAME
+            )
             cur = context.contentResolver.query(lookupUri, mPhoneNumberProjection, null, null, null)
             if (cur != null) {
                 if (cur.moveToFirst()) {
@@ -254,7 +299,12 @@ object ContactUtils {
                 if (storedUser == null) {
                     realmHelper.saveObjectToRealm(user)
                 } else {
-                    realmHelper.updateUserInfo(user, storedUser, user.userName, user.isStoredInContacts)
+                    realmHelper.updateUserInfo(
+                        user,
+                        storedUser,
+                        user.userName,
+                        user.isStoredInContacts
+                    )
                 }
 
             }, { throwable ->
@@ -291,7 +341,8 @@ object ContactUtils {
                 return@flatMap Observable.empty<Pair<PhoneContact, DataSnapshot>?>()
             }
 
-            return@flatMap FireConstants.uidByPhone.child(formattedNumber).observeSingleValueEvent().toObservable().map { Pair(contact, it) }
+            return@flatMap FireConstants.uidByPhone.child(formattedNumber).observeSingleValueEvent()
+                .toObservable().map { Pair(contact, it) }
 
 
         }.map {
@@ -304,9 +355,10 @@ object ContactUtils {
 
             val contact = pair.first
             val uid = pair.second
-                    ?: return@flatMap Observable.empty<Pair<PhoneContact, DataSnapshot>?>()
+                ?: return@flatMap Observable.empty<Pair<PhoneContact, DataSnapshot>?>()
 
-            return@flatMap FireConstants.usersRef.child(uid).observeSingleValueEvent().toObservable().map { Pair(contact, it) }
+            return@flatMap FireConstants.usersRef.child(uid).observeSingleValueEvent()
+                .toObservable().map { Pair(contact, it) }
 
         }.map {
             val contact = it.first
@@ -408,7 +460,12 @@ object ContactUtils {
                     phoneNumberList.add(phoneNumber)
                 }
             }
-            if (!phoneNumberList.isEmpty()) contactNameList.add(ExpandableContact(name, phoneNumberList))
+            if (!phoneNumberList.isEmpty()) contactNameList.add(
+                ExpandableContact(
+                    name,
+                    phoneNumberList
+                )
+            )
         }
         return contactNameList
     }

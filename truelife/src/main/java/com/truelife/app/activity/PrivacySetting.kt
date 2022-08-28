@@ -66,7 +66,7 @@ class PrivacySetting : BaseActivity(), ResponseListener {
             saveAPI()
         }
         mBackBtn!!.setOnClickListener {
-            finish()
+          super.onBackPressed()
         }
 
         mPrivacyProfileViewTxt!!.setOnClickListener {

@@ -6,7 +6,6 @@
     app:startDestination="@id/enterPhoneNumberFragment">
 
     <fragment
-
         android:id="@+id/enterPhoneNumberFragment"
         android:name="com.truelife.chat.activities.authentication.EnterPhoneNumberFragment"
         android:label="fragment_enter_phone_number"

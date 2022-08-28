@@ -3,6 +3,7 @@ package com.truelife.chat.activities.authentication
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -20,8 +21,11 @@ import com.truelife.chat.utils.network.AuthManager
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.*
+import com.truelife.app.activity.TLSigninActivity
+import com.truelife.chat.utils.SharedPreferencesManager
 import durdinapps.rxfirebase2.RxFirebaseAuth
 import kotlinx.android.synthetic.main.activity_authentication.*
+import kotlinx.android.synthetic.main.fragment_enter_phone_number.*
 
 
 class AuthenticationActivity : AppCompatActivity(), AuthCallbacks {
@@ -41,6 +45,7 @@ class AuthenticationActivity : AppCompatActivity(), AuthCallbacks {
     private var rawPhone = ""
     private var fromScreen = ""
     private lateinit var onotpsent: OnOTPSent
+    //private lateinit var txtAlreadyHave : TextView
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -92,6 +97,8 @@ class AuthenticationActivity : AppCompatActivity(), AuthCallbacks {
                 setLoading(false)
             }
         }
+
+
     }
 
     override fun verifyPhoneNumber(phoneNumber: String, countryCode: String, screen: String, otplistener : OnOTPSent) {
@@ -169,6 +176,7 @@ class AuthenticationActivity : AppCompatActivity(), AuthCallbacks {
 
     override fun onStart() {
         super.onStart()
+
         if (auth.currentUser != null) {
             startSplashActivity()
         }
@@ -181,6 +189,7 @@ class AuthenticationActivity : AppCompatActivity(), AuthCallbacks {
         startActivity(intent)
         finish()
     }
+
 
 
 }

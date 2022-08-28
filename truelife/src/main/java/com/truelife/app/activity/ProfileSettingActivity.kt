@@ -93,7 +93,7 @@ class ProfileSettingActivity : BaseActivity(), ResponseListener,
             DateUtil.showFromDateDialog(mContext, mSelectedDateValue!!, this, false)
         }
         mBackBtn!!.setOnClickListener {
-            finish()
+            super.onBackPressed()
 
         }
         submit_save_text.setOnClickListener {

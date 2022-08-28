@@ -251,7 +251,7 @@ class TLSignupActivity : BaseActivity(), ResponseListener, SelectedListener, pro
         val mCase = getCountryStateCityApiCaseString(mCategory!!, mCategoryId!!, mStateId!!)
         val result = Helper.GenerateEncrptedUrl(BuildConfig.API_URL, mCase!!)
         Log.e("URL", result)
-        AppServices.getCountryStateCityApi(this, result)
+        AppServices.getCountryStateCityApi(this,this, result)
         /* } else {
              AppDialogs.customOkAction(
                  this,

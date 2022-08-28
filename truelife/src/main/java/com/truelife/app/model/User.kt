@@ -17,7 +17,7 @@ class User : Response(), Serializable {
     val mChatTone: String? = null
 
     @SerializedName("country_id")
-    val mCountryId: String? = null
+    val mCountryId: String? = "0"
 
     @SerializedName("current_city_id")
     val mCurrentCityId: String? = null

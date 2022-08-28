@@ -757,32 +757,32 @@ public class RealmHelper {
         //get users for forward activity
         if (showGroupOrNotStoredContacts) {
             realmQuery = realm.where(User.class)
-                    .contains(DBConstants.USERNAME, query, Case.INSENSITIVE)
-                    .equalTo(DBConstants.GROUP_DOT_IS_ACTIVE, true)
-                    .equalTo(DBConstants.isGroupBool, true)
-                    .or()
-                    .contains(DBConstants.USERNAME, query, Case.INSENSITIVE)
-                    .equalTo(DBConstants.isGroupBool, false)
-                    .or()
-                    .contains(DBConstants.PHONE, query)
-                    .equalTo(DBConstants.isGroupBool, true)
-                    .equalTo(DBConstants.GROUP_DOT_IS_ACTIVE, true)
-                    .or()
-                    .contains(DBConstants.PHONE, query)
-                    .equalTo(DBConstants.isGroupBool, false)
                     .not()
-                    .in(DBConstants.PHONE, new String[]{SharedPreferencesManager.getPhoneNumber()});
+                    .in(DBConstants.PHONE, new String[]{SharedPreferencesManager.getPhoneNumber()})
+                    .contains(DBConstants.USERNAME, query, Case.INSENSITIVE)
+                    .equalTo(DBConstants.GROUP_DOT_IS_ACTIVE, true)
+                    .equalTo(DBConstants.isGroupBool, true)
+                    .or()
+                    .contains(DBConstants.USERNAME, query, Case.INSENSITIVE)
+                    .equalTo(DBConstants.isGroupBool, false)
+                    .or()
+                    .contains(DBConstants.PHONE, query)
+                    .equalTo(DBConstants.isGroupBool, true)
+                    .equalTo(DBConstants.GROUP_DOT_IS_ACTIVE, true)
+                    .or()
+                    .contains(DBConstants.PHONE, query)
+                    .equalTo(DBConstants.isGroupBool, false);
         } else {
             realmQuery = realm.where(User.class)
+                    .not()
+                    .in(DBConstants.PHONE, new String[]{SharedPreferencesManager.getPhoneNumber()})
                     .equalTo(DBConstants.IS_STORED_IN_CONTACTS, true)
                     .equalTo(DBConstants.IS_GROUP, false)
                     .contains(DBConstants.USERNAME, query, Case.INSENSITIVE)
                     .or()
                     .equalTo(DBConstants.IS_STORED_IN_CONTACTS, true)
                     .equalTo(DBConstants.IS_GROUP, false)
-                    .contains(DBConstants.PHONE, query)
-                    .not()
-                    .in(DBConstants.PHONE, new String[]{SharedPreferencesManager.getPhoneNumber()});
+                    .contains(DBConstants.PHONE, query);
         }
         return realmQuery.findAll();
     }

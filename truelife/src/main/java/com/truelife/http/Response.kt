@@ -2,6 +2,7 @@ package com.truelife.http
 
 import androidx.room.Ignore
 import com.google.gson.annotations.SerializedName
+import com.truelife.app.model.User
 
 import java.io.Serializable
 
@@ -34,8 +35,6 @@ open class Response : Serializable {
      */
     @SerializedName("a1")
     var requestType: Int? = null
-
-
 
 
     @SerializedName("a2")

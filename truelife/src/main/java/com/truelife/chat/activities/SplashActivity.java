@@ -3,15 +3,15 @@ package com.truelife.chat.activities;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
-import  com.truelife.R;
-import com.truelife.chat.activities.AgreePrivacyPolicyActivity;
+import com.truelife.R;
+import com.truelife.app.activity.TLDashboardActivity;
+import com.truelife.app.model.User;
 import com.truelife.chat.activities.authentication.AuthenticationActivity;
 import com.truelife.chat.activities.main.MainActivity;
 import com.truelife.chat.activities.setup.SetupUserActivity;
@@ -19,18 +19,26 @@ import com.truelife.chat.utils.DetachableClickListener;
 import com.truelife.chat.utils.PermissionsUtil;
 import com.truelife.chat.utils.SharedPreferencesManager;
 import com.truelife.chat.utils.network.FireManager;
+import com.truelife.storage.LocalStorageSP;
 
 //this is the First Activity that launched when user starts the App
 public class SplashActivity extends AppCompatActivity {
 
     private static final int PERMISSION_REQUEST_CODE = 451;
 
+    private boolean isFromChatClick = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-          setTheme(R.style.AppTheme);//revert back to default theme after loading splash image
+        setTheme(R.style.AppTheme);//revert back to default theme after loading splash image
         setContentView(R.layout.activity_splash);
+
+        Bundle intent = getIntent().getExtras();
+        if (intent != null)
+            if (intent.containsKey("isFromChatClick")) {
+                isFromChatClick = intent.getBoolean("isFromChatClick");
+            }
         if (!SharedPreferencesManager.hasAgreedToPrivacyPolicy()) {
             startPrivacyPolicyActivity();
             //check if user isLoggedIn
@@ -52,9 +60,17 @@ public class SplashActivity extends AppCompatActivity {
 
 
     private void startLoginActivity() {
-        Intent intent = new Intent(this, AuthenticationActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
+
+        User user = LocalStorageSP.INSTANCE.getLoginUser(this);
+        if (user.getMUserId() == null || user.getMUserId().isEmpty()) {
+            Intent intent = new Intent(this, AuthenticationActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+        } else {
+            Intent intent = new Intent(this, TLDashboardActivity.class);
+            startActivity(intent);
+            finish();
+        }
         finish();
     }
 
@@ -69,9 +85,20 @@ public class SplashActivity extends AppCompatActivity {
         if (!SharedPreferencesManager.hasAgreedToPrivacyPolicy()) {
             startPrivacyPolicyActivity();
         } else if (SharedPreferencesManager.isUserInfoSaved()) {
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
-            finish();
+            User user = LocalStorageSP.INSTANCE.getLoginUser(this);
+            if (user.getMMobileNumber() != null) {
+                if (isFromChatClick) {
+                    Intent intent = new Intent(this, MainActivity.class);
+                    startActivity(intent);
+                } else {
+                    Intent intent = new Intent(this, TLDashboardActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+            } else {
+                startLoginActivity();
+            }
+
         } else {
             Intent intent = new Intent(this, SetupUserActivity.class);
             startActivity(intent);

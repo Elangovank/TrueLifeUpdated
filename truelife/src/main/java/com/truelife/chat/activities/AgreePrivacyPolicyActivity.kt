@@ -3,10 +3,12 @@ package com.truelife.chat.activities
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.os.Handler
 import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.OnTouchListener
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import android.webkit.WebView
 import android.widget.CheckBox
 import android.widget.TextView
@@ -14,52 +16,75 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import com.truelife.R
-
 import com.truelife.chat.activities.authentication.AuthenticationActivity
 import com.truelife.chat.activities.main.MainActivity
 import com.truelife.chat.activities.setup.SetupUserActivity
-import com.truelife.chat.adapters.IntroSliderAdapter
-import com.truelife.chat.model.SliderModel
 import com.truelife.chat.utils.DetachableClickListener
 import com.truelife.chat.utils.PermissionsUtil
 import com.truelife.chat.utils.SharedPreferencesManager
 import com.truelife.chat.utils.network.FireManager
 import kotlinx.android.synthetic.main.activity_agree_privacy_policy.*
-import java.util.*
 
 
 class AgreePrivacyPolicyActivity : AppCompatActivity() {
     private val PERMISSION_REQUEST_CODE = 451
-    private var listItems: ArrayList<SliderModel>? = null
 
+    // private var listItems: ArrayList<SliderModel>? = null
+    private var mGoButtonAnimation: Animation? = null
+
+    fun showGoButton() {
+        mGoButtonAnimation = AnimationUtils.loadAnimation(this, R.anim.scale_image)
+        btn_agree.visibility = View.VISIBLE
+        btn_agree.animation = mGoButtonAnimation
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_agree_privacy_policy)
 
-        // Make a copy of the slides you'll be presenting.
-        listItems = ArrayList<SliderModel>()
-        listItems!!.add(SliderModel(R.drawable.chat_intro, "Quick & Smooth Instant Messaging", "Send and receive instant messages and enjoy our incredibly fine-tuned app to communicate with your contacts"))
-        listItems!!.add(SliderModel(R.drawable.call_intro, "Audio Calling", "Enjoy clean and sharp audio calls"))
-        listItems!!.add(SliderModel(R.drawable.video_intro, "Video Calling", " You can also make use of high quality video calls to connect with your contacts"))
-        listItems!!.add(SliderModel(R.drawable.ic_wifi_msg, "Wi-Msg", "Send and receive messages, videos and images with the people near you, without using the internet!"))
-        val itemsPager_adapter = IntroSliderAdapter(this, listItems)
-        my_pager.setAdapter(itemsPager_adapter)
+        Handler().postDelayed({
+            try {
 
-        my_pager.setOnTouchListener(OnTouchListener { v, event -> true })
+                showGoButton()
+
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }, 1500)
+
 
         btn_agree.setOnClickListener {
-            if (my_pager.currentItem == 3) {
-                //showContactsConfirmationDialog()
-                SharedPreferencesManager.setAgreedToPrivacyPolicy(true)
-                if (!FireManager.isLoggedIn())
-                    startLoginActivity()
-                else
-                    startNextActivity()
-            } else {
-                my_pager.setCurrentItem(my_pager.currentItem + 1, true)
-            }
+
+            SharedPreferencesManager.setAgreedToPrivacyPolicy(true)
+            if (!FireManager.isLoggedIn())
+                startLoginActivity()
+            else
+                startNextActivity()
         }
+
+        // Make a copy of the slides you'll be presenting.
+        /* listItems = ArrayList<SliderModel>()
+         listItems!!.add(SliderModel(R.drawable.chat_intro, "Quick & Smooth Instant Messaging", "Send and receive instant messages and enjoy our incredibly fine-tuned app to communicate with your contacts"))
+         listItems!!.add(SliderModel(R.drawable.call_intro, "Audio Calling", "Enjoy clean and sharp audio calls"))
+         listItems!!.add(SliderModel(R.drawable.video_intro, "Video Calling", " You can also make use of high quality video calls to connect with your contacts"))
+         listItems!!.add(SliderModel(R.drawable.ic_wifi_msg, "Wi-Msg", "Send and receive messages, videos and images with the people near you, without using the internet!"))
+         val itemsPager_adapter = IntroSliderAdapter(this, listItems)
+         my_pager.setAdapter(itemsPager_adapter)
+
+         my_pager.setOnTouchListener(OnTouchListener { v, event -> true })
+
+         btn_agree.setOnClickListener {
+             if (my_pager.currentItem == 3) {
+                 //showContactsConfirmationDialog()
+                 SharedPreferencesManager.setAgreedToPrivacyPolicy(true)
+                 if (!FireManager.isLoggedIn())
+                     startLoginActivity()
+                 else
+                     startNextActivity()
+             } else {
+                 my_pager.setCurrentItem(my_pager.currentItem + 1, true)
+             }
+         }*/
         // The_slide_timer
         /*Timer().schedule(object : TimerTask() {
             override fun run() {
@@ -70,7 +95,7 @@ class AgreePrivacyPolicyActivity : AppCompatActivity() {
                 })
             }
         }, 3000,3000)*/
-        my_tablayout.setupWithViewPager(my_pager, true)
+        //   my_tablayout.setupWithViewPager(my_pager, true)
     }
 
     private fun showContactsConfirmationDialog() {
@@ -80,9 +105,10 @@ class AgreePrivacyPolicyActivity : AppCompatActivity() {
 
         val view = LayoutInflater.from(this).inflate(R.layout.privacy_policy_dialog, null, false)
         dialog.setView(view)
-       // val tv = view.findViewById<TextView>(R.id.tv_privacy_policy_dialog)
+        // val tv = view.findViewById<TextView>(R.id.tv_privacy_policy_dialog)
         val checkBox = view.findViewById<CheckBox>(R.id.chb_agree)
-        checkBox.text = "By Checking this, You agree to the collection and use of information in accordance with this Privacy Policy"
+        checkBox.text =
+            "By Checking this, You agree to the collection and use of information in accordance with this Privacy Policy"
         val wv: WebView
         wv = view.findViewById<WebView>(R.id.webview_privacy_policy_dialog)
         wv.loadUrl("file:///android_asset/terms_and_condition.html")
@@ -103,7 +129,11 @@ class AgreePrivacyPolicyActivity : AppCompatActivity() {
     }
 
     private fun requestPermissions() {
-        ActivityCompat.requestPermissions(this, PermissionsUtil.permissions, PERMISSION_REQUEST_CODE)
+        ActivityCompat.requestPermissions(
+            this,
+            PermissionsUtil.permissions,
+            PERMISSION_REQUEST_CODE
+        )
     }
 
     private fun startPrivacyPolicyActivity() {
@@ -141,7 +171,11 @@ class AgreePrivacyPolicyActivity : AppCompatActivity() {
         }
     }
 
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<String>,
+        grantResults: IntArray
+    ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (PermissionsUtil.permissionsGranted(grantResults)) {
             if (!FireManager.isLoggedIn())
@@ -153,14 +187,15 @@ class AgreePrivacyPolicyActivity : AppCompatActivity() {
     }
 
     private fun showAlertDialog() {
-        val positiveClickListener = DetachableClickListener.wrap { dialogInterface, i -> requestPermissions() }
+        val positiveClickListener =
+            DetachableClickListener.wrap { dialogInterface, i -> requestPermissions() }
         val negativeClickListener = DetachableClickListener.wrap { dialogInterface, i -> finish() }
         val builder = AlertDialog.Builder(this)
-                .setTitle(R.string.missing_permissions)
-                .setMessage(R.string.you_have_to_grant_permissions)
-                .setPositiveButton(R.string.ok, positiveClickListener)
-                .setNegativeButton(R.string.no_close_the_app, negativeClickListener)
-                .create()
+            .setTitle(R.string.missing_permissions)
+            .setMessage(R.string.you_have_to_grant_permissions)
+            .setPositiveButton(R.string.ok, positiveClickListener)
+            .setNegativeButton(R.string.no_close_the_app, negativeClickListener)
+            .create()
         //avoid memory leaks
         positiveClickListener.clearOnDetach(builder)
         negativeClickListener.clearOnDetach(builder)

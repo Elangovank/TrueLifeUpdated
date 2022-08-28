@@ -7,27 +7,43 @@
     android:keepScreenOn="true"
     tools:context=".app.fragment.TLPublicFeedFragment">
 
+    <TextView
+        android:id="@+id/statusUpdate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/transparent"
+        android:fontFamily="@font/lato_bold"
+        android:gravity="center"
+        android:paddingTop="@dimen/dimen_5"
+        android:paddingBottom="@dimen/dimen_5"
+        android:text="@string/update_your_status"
+        android:textColor="@color/colorPrimary" />
+
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swipeRefereshPublic"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingTop="@dimen/dimen_5"
+        android:paddingBottom="@dimen/dimen_5"
+        android:layout_below="@+id/statusUpdate"
         android:background="@color/transparent">
+
 
         <com.truelife.app.VideoPlayerRecyclerView
             android:id="@+id/publicRv"
-            android:nestedScrollingEnabled="true"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:nestedScrollingEnabled="true" />
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     <ProgressBar
-        android:indeterminateTint="@color/colorPrimary"
         android:id="@+id/progress_bar"
-        android:layout_marginTop="@dimen/dimen20"
-        android:visibility="visible"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/dimen20"
+        android:indeterminateTint="@color/colorPrimary"
+        android:visibility="visible" />
 
 </RelativeLayout>

@@ -146,12 +146,12 @@ class DashboardSearchActivity : BaseActivity(), ResponseListener {
     fun loadData() {
         val mUser: User = LocalStorageSP.getLoginUser(myContext)
         val mCase = PostSearchDetails(
-            mUser.mCurrentCityId!!,
-            mUser.mCountryId!!,
-            mUser.mUserId!!,
+            mUser.mCurrentCityId?: "0",
+            mUser.mCountryId ?: "0",
+            mUser.mUserId ?: "0",
             frament_feed_search_Edt.text.toString().trim(),
-            mUser.mPincode!!,
-            mUser.mStateId!!
+            mUser.mPincode ?: "0",
+            mUser.mStateId ?: "0"
         )
         val result =
             Helper.GenerateEncrptedUrl(

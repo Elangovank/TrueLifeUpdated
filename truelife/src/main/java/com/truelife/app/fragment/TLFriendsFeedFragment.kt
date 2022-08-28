@@ -12,6 +12,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.FragmentActivity
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
@@ -35,6 +36,7 @@ import com.truelife.app.activity.ProfileActivity
 import com.truelife.app.activity.TLDashboardActivity
 import com.truelife.app.constants.TLConstant
 import com.truelife.app.fragment.feed.FragmentLifeCycleInterface
+import com.truelife.app.listeners.DailogFragmentToFragmentListener
 import com.truelife.app.listeners.Feedistener
 import com.truelife.app.model.LikeList
 import com.truelife.app.model.PublicFeedModel
@@ -62,7 +64,7 @@ class TLFriendsFeedFragment : BaseFragment(), ResponseListener,
     lateinit var mUser: User
     var mPage: Int = 1
     var mTotalPages = 0
-
+    lateinit var statusUpdate: TextView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -72,8 +74,9 @@ class TLFriendsFeedFragment : BaseFragment(), ResponseListener,
         val view = inflater.inflate(R.layout.fragment_tlfriends_feed, container, false)
         mRecyclerView = view.findViewById(R.id.publicRv)
         mSwipeRefresh = view.findViewById(R.id.swipeRefereshPublic)
+        statusUpdate = view.findViewById(R.id.statusUpdate)
         mView = view
-        mContext = activity!!
+        mContext = requireActivity()
         init(mView!!)
         LocalBroadcastManager.getInstance(mContext)
             .registerReceiver(
@@ -87,7 +90,12 @@ class TLFriendsFeedFragment : BaseFragment(), ResponseListener,
     override fun onResume() {
         super.onResume()
         // AppDialogs.showToastDialog(mContext,"Friends Resume")
-
+        mUser = LocalStorageSP.getLoginUser(mContext)
+        if (mUser.mCountryId.isNullOrEmpty() || mUser.mCountryId.equals("0")) {
+            statusUpdate.visibility = View.VISIBLE
+        } else {
+            statusUpdate.visibility = View.GONE
+        }
 
         LocalStorageSP.put(mContext, TLConstant.SourceType, "2")
         initSocket()
@@ -232,10 +240,15 @@ class TLFriendsFeedFragment : BaseFragment(), ResponseListener,
     }
 
     fun loadData() {
-
         val mCase = getFeedCaseInfo(
-            "2", mUser.mUserId!!,
-            mUser.mCountryId!!, mUser.mStateId!!, mUser.mCurrentCityId!!, mPage.toString(), "0", ""
+            "2",
+            mUser.mUserId!!,
+            mUser.mCountryId ?: "0",
+            mUser.mStateId ?: "0",
+            mUser.mCurrentCityId ?: "0",
+            mPage.toString(),
+            "0",
+            ""
         )
         val result =
             Helper.GenerateEncrptedUrl(
@@ -320,7 +333,17 @@ class TLFriendsFeedFragment : BaseFragment(), ResponseListener,
         }
 
         mRecyclerView.addOnScrollListener(listener)
+        statusUpdate.setOnClickListener {
+            UserupdateDialogFragment.newInstance("Hello",
+                object : DailogFragmentToFragmentListener {
+                    override fun onSuccess() {
+                        statusUpdate.visibility = View.GONE
+                    }
 
+                }).show(requireActivity().supportFragmentManager, UserupdateDialogFragment.TAG)
+
+            //   startActivity(Intent(mContext, TLSignupActivity::class.java))
+        }
         loadData()
     }
 

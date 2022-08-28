@@ -8,6 +8,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     app:behavior_peekHeight="100dp"
+    android:background="#F4F3F3"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
 
@@ -99,7 +100,8 @@
         android:background="@color/bgColor"
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
-        android:paddingBottom="5dp"
+        android:paddingBottom="16dp"
+        android:paddingTop="16dp"
         anim:layout_constraintBottom_toBottomOf="parent"
         anim:layout_constraintEnd_toEndOf="parent"
         anim:layout_constraintHorizontal_bias="0.0"
@@ -132,6 +134,7 @@
             android:layout_height="match_parent"
             android:scaleType="centerInside"
             android:layout_marginRight="@dimen/dimen2"
+            android:tint="@color/black"
             anim:layout_constraintBottom_toBottomOf="parent"
             anim:layout_constraintEnd_toEndOf="parent"
             anim:layout_constraintTop_toTopOf="parent"

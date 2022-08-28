@@ -40,10 +40,11 @@
 
                     <ImageView
                         android:id="@+id/icon"
-                        android:layout_width="36dp"
-                        android:layout_height="36dp"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
                         android:layout_alignParentLeft="true"
-                        android:src="@drawable/app_icon" />
+                        android:src="@drawable/profile_back_btn"
+                        app:tint="@color/colorDarkGray" />
                 </RelativeLayout>
             </androidx.appcompat.widget.Toolbar>
 

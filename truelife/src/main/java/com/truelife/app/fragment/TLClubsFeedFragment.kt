@@ -108,7 +108,7 @@ class TLClubsFeedFragment : BaseFragment(), ResponseListener, progressInterface,
         mProgressBar = view.findViewById(R.id.progress_bar)
         progress_lay = view.findViewById(R.id.progress_lay)
         mView = view
-        mContext = activity!!
+        mContext = requireActivity()
         init(mView!!)
         LocalBroadcastManager.getInstance(mContext)
             .registerReceiver(
@@ -161,7 +161,7 @@ class TLClubsFeedFragment : BaseFragment(), ResponseListener, progressInterface,
     fun loadData() {
         val mCase = getFeedCaseInfo(
             "3", mUser.mUserId!!,
-            mUser.mCountryId!!, mUser.mStateId!!, mUser.mCurrentCityId!!, mPage.toString(), "0", ""
+            mUser.mCountryId?:"0", mUser.mStateId?:"0", mUser.mCurrentCityId?:"0", mPage.toString(), "0", ""
         )
         val result =
             Helper.GenerateEncrptedUrl(

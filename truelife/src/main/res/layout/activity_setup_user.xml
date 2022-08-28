@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bgColor"
-    tools:context=".activities.setup.SetupUserActivity">
+    tools:context=".chat.activities.setup.SetupUserActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -61,6 +61,7 @@
                 android:layout_width="160dp"
                 android:layout_height="160dp"
                 android:layout_gravity="center"
+                android:visibility="invisible"
                 android:layout_marginRight="8dp">
 
                 <de.hdodenhof.circleimageview.CircleImageView
@@ -98,6 +99,7 @@
                 android:imeOptions="actionDone"
                 android:inputType="textPersonName"
                 android:lines="1"
+                android:textCursorDrawable="@drawable/edit_cursor"
                 android:paddingRight="8dp"
                 android:textColor="@color/colorTextDark"
                 android:textColorHint="@color/colorTextDesc"
@@ -127,7 +129,6 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_gravity="center|bottom"
-        android:layout_marginRight="24dp"
         android:layout_marginBottom="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

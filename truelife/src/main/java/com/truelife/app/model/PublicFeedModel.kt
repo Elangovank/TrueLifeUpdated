@@ -200,6 +200,9 @@ class PublicFeedModel : Response(), Serializable {
         @SerializedName("source")
         var source: String? = null
 
+        @SerializedName("level")
+        var level: String? = null
+
     }
 
     class Medium : Serializable {
