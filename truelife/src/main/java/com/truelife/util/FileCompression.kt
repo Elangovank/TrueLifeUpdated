@@ -2,7 +2,10 @@ package com.truelife.util
 
 import android.content.Context
 import android.graphics.Bitmap
+import android.graphics.ImageDecoder
+import android.net.Uri
 import android.os.Environment
+import android.provider.MediaStore
 import com.truelife.app.constants.TLConstant
 import com.truelife.app.constants.TLConstant.APP_DIR
 import com.truelife.app.constants.TLConstant.COMPRESSED_IMAGES_DIR
@@ -14,11 +17,28 @@ import java.io.File
 
 object FileCompression {
 
+    fun getBitmapByUri(context: Context, uri: Uri): Bitmap? {
+        return try {
 
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.P) {
+                val source: ImageDecoder.Source =
+                    ImageDecoder.createSource(context.contentResolver, uri)
+                val bitmap = ImageDecoder.decodeBitmap(source)
+                bitmap
+            } else {
+                val bitmap = MediaStore.Images.Media.getBitmap(context.contentResolver, uri)
+                bitmap
+            }
+        } catch (e: Exception) {
+            null
+        }
+
+
+    }
     fun compressImage(mContext: Context, mCompressFile: File): File {
         try2CreateCompressDir()
         var quality = 75
-        val outPath: String = (Environment.getExternalStorageDirectory()
+        val outPath: String = (Environment.DIRECTORY_DOWNLOADS
             .toString() + File.separator
                 + APP_DIR
                 + COMPRESSED_IMAGES_DIR)
@@ -43,7 +63,7 @@ object FileCompression {
 
     fun try2CreateCompressDir() {
         var f = File(
-            Environment.getExternalStorageDirectory(),
+            Environment.DIRECTORY_DOWNLOADS,
             File.separator + TLConstant.APP_DIR
         )
         f.mkdirs()

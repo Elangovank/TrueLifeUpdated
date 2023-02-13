@@ -106,7 +106,7 @@ public class NotificationHelper extends ContextWrapper {
     }
 
     private long[] getVibrationPattern() {
-        return SharedPreferencesManager.isVibrateEnabled() ? new long[]{200, 200} : new long[0];
+        return SharedPreferencesManager.isVibrateEnabled() ? new long[]{1000, 1000,1000,1000} : new long[0];
     }
 
 

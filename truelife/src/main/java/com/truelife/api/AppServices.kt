@@ -125,6 +125,7 @@ class AppServices {
         val OTPVerify = "OTPVerify"
         val AcceptClubRequest = "AcceptClubRequest"
         val likedetails = "likedetails"
+        val appupdate ="appVersion"
     }
 
     private interface ApiInterface {

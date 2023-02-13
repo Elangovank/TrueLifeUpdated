@@ -1,11 +1,13 @@
 package com.truelife.app.activity.feedpost.activity
 
+import android.Manifest
 import android.app.Activity
 import android.app.Dialog
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
+import android.content.pm.ActivityInfo
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -23,6 +25,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.cloudinary.android.MediaManager
 import com.cloudinary.android.callback.ErrorInfo
 import com.cloudinary.android.callback.UploadCallback
+import com.karumi.dexter.Dexter
+import com.karumi.dexter.MultiplePermissionsReport
+import com.karumi.dexter.PermissionToken
+import com.karumi.dexter.listener.PermissionRequest
+import com.karumi.dexter.listener.multi.MultiplePermissionsListener
 import com.truelife.BuildConfig
 import com.truelife.R
 import com.truelife.api.AppServices
@@ -37,11 +44,16 @@ import com.truelife.app.model.MediaTypeModel
 import com.truelife.app.model.User
 import com.truelife.base.BaseActivity
 import com.truelife.base.TLFragmentManager
+import com.truelife.chat.activities.main.messaging.ChatActivity
+import com.truelife.chat.utils.FileUtils
 import com.truelife.http.MyHttpEntity
 import com.truelife.http.Response
 import com.truelife.http.ResponseListener
 import com.truelife.storage.LocalStorageSP
 import com.truelife.util.*
+import com.zhihu.matisse.Matisse
+import com.zhihu.matisse.MimeType
+import com.zhihu.matisse.engine.impl.GlideEngine
 import droidninja.filepicker.FilePickerBuilder
 import droidninja.filepicker.FilePickerConst.KEY_SELECTED_MEDIA
 import droidninja.filepicker.FilePickerConst.REQUEST_CODE_PHOTO
@@ -111,6 +123,45 @@ class TLScreenPostFeedActivity : BaseActivity(), ResponseListener,
             .registerReceiver(myBroadcastReceiver, IntentFilter(SelectedClubList))
     }
 
+    private fun pickImages() {
+        Dexter.withContext(this)
+            .withPermissions(
+                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                Manifest.permission.READ_EXTERNAL_STORAGE
+            )
+            .withListener(object : MultiplePermissionsListener {
+                override fun onPermissionsChecked(multiplePermissionsReport: MultiplePermissionsReport) {
+                    Matisse.from(myContext)
+                        .choose(
+                            MimeType.of(
+                                MimeType.MP4,
+                                MimeType.JPEG,
+                                MimeType.PNG,
+                            )
+                        )
+                        .countable(true)
+                        .maxSelectable(ChatActivity.MAX_SELECTABLE)
+                        .restrictOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT)
+                        .thumbnailScale(0.85f)
+                        .imageEngine(GlideEngine())
+                        .maxSelectable(5)
+                        .forResult(ChatActivity.PICK_GALLERY_REQUEST)
+                }
+
+                override fun onPermissionRationaleShouldBeShown(
+                    list: List<PermissionRequest>,
+                    permissionToken: PermissionToken
+                ) {
+                    Toast.makeText(
+                        myContext,
+                        R.string.missing_permissions,
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            })
+            .check()
+    }
+
     override fun onDestroy() {
         super.onDestroy()
         LocalBroadcastManager.getInstance(myContext).unregisterReceiver(myBroadcastReceiver)
@@ -119,6 +170,32 @@ class TLScreenPostFeedActivity : BaseActivity(), ResponseListener,
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         try {
+            if (requestCode == ChatActivity.PICK_GALLERY_REQUEST && resultCode == Activity.RESULT_OK) {
+                 mFilePath = Matisse.obtainPathResult(data) as ArrayList<String> /* = java.util.ArrayList<kotlin.String> */
+                for (mPath in mFilePath) {
+                    if (!FileUtils.isFileExists(mPath)) {
+                        Toast.makeText(
+                            myContext,
+                            R.string.image_video_not_found,
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        return
+                    }
+                }
+                myPostImageFile.clear()
+                mImageRecycleView.visibility = View.VISIBLE
+
+                for (i in mFilePath.indices) {
+                    val aFile = File(mFilePath.get(i))
+                    if (Utility.findMediaType(aFile.absolutePath)!!.contains("image"))
+                        myPostImageFile.add(aFile)
+                    // myPostImageFile.add(FileCompression.compressImage(myContext, aFile))
+                    else
+                        myPostImageFile.add(File(mFilePath.get(i)))
+
+                }
+                setRecylceview()
+            }
             if (requestCode == REQUEST_CODE_PHOTO) {
                 myPostImageFile.clear()
                 mImageRecycleView.visibility = View.VISIBLE
@@ -126,7 +203,8 @@ class TLScreenPostFeedActivity : BaseActivity(), ResponseListener,
                 for (i in mFilePath.indices) {
                     val aFile = File(mFilePath.get(i))
                     if (Utility.findMediaType(aFile.absolutePath)!!.contains("image"))
-                        myPostImageFile.add(FileCompression.compressImage(myContext, aFile))
+                        myPostImageFile.add(aFile)
+                       // myPostImageFile.add(FileCompression.compressImage(myContext, aFile))
                     else
                         myPostImageFile.add(File(mFilePath.get(i)))
 
@@ -179,7 +257,8 @@ class TLScreenPostFeedActivity : BaseActivity(), ResponseListener,
 
 
             if (PermissionChecker().checkAllPermission(myContext, mPermission)) {
-                FilePickerBuilder.instance.setMaxCount(5)
+                pickImages()
+               /* FilePickerBuilder.instance.setMaxCount(5)
                     //.setSelectedFiles(filePaths)
                     .setActivityTheme(R.style.FilePickerTheme)
                     .enableVideoPicker(true)
@@ -188,7 +267,7 @@ class TLScreenPostFeedActivity : BaseActivity(), ResponseListener,
                     .showFolderView(true)
                     .enableImagePicker(true)
                     .setCameraPlaceholder(R.drawable.ic_action_camera)
-                    .pickPhoto(this)
+                    .pickPhoto(this)*/
             }
         }
 

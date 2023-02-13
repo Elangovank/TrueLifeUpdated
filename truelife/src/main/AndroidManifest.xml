@@ -51,29 +51,36 @@
         tools:ignore="AllowBackup,GoogleAppIndexingWarning"
         tools:replace="android:supportsRtl,android:allowBackup">
         <activity
+            android:exported="false"
             android:name=".app.activity.YoutubePalyerActivity"
             android:configChanges="orientation|screenSize|layoutDirection" />
         <activity
+            android:exported="false"
             android:name=".app.activity.DashBoardSearchDetailActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
         <activity
+            android:exported="false"
             android:name=".app.activity.DashboardSearchActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
         <activity
+            android:exported="true"
             android:name=".app.activity.FeedEditActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
         <activity
+            android:exported="true"
             android:name=".app.activity.FeedShareActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
         <activity
+            android:exported="true"
             android:name=".app.activity.feedpost.FeedDetailActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
         <activity
+            android:exported="true"
             android:name=".app.activity.ImagePreview"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
@@ -83,59 +90,73 @@
             android:required="false" />
 
         <activity
+            android:exported="true"
             android:name=".app.activity.ComingSoonActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
         <activity
+            android:exported="true"
             android:name=".app.activity.ProfileSettingActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
         <activity
+            android:exported="true"
             android:name=".app.activity.YourFollowersActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
         <activity
+            android:exported="true"
             android:name=".app.activity.AccountSetting"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
         <activity
+            android:exported="true"
             android:name=".app.activity.PersonalSetting"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
         <activity
+            android:exported="true"
             android:name=".app.activity.PrivacySetting"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
         <activity
+            android:exported="true"
             android:name=".app.activity.AboutTrueLife"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
         <activity
+            android:exported="true"
             android:name=".app.activity.BlockedListActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
         <activity
+            android:exported="true"
             android:name=".app.activity.ReportProblemActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
         <activity
+            android:exported="true"
             android:name=".app.activity.TLCelebrityLogin"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
         <activity
+            android:exported="true"
             android:name=".app.activity.TLForgotPassword"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
 
         <activity
+            android:exported="true"
             android:name=".app.activity.TLResetPassword"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
         <activity
+            android:exported="true"
             android:name=".app.viewer.TLWebViewView"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
         <activity
+            android:exported="true"
             android:name=".app.activity.TLSplashActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
@@ -147,43 +168,53 @@
             </intent-filter>-->
         </activity>
         <activity
+            android:exported="true"
             android:name=".app.activity.TLDashboardActivity"
             android:launchMode="singleInstance"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.MaterialComponents.NoActionBar" />
         <activity
+            android:exported="true"
             android:name=".app.activity.TLChatActivity"
             android:configChanges="orientation|screenSize|layoutDirection"
             android:screenOrientation="portrait" />
         <activity
+            android:exported="true"
             android:name=".app.activity.TLSigninActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
         <activity
+            android:exported="true"
             android:name=".app.activity.TLSignupActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
         <activity
+            android:exported="true"
             android:name=".app.activity.ProfileActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
         <activity
+            android:exported="true"
             android:name=".app.VideoPreviewActivity"
             android:configChanges="orientation|screenSize|layoutDirection"
             android:windowSoftInputMode="adjustResize" />
         <activity
+            android:exported="true"
             android:name=".app.activity.AddBlockedList"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
         <activity
+            android:exported="true"
             android:name=".app.activity.CreateClub"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
         <activity
+            android:exported="true"
             android:name=".app.activity.feedpost.activity.TLScreenPostFeedActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateUnchanged" />
         <activity
+            android:exported="true"
             android:name=".app.activity.feedpost.activity.PostFeedDirectActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" >
@@ -225,73 +256,90 @@
             </intent-filter>
         </activity>
         <activity
+            android:exported="true"
             android:name=".app.activity.club.ClubListActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
         <activity
+            android:exported="true"
             android:name=".app.fragment.club.TLClubDetails"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
         <activity
+            android:exported="true"
             android:name=".app.fragment.club.more.ClubPrivacyAcitivty"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
         <activity
+            android:exported="true"
             android:name=".app.fragment.club.more.invite.TLClubGeneralPublic"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
         <activity
+            android:exported="true"
             android:name=".app.fragment.club.more.invite.TLClubFriendsContacts"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
         <activity
+            android:exported="true"
             android:name=".app.fragment.club.more.invite.TLClubGeneralInviteScreen"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
         <activity
+            android:exported="true"
             android:name=".app.fragment.club.more.invite.TLClubAllFriends"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
         <activity
+            android:exported="true"
             android:name=".app.fragment.club.more.invite.TLClubRemoveFriends"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
         <activity
+            android:exported="true"
             android:name=".app.fragment.club.more.TLClubChangeAdmin"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
         <activity
+            android:exported="true"
             android:name=".app.touchimageview.TLMediaPreviewActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
         <activity
+            android:exported="true"
             android:name=".app.activity.FriendsActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
         <activity
+            android:exported="true"
             android:name=".app.activity.TLProfileTotalPhotos"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
         <activity
+            android:exported="true"
             android:name=".app.activity.otp.TLOTPActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
 
         <activity
+            android:exported="true"
             android:name=".app.activity.TLAutoGraphActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
 
         <activity
+            android:exported="true"
             android:name=".app.activity.TLMomentsActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
 
         <activity
+            android:exported="true"
             android:name=".app.activity.TLCinemaActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
         <activity
+            android:exported="true"
             android:name=".app.activity.TLRaiseIssueActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
@@ -320,6 +368,7 @@
 
 
         <activity
+            android:exported="true"
             android:name=".chat.activities.LockscreenActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
@@ -333,28 +382,33 @@
             android:windowSoftInputMode="stateVisible|adjustPan" />
 
         <activity
+            android:exported="true"
             android:name=".chat.activities.UpdateActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
+            android:exported="true"
             android:name=".chat.activities.TextStatusActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.Translucent"
             android:windowSoftInputMode="stateVisible|adjustResize" />
 
         <activity
+            android:exported="true"
             android:name=".chat.activities.main.MainActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
+            android:exported="true"
             android:name=".chat.activities.ShareGroupLinkActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
 
         <activity
+            android:exported="true"
             android:name=".chat.activities.SplashActivity"
             android:theme="@style/SplashScreenTheme"
             android:screenOrientation="portrait">
@@ -366,11 +420,13 @@
         </activity>
 
         <activity
+            android:exported="true"
             android:name=".chat.activities.NewChatActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
+            android:exported="true"
             android:name=".chat.activities.main.messaging.ChatActivity"
             android:label=""
             android:parentActivityName=".chat.activities.main.MainActivity"
@@ -378,12 +434,14 @@
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
+            android:exported="true"
             android:name=".chat.activities.FullscreenActivity"
             android:label=""
             android:screenOrientation="portrait"
             android:theme="@style/FullScreenTheme" />
 
         <activity
+            android:exported="true"
             android:name="com.canhub.cropper.CropImageActivity"
             android:theme="@style/AppTheme" />
         <activity
@@ -391,13 +449,16 @@
             android:exported="true"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
+            android:exported="true"
             android:name=".chat.activities.CameraActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
+            android:exported="true"
             android:name=".chat.activities.ProfilePhotoDialog"
             android:theme="@style/DialogTheme" />
         <activity
+            android:exported="true"
             android:name=".chat.activities.ForwardActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
@@ -463,18 +524,22 @@
             </intent-filter>
         </activity>
         <activity
+            android:exported="true"
             android:name=".chat.activities.UserDetailsActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
+            android:exported="true"
             android:name=".chat.activities.MediaGalleryActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
+            android:exported="true"
             android:name=".chat.activities.SelectContactNumbersActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity
+            android:exported="true"
             android:name=".chat.activities.ContactDetailsActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
@@ -485,24 +550,29 @@
             android:screenOrientation="portrait"
             android:theme="@style/SettingsTheme" />
         <activity
+            android:exported="true"
             android:name=".chat.activities.ProfilePhotoActivity"
             android:screenOrientation="portrait"
             android:theme="@style/FullScreenTheme" />
         <activity
+            android:exported="true"
             android:name=".chat.activities.setup.SetupUserActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan" />
         <activity
+            android:exported="true"
             android:name=".chat.activities.NewGroupActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"  />
         <activity
+            android:exported="true"
             android:name=".chat.activities.ViewStatusActivity"
             android:screenOrientation="portrait"
             android:theme="@style/FullscreenTheme"
             android:windowSoftInputMode="adjustNothing" />
         <activity
+            android:exported="true"
             android:name=".chat.activities.MyStatusActivity"
             android:label="@string/title_activity_my_status"
             android:parentActivityName=".chat.activities.main.MainActivity"
@@ -523,6 +593,7 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity
+            android:exported="true"
             android:name=".chat.activities.AcceptInviteLink"
             android:screenOrientation="portrait"
             android:theme="@style/DialogTheme">
@@ -542,23 +613,28 @@
             </intent-filter>
         </activity>
         <activity
+            android:exported="true"
             android:name=".chat.placespicker.PlacesPickerActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
+            android:exported="true"
             android:name=".chat.extensions.ExitAndRemoveFromRecentAppsDummyActivity"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoDisplay" />
 
         <!-- SERVICES -->
         <service
+            android:exported="true"
             android:name=".chat.job.NetworkJobService"
             android:permission="android.permission.BIND_JOB_SERVICE" />
         <service
+            android:exported="true"
             android:name=".chat.job.SaveTokenJob"
             android:permission="android.permission.BIND_JOB_SERVICE" />
         <service
+            android:exported="true"
             android:name=".chat.job.SetLastSeenJob"
             android:permission="android.permission.BIND_JOB_SERVICE" /> <!-- <service -->
         <service
@@ -618,6 +694,7 @@
             android:value="Pv-_XkZ7CsE9EJn5W1Ahcg" />
 
         <activity
+            android:exported="true"
             android:name=".chat.activities.BackupChatActivity"
             android:label="@string/title_activity_backup_chat"
             android:theme="@style/AppTheme.NoActionBar" />

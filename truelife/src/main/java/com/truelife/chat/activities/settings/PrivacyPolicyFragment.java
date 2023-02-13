@@ -45,7 +45,7 @@ public class PrivacyPolicyFragment extends PreferenceFragmentCompat {
         //getHtml(tvPrivacyPolicy);
         WebView wv;
         wv = (WebView) view.findViewById(R.id.webview_privacy_policy_dialog);
-        wv.loadUrl("file:///android_asset/privacy_policy.html");
+        wv.loadUrl("http://www.truelife.in/privacy");
 
         return view;
     }

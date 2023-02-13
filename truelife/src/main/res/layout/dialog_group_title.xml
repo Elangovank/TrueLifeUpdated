@@ -13,7 +13,10 @@
         android:hint="@string/group_hint"
         android:maxLength="25"
         android:maxLines="1"
-
+        android:layout_marginHorizontal="@dimen/dimen_4"
+        style="@style/CreateAccountMain"
+        android:textColorHint="@color/app_gray_dark"
+        android:background="@drawable/bg_border_view_gray"
         />
 
     <TextView

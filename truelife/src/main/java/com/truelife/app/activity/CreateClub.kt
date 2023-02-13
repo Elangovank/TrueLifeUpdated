@@ -1,7 +1,10 @@
 package com.truelife.app.activity
 
+import android.Manifest
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.content.pm.ActivityInfo
 import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
@@ -16,6 +19,11 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.Request
+import com.karumi.dexter.Dexter
+import com.karumi.dexter.MultiplePermissionsReport
+import com.karumi.dexter.PermissionToken
+import com.karumi.dexter.listener.PermissionRequest
+import com.karumi.dexter.listener.multi.MultiplePermissionsListener
 import com.squareup.picasso.Picasso
 import com.truelife.BuildConfig
 import com.truelife.R
@@ -27,10 +35,15 @@ import com.truelife.app.model.TLCreateClubModel
 import com.truelife.app.model.User
 import com.truelife.base.BaseActivity
 import com.truelife.base.TLFragmentManager
+import com.truelife.chat.activities.main.messaging.ChatActivity
+import com.truelife.chat.utils.FileUtils
 import com.truelife.http.Response
 import com.truelife.http.ResponseListener
 import com.truelife.storage.LocalStorageSP
 import com.truelife.util.*
+import com.zhihu.matisse.Matisse
+import com.zhihu.matisse.MimeType
+import com.zhihu.matisse.engine.impl.GlideEngine
 import de.hdodenhof.circleimageview.CircleImageView
 import droidninja.filepicker.FilePickerBuilder
 import droidninja.filepicker.FilePickerConst
@@ -238,7 +251,8 @@ class CreateClub : BaseActivity(), ResponseListener,
         close_club_button!!.setOnClickListener { finish() }
 
         mClubProfilePicBTN!!.setOnClickListener {
-            selectClubProfilePicture()
+            pickImages()
+            //selectClubProfilePicture()
 
         }
         myClubForText!!.setOnClickListener {
@@ -598,7 +612,7 @@ class CreateClub : BaseActivity(), ResponseListener,
             club.setShare(if (myShareChkBox!!.isChecked) "1" else "0")
             club.setComment(if (myCommentsChkBox!!.isChecked) "1" else "0")
             club.setLike(if (myLikeChkBox!!.isChecked) "1" else "0")
-            club.setPost_visibility( if (mPostVisibilitySwitch.isChecked) "1" else "0")
+            club.setPost_visibility(if (mPostVisibilitySwitch.isChecked) "1" else "0")
             club.setMaximum_members(
                 if (myTotalMemberEDT!!.text.toString().length > 0) myTotalMemberEDT!!.text.toString()
                     .trim { it <= ' ' } else "0")
@@ -645,6 +659,40 @@ class CreateClub : BaseActivity(), ResponseListener,
 
     }
 
+    private fun pickImages() {
+        Dexter.withContext(this)
+            .withPermissions(
+                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                Manifest.permission.READ_EXTERNAL_STORAGE
+            )
+            .withListener(object : MultiplePermissionsListener {
+                override fun onPermissionsChecked(multiplePermissionsReport: MultiplePermissionsReport) {
+                    Matisse.from(myContext)
+                        .choose(
+                            MimeType.of(MimeType.JPEG, MimeType.PNG)
+                        )
+                        .countable(true)
+                        .maxSelectable(ChatActivity.MAX_SELECTABLE)
+                        .restrictOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT)
+                        .thumbnailScale(0.85f)
+                        .imageEngine(GlideEngine())
+                        .maxSelectable(1)
+                        .forResult(ChatActivity.PICK_GALLERY_REQUEST)
+                }
+
+                override fun onPermissionRationaleShouldBeShown(
+                    list: List<PermissionRequest>,
+                    permissionToken: PermissionToken
+                ) {
+                    Toast.makeText(
+                        myContext,
+                        R.string.missing_permissions,
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            })
+            .check()
+    }
 
     fun selectClubProfilePicture() {
 
@@ -661,22 +709,42 @@ class CreateClub : BaseActivity(), ResponseListener,
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
+        try {
+            if (requestCode == ChatActivity.PICK_GALLERY_REQUEST && resultCode == Activity.RESULT_OK) {
+                myPath = Matisse.obtainPathResult(data) as ArrayList<String>
+                for (mPath in myPath) {
+                    if (!FileUtils.isFileExists(mPath)) {
+                        Toast.makeText(
+                            myContext,
+                            R.string.image_video_not_found,
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        return
+                    }
+                    myProfileFile = File(myPath.get(0))
+                    var uri: Uri? = null
+                    uri = Uri.fromFile(myProfileFile)
+                    Picasso.get().load(uri!!).resize(750, 750).centerCrop()
+                        .into(myCircularImage)
+                }
+
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
         if (requestCode == FilePickerConst.REQUEST_CODE_PHOTO) {
             try {
                 if (!data!!.getStringArrayListExtra(FilePickerConst.KEY_SELECTED_MEDIA).isEmpty()) {
                     myPath = java.util.ArrayList(
                         data.getStringArrayListExtra(FilePickerConst.KEY_SELECTED_MEDIA)
                     )
-                    myProfileFile =  FileCompression.compressImage(myContext, File(myPath.get(0)))
+                    myProfileFile = FileCompression.compressImage(myContext, File(myPath.get(0)))
                     //myProfileFile = File(myPath.get(0))
                     var uri: Uri? = null
-                  // myProfileFile = Compressor(myContext).compressToFile(File(myPath.get(0)))
+                    // myProfileFile = Compressor(myContext).compressToFile(File(myPath.get(0)))
                     uri = Uri.fromFile(myProfileFile)
                     Picasso.get().load(uri!!).resize(750, 750).centerCrop()
                         .into(myCircularImage)
-
-
-                } else {
                 }
             } catch (e: java.lang.Exception) {
                 e.printStackTrace()

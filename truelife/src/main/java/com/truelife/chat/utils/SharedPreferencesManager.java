@@ -17,9 +17,7 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-/**
- * Created by Devlomi on 01/02/2017.
- */
+
 
 public class SharedPreferencesManager {
 
@@ -178,7 +176,7 @@ public class SharedPreferencesManager {
 
     //check if user enabled vibration for notifications
     public static boolean isVibrateEnabled() {
-        return mSharedPref.getBoolean("notifications_new_message_vibrate", false);
+        return mSharedPref.getBoolean("notifications_new_message_vibrate", true);
     }
 
     //get notification ringtone

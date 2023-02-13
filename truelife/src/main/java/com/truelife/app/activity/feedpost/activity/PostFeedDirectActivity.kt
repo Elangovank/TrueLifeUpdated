@@ -1,11 +1,13 @@
 package com.truelife.app.activity.feedpost.activity
 
+import android.Manifest
 import android.app.Activity
 import android.app.Dialog
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
+import android.content.pm.ActivityInfo
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.net.Uri
@@ -22,6 +24,11 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.cloudinary.android.MediaManager
 import com.cloudinary.android.callback.ErrorInfo
 import com.cloudinary.android.callback.UploadCallback
+import com.karumi.dexter.Dexter
+import com.karumi.dexter.MultiplePermissionsReport
+import com.karumi.dexter.PermissionToken
+import com.karumi.dexter.listener.PermissionRequest
+import com.karumi.dexter.listener.multi.MultiplePermissionsListener
 import com.truelife.BuildConfig
 import com.truelife.ClickListener
 import com.truelife.R
@@ -31,11 +38,16 @@ import com.truelife.app.model.ClubInfo
 import com.truelife.app.model.MediaTypeModel
 import com.truelife.app.model.User
 import com.truelife.base.BaseActivity
+import com.truelife.chat.activities.main.messaging.ChatActivity
+import com.truelife.chat.utils.FileUtils
 import com.truelife.http.MyHttpEntity
 import com.truelife.http.Response
 import com.truelife.http.ResponseListener
 import com.truelife.storage.LocalStorageSP
 import com.truelife.util.*
+import com.zhihu.matisse.Matisse
+import com.zhihu.matisse.MimeType
+import com.zhihu.matisse.engine.impl.GlideEngine
 import droidninja.filepicker.FilePickerBuilder
 import droidninja.filepicker.FilePickerConst
 import kotlinx.android.synthetic.main.activity_post_screen.*
@@ -144,7 +156,44 @@ class PostFeedDirectActivity : BaseActivity(), ResponseListener, ClickListener {
             }
         }
     }
+    private fun pickImages() {
+        Dexter.withContext(this)
+            .withPermissions(
+                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                Manifest.permission.READ_EXTERNAL_STORAGE
+            )
+            .withListener(object : MultiplePermissionsListener {
+                override fun onPermissionsChecked(multiplePermissionsReport: MultiplePermissionsReport) {
+                    Matisse.from(myContext)
+                        .choose(
+                            MimeType.of(
+                                MimeType.MP4,
+                                MimeType.JPEG,
+                                MimeType.PNG,
+                            )
+                        )
+                        .countable(true)
+                        .maxSelectable(ChatActivity.MAX_SELECTABLE)
+                        .restrictOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT)
+                        .thumbnailScale(0.85f)
+                        .imageEngine(GlideEngine())
+                        .maxSelectable(5)
+                        .forResult(ChatActivity.PICK_GALLERY_REQUEST)
+                }
 
+                override fun onPermissionRationaleShouldBeShown(
+                    list: List<PermissionRequest>,
+                    permissionToken: PermissionToken
+                ) {
+                    Toast.makeText(
+                        myContext,
+                        R.string.missing_permissions,
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            })
+            .check()
+    }
     fun chooseImages() {
 
         if (PermissionChecker().checkAllPermission(myContext, mPermission)) {
@@ -263,7 +312,7 @@ class PostFeedDirectActivity : BaseActivity(), ResponseListener, ClickListener {
                 null,
                 object : AppDialogs.ConfirmListener {
                     override fun yes() {
-                        chooseImages()
+                        pickImages()
                     }
 
                 },
@@ -320,7 +369,7 @@ class PostFeedDirectActivity : BaseActivity(), ResponseListener, ClickListener {
             } else {
                 Handler().postDelayed({
                     try {
-                        chooseImages()
+                        pickImages()
                     } catch (e: Exception) {
                         e.printStackTrace()
                     }
@@ -351,6 +400,35 @@ class PostFeedDirectActivity : BaseActivity(), ResponseListener, ClickListener {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == ChatActivity.PICK_GALLERY_REQUEST && resultCode == Activity.RESULT_OK) {
+            mFilePath = Matisse.obtainPathResult(data) as ArrayList<String> /* = java.util.ArrayList<kotlin.String> */
+            for (mPath in mFilePath) {
+                if (!FileUtils.isFileExists(mPath)) {
+                    Toast.makeText(
+                        myContext,
+                        R.string.image_video_not_found,
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    return
+                }
+            }
+            myPostImageFile.clear()
+
+            for (i in mFilePath.indices) {
+                val aFile = File(mFilePath.get(i))
+                if (Utility.findMediaType(aFile.absolutePath)!!.contains("image"))
+                    myPostImageFile.add(aFile)
+                // myPostImageFile.add(FileCompression.compressImage(myContext, aFile))
+                else
+                    myPostImageFile.add(File(mFilePath.get(i)))
+                if (mSourceTypeStr.equals("3")) {
+                    fragment_feed_post_your_club_puls_TXT.performClick()
+                } else
+                    fragment_feed_post_SPN_where_post.performClick()
+            }
+
+        }
         if (requestCode == 1 && resultCode == Activity.RESULT_OK && data == null)
             initUpload()
         else if (data == null)
@@ -681,7 +759,7 @@ class PostFeedDirectActivity : BaseActivity(), ResponseListener, ClickListener {
                                 null,
                                 object : AppDialogs.ConfirmListener {
                                     override fun yes() {
-                                        chooseImages()
+                                        pickImages()
                                     }
 
                                 },

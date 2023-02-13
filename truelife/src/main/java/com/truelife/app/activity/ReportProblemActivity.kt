@@ -1,6 +1,9 @@
 package com.truelife.app.activity
 
+import android.Manifest
+import android.app.Activity
 import android.content.Intent
+import android.content.pm.ActivityInfo
 import android.graphics.Bitmap
 import android.media.ThumbnailUtils
 import android.net.Uri
@@ -12,9 +15,15 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
+import android.widget.Toast
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.karumi.dexter.Dexter
+import com.karumi.dexter.MultiplePermissionsReport
+import com.karumi.dexter.PermissionToken
+import com.karumi.dexter.listener.PermissionRequest
+import com.karumi.dexter.listener.multi.MultiplePermissionsListener
 import com.truelife.BuildConfig
 import com.truelife.R
 import com.truelife.api.AppServices
@@ -24,11 +33,16 @@ import com.truelife.app.constants.TLConstant.IMAGE_FILE_SIZE_LIMIT_3MB
 
 import com.truelife.app.model.User
 import com.truelife.base.BaseActivity
+import com.truelife.chat.activities.main.messaging.ChatActivity
+import com.truelife.chat.utils.FileUtils
 import com.truelife.http.MyHttpEntity
 import com.truelife.http.Response
 import com.truelife.http.ResponseListener
 import com.truelife.storage.LocalStorageSP
 import com.truelife.util.*
+import com.zhihu.matisse.Matisse
+import com.zhihu.matisse.MimeType
+import com.zhihu.matisse.engine.impl.GlideEngine
 import droidninja.filepicker.FilePickerBuilder
 import droidninja.filepicker.FilePickerConst
 import kotlinx.android.synthetic.main.activity_report_problem.*
@@ -94,11 +108,46 @@ class ReportProblemActivity : BaseActivity(), ResponseListener {
         clickListener()
     }
 
+    private fun pickImages() {
+        Dexter.withContext(this)
+            .withPermissions(
+                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                Manifest.permission.READ_EXTERNAL_STORAGE
+            )
+            .withListener(object : MultiplePermissionsListener {
+                override fun onPermissionsChecked(multiplePermissionsReport: MultiplePermissionsReport) {
+                    Matisse.from(myContext)
+                        .choose(MimeType.of(MimeType.MP4
+                            , MimeType.JPEG, MimeType.PNG))
+                        .countable(true)
+                        .maxSelectable(ChatActivity.MAX_SELECTABLE)
+                        .restrictOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT)
+                        .thumbnailScale(0.85f)
+                        .imageEngine(GlideEngine())
+                        .maxSelectable(5)
+                        .forResult(ChatActivity.PICK_GALLERY_REQUEST)
+                }
+                override fun onPermissionRationaleShouldBeShown(
+                    list: List<PermissionRequest>,
+                    permissionToken: PermissionToken
+                ) {
+                    Toast.makeText(
+                        myContext,
+                        R.string.missing_permissions,
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            })
+            .check()
+    }
+
     override fun clickListener() {
 
         pick_image_lay!!.setOnClickListener {
-            if (PermissionChecker().checkAllPermission(mContext!!, mPermission)) {
-                FilePickerBuilder.instance.setMaxCount(5)
+            if (PermissionChecker().checkAllPermission(mContext, mPermission)) {
+
+                pickImages()
+                /*FilePickerBuilder.instance.setMaxCount(5)
                     // .setSelectedFiles(filePaths)
                     .setActivityTheme(R.style.FilePickerTheme)
                     .enableVideoPicker(true)
@@ -108,7 +157,7 @@ class ReportProblemActivity : BaseActivity(), ResponseListener {
                     .enableImagePicker(true)
                     .setCameraPlaceholder(R.drawable.ic_action_camera)
                     //        .withOrientation()
-                    .pickPhoto(mContext)
+                    .pickPhoto(mContext)*/
             }
         }
 
@@ -221,6 +270,26 @@ class ReportProblemActivity : BaseActivity(), ResponseListener {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         try {
+            if (requestCode == ChatActivity.PICK_GALLERY_REQUEST && resultCode == Activity.RESULT_OK) {
+                mFilePath = Matisse.obtainPathResult(data) as ArrayList<String>
+                for (mPath in mFilePath) {
+                    if (!FileUtils.isFileExists(mPath)) {
+                        Toast.makeText(
+                            myContext,
+                            R.string.image_video_not_found,
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        return
+                    }
+                }
+
+                mPostImageFile.clear()
+                mImageRecycleView!!.visibility = View.VISIBLE
+                for (i in mFilePath.indices) {
+                    mPostImageFile.add(File(mFilePath.get(i)))
+                }
+                setRecylceview()
+            }
             if (requestCode == FilePickerConst.REQUEST_CODE_PHOTO) {
                 mPostImageFile.clear()
                 mImageRecycleView!!.visibility = View.VISIBLE

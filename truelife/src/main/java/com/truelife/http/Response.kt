@@ -2,6 +2,7 @@ package com.truelife.http
 
 import androidx.room.Ignore
 import com.google.gson.annotations.SerializedName
+import com.truelife.app.model.AppUpdateModel
 import com.truelife.app.model.User
 
 import java.io.Serializable
@@ -39,6 +40,10 @@ open class Response : Serializable {
 
     @SerializedName("a2")
     var extraOutput: String? = null
+
+    @Ignore
+    @SerializedName("details")
+    var appVersion: AppUpdateModel? = null
 
     /**
      * @return true if the response gets success id

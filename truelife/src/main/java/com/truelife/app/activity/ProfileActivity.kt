@@ -1,11 +1,15 @@
 package com.truelife.app.activity
 
+import android.Manifest
+import android.app.Activity
 import android.app.AlertDialog
 import android.app.Dialog
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
+import android.content.pm.ActivityInfo
+import android.net.Uri
 import android.os.Bundle
 import android.util.Base64
 import android.util.Log
@@ -23,6 +27,11 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
+import com.karumi.dexter.Dexter
+import com.karumi.dexter.MultiplePermissionsReport
+import com.karumi.dexter.PermissionToken
+import com.karumi.dexter.listener.PermissionRequest
+import com.karumi.dexter.listener.multi.MultiplePermissionsListener
 import com.truelife.*
 import com.truelife.api.AppServices
 import com.truelife.api.AppServices.API.AddFollow
@@ -47,8 +56,9 @@ import com.truelife.app.model.User
 import com.truelife.app.touchimageview.TLSingleImagePreview
 import com.truelife.base.BaseActivity
 import com.truelife.base.TLFragmentManager
-import com.truelife.chat.activities.main.MainActivity
 import com.truelife.chat.activities.main.messaging.ChatActivity
+import com.truelife.chat.utils.BitmapUtils
+import com.truelife.chat.utils.FileUtils
 import com.truelife.chat.utils.IntentUtils
 import com.truelife.chat.utils.RealmHelper
 import com.truelife.chat.utils.network.FireManager
@@ -56,6 +66,10 @@ import com.truelife.http.Response
 import com.truelife.http.ResponseListener
 import com.truelife.storage.LocalStorageSP
 import com.truelife.util.*
+import com.truelife.util.FileCompression.getBitmapByUri
+import com.zhihu.matisse.Matisse
+import com.zhihu.matisse.MimeType
+import com.zhihu.matisse.engine.impl.GlideEngine
 import droidninja.filepicker.FilePickerBuilder
 import droidninja.filepicker.FilePickerConst.KEY_SELECTED_MEDIA
 import droidninja.filepicker.FilePickerConst.REQUEST_CODE_PHOTO
@@ -70,6 +84,7 @@ import org.json.JSONException
 import org.json.JSONObject
 import java.io.File
 import java.util.*
+
 
 class ProfileActivity : BaseActivity(), ResponseListener, ProfileClickListener, Feedistener,
     FeedClickListener, FeedMenuClickListener, UserMoreClickListener {
@@ -316,7 +331,8 @@ class ProfileActivity : BaseActivity(), ResponseListener, ProfileClickListener, 
         }
 
         profile_edit_icon.setOnClickListener {
-            selectProfilePicture()
+           // selectProfilePicture()
+            pickImages()
         }
         back_icon.setOnClickListener {
             super.onBackPressed()
@@ -849,17 +865,93 @@ class ProfileActivity : BaseActivity(), ResponseListener, ProfileClickListener, 
             .pickPhoto(myContext)
     }
 
+    private fun pickImages() {
+        Dexter.withContext(this)
+            .withPermissions(
+                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                Manifest.permission.READ_EXTERNAL_STORAGE
+            )
+            .withListener(object : MultiplePermissionsListener {
+                override fun onPermissionsChecked(multiplePermissionsReport: MultiplePermissionsReport) {
+                    Matisse.from(myContext)
+                        .choose(
+                            MimeType.of(
+                                MimeType.JPEG,
+                                MimeType.PNG,
+                            )
+                        )
+                        .countable(true)
+                        .maxSelectable(ChatActivity.MAX_SELECTABLE)
+                        .restrictOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT)
+                        .thumbnailScale(0.85f)
+                        .imageEngine(GlideEngine())
+                        .maxSelectable(1)
+                        .forResult(ChatActivity.PICK_GALLERY_REQUEST)
+                }
+
+                override fun onPermissionRationaleShouldBeShown(
+                    list: List<PermissionRequest>,
+                    permissionToken: PermissionToken
+                ) {
+                    Toast.makeText(
+                        myContext,
+                        R.string.missing_permissions,
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            })
+            .check()
+    }
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == ChatActivity.PICK_GALLERY_REQUEST && resultCode == Activity.RESULT_OK) {
+            val mPaths = Matisse.obtainPathResult(data)
+            for (mPath in mPaths) {
+                if (!FileUtils.isFileExists(mPath)) {
+                    Toast.makeText(
+                        myContext,
+                        R.string.image_video_not_found,
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    return
+                }
+            }
+
+            myProfileFile = File(mPaths.get(0))
+           // val bitmap = getBitmapByUri(this, mPaths.get(0))
+           // BitmapUtils.convertBitmapToJpeg(bitmap, myProfileFile, 30)
+           //  myProfileFile = FileCompression.compressImage(myContext, File(mPaths.get(0)))
+            //myProfileFile = Compressor(myContext).setQuality(70).compressToFile(File(myPath.get(0)))
+
+
+            mProfileUpdateType = "profil_photo_update"
+            if (Utility.getFileSize(myProfileFile) > 0)
+                updateProfile("profile_pic")
+
+           /* //Check if it's a video
+            if (FileUtils.isPickedVideo(mPaths[0])) {
+                sendTheVideo(mPaths)
+            } else {
+                sendImage(mPaths)
+            }*/
+        }
+
         if (requestCode == REQUEST_CODE_PHOTO) {
             try {
-                if (!data!!.getStringArrayListExtra(KEY_SELECTED_MEDIA).isEmpty()) {
-                    myPath = ArrayList(
-                        data.getStringArrayListExtra(KEY_SELECTED_MEDIA)
-                    )
+                myPath.clear()
+                val dataList: ArrayList<Uri> = data!!.getParcelableArrayListExtra(KEY_SELECTED_MEDIA)!!
+                if (!dataList.isEmpty()) {
+                    dataList.forEach {
+                        myPath.add(it.toString())
+                    }
+                   // myPath = ArrayList(data.getStringArrayListExtra(KEY_SELECTED_MEDIA))
                     //val aFile = File(myPath.get(0))
                     myProfileFile = File(myPath.get(0))
-                    myProfileFile = FileCompression.compressImage(myContext, File(myPath.get(0)))
+                    val bitmap = getBitmapByUri(this, dataList.get(0))
+                    BitmapUtils.convertBitmapToJpeg(bitmap, myProfileFile, 30)
+                   // myProfileFile = FileCompression.compressImage(myContext, File(myPath.get(0)))
                     //myProfileFile = Compressor(myContext).setQuality(70).compressToFile(File(myPath.get(0)))
 
 
@@ -945,11 +1037,12 @@ class ProfileActivity : BaseActivity(), ResponseListener, ProfileClickListener, 
                                     if (FireManager.isLoggedIn())
                                         uploadImageToFirebase()
                                     progress_bar.visibility = View.VISIBLE
-                                    Utility.loadImage(profileImage, profile_img)
-                                    progress_bar.visibility = View.GONE
-/*                                    profile_img(
+                                    //Utility.loadImage(profileImage, profile_img)
+
+                                    profile_img.setImageBitmap(
                                         Utility.rotateImage(
-                                            myProfileFile!!))*/
+                                            myProfileFile!!))
+                                    progress_bar.visibility = View.GONE
 
                                 } else {
                                     if(type.equals("status")){
